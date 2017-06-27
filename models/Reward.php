@@ -9,6 +9,9 @@ use Yii;
  *
  * @property int $id
  * @property int $price
+ * @property string $first
+ * @property string $second
+ * @property int $third
  * @property int $userid
  * @property string $createtime
  */
@@ -28,8 +31,9 @@ class Reward extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['userid'], 'required'],
-            [['id', 'price', 'userid'], 'integer'],
+            [['price', 'userid'], 'required'],
+            [['price', 'third', 'userid'], 'integer'],
+            [['first', 'second'], 'string'],
             [['createtime'], 'safe'],
         ];
     }
@@ -42,6 +46,9 @@ class Reward extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'price' => 'Price',
+            'first' => 'First',
+            'second' => 'Second',
+            'third' => 'Third',
             'userid' => 'Userid',
             'createtime' => 'Createtime',
         ];

@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-class RewardController extends \yii\web\Controller
+class RandomController extends \yii\web\Controller
 {
     public function actionIndex()
     {
