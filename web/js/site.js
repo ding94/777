@@ -3,16 +3,19 @@ function randomNumber(){
    var ansA =  number[Math.floor(Math.random()*number.length)];
    var ansB =  number[Math.floor(Math.random()*number.length)];
    var ansC =  number[Math.floor(Math.random()*number.length)];
-
-   console.log(ansA);
-   console.log(ansB);
-   console.log(ansC);
+   var result="Empty";
    if(ansA == ansB && ansB == ansC && ansA == ansC)
    {
-        alert('First Price');
+       result = "First Price";
    }
    else if (ansA == ansB || ansB == ansC)
    {
-        alert('Second Price');
+         result = "Second Price";
    }
+   submitData(result);
+}
+
+function submitData(result)
+{
+
 }
