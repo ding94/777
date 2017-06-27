@@ -5,10 +5,18 @@ namespace app\controllers;
 use Yii;
 use app\models\Chance;
 use app\models\Random;
+use yii\web\Controller;
 
-class ChanceController extends \yii\web\Controller
+class ChanceController extends Controller
 {
     public function actionIndex(){
+        
+        if(Yii::$app->user->getIsGuest())
+        {
+            Yii::$app->session->setFlash('info' , 'Please Login in');
+            return $this->redirect(['/site/login']);
+        }
+        
         $number = array(1,2,3,4,5,7);
         $count = count($number);
         $ansA = array_rand($number,1);
@@ -32,6 +40,10 @@ class ChanceController extends \yii\web\Controller
             $chance->userid = Yii::$app->user->identity->id;
             $chance->createtime = date('Y-m-d G:i:s');
             $chance->save();
+        }
+        elseif($chance->chance == 5)
+        {
+            return $this->render('index');
         }
         
         /*
