@@ -17,5 +17,18 @@ function randomNumber(){
 
 function submitData(result)
 {
-
+    $.ajax({
+    url: "index.php?r=chance/index",
+    type: "post",
+    data : {
+        result : result,
+        _csrf: '<?=Yii::$app->request->getCsrfToken()?>',
+    },
+    success: function (data) {
+        console.log(data.search);
+   },
+   error: function (request, status, error) {
+    alert(request.responseText);
+    }
+});
 }
