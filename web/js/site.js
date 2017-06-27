@@ -16,13 +16,14 @@ function randomNumber(){
    {
         result = "Third Price";
    }
-   submitData(result);
+   console.log(result);
+   //submitData(result);
 }
 
 function submitData(result)
 {
     $.ajax({
-    url: "index.php?r=chance/index",
+    url: "index.php?r=reward/index",
     type: "post",
     data : {
         result : result,

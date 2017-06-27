@@ -7,7 +7,7 @@ use models\Chance;
 
 class ChanceController extends \yii\web\Controller
 {
-    public function actionIndex()
+    public function actionIndex(){
     // {
     //   $user = Chance::find()->where('userid = :id ',[':id' => Yii::$app->user->identity->id])->one();
     //   if(empty($user))
