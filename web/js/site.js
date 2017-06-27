@@ -14,7 +14,6 @@ function randomNumber(){
    else if (ansA == ansB || ansB == ansC)
    {
        
-       
    }
    submitData();
 }
