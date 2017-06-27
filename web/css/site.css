@@ -114,3 +114,11 @@ a.desc:after {
     outline: none;
 }
 
+.randomNumber{
+   text-align: center;
+   font-size: 100px;
+}
+
+.buttonRandom{
+   text-align: center;
+}
