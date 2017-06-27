@@ -3,7 +3,16 @@ function randomNumber(){
    var ansA =  number[Math.floor(Math.random()*number.length)];
    var ansB =  number[Math.floor(Math.random()*number.length)];
    var ansC =  number[Math.floor(Math.random()*number.length)];
+  
    console.log(ansA);
    console.log(ansB);
    console.log(ansC);
+   if(ansA == ansB && ansB == ansC && ansA == ansC)
+   {
+        console.log('First Price');
+   }
+   else if (ansA == ansB || ansB == ansC)
+   {
+        console.log('Second Price');
+   }
 }
