@@ -8,7 +8,7 @@
         <div class="col-xs-4 randomNumber">1</div>
     </div>
     <div class="row">
-        <button type="button" class="btn btn-default btn-lg btn-block">Press</button>
+        <button type="button" class="btn btn-default btn-lg btn-block" onclick="randomNumber();">Press</button>
     </div>
 </div>
 
