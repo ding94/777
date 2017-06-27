@@ -3,7 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use models\Chance;
+use app\models\Chance;
+use app\models\Random;
 
 class ChanceController extends \yii\web\Controller
 {
@@ -13,6 +14,62 @@ class ChanceController extends \yii\web\Controller
         $ansA = array_rand($number,1);
         $ansB = array_rand($number,1);
         $ansC = array_rand($number,1);
+        
+        /*
+         * find wheter chance database create
+         * if not create one
+         */
+        $today =  date('Y-m-d 00:00:00');
+        $tommorow = date('Y-m-d 00:00:00', strtotime(' +1 day'));
+        $chance = Chance::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->andWhere(['between','updatetime',$today ,$tommorow])->one();
+        
+        $random = Random::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->one();
+        
+        if(empty($chance))
+        {
+            $chance = new Chance;
+            $chance->chance = 1;
+            $chance->userid = Yii::$app->user->identity->id;
+            $chance->createtime = date('Y-m-d G:i:s');
+            $chance->save();
+        }
+        
+        /*
+         *find wheter random datbase create
+         *if not create one
+         */
+     
+        if(empty($random))
+        {
+            $random = new Random();
+            $random->fnum = $ansA;
+            $random->snum = $ansB;
+            $random->tnum = $ansC;
+            $random->userid = Yii::$app->user->identity->id;
+            $random->chance = 1;
+            $random->save();
+        }
+        
+        /*
+         *detect wheter the chance
+         *in both random and chance database changed
+         *is same or not
+         *if not get the ansA,ansB,ansC update to the random
+         */
+        if($chance->chance == $random->chance)
+        {
+            $model = $random;
+        }
+        else if($chance->chance-$random->chance === 1)
+        {
+            $random->fnum = $ansA;
+            $random->snum = $ansB;
+            $random->tnum = $ansC;
+            $random->chance = $chance->chance;
+            $random->save();
+            $model  = $random;
+        }
+        
     // {
     //   $user = Chance::find()->where('userid = :id ',[':id' => Yii::$app->user->identity->id])->one();
     //   if(empty($user))
@@ -28,7 +85,7 @@ class ChanceController extends \yii\web\Controller
     //       $model->save();
     //   }
       
-        return $this->render('index' ,['a'=>$ansA ,'b'=>$ansB , 'c'=>$ansC]);
+        return $this->render('index' ,['model' =>$model]);
     }
 
 }
