@@ -31,7 +31,7 @@ class Reward extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price', 'userid'], 'required'],
+            [['userid'], 'required'],
             [['price', 'third', 'userid'], 'integer'],
             [['first', 'second'], 'string'],
             [['createtime'], 'safe'],
