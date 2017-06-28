@@ -35,14 +35,9 @@ class ChanceController extends Controller
             $chance->save();
         }
 
-        elseif($chance->chance == 6)
-        {
-            return $this->render('index');
-        }
-        
         RewardController::emptyReward();
         $model = RandomController::randomNumGen($chance);
-        
+
 
        if(Yii::$app->request->isAjax){
           RewardController::submitReward($model[1],$chance,$today,$tommorow);
