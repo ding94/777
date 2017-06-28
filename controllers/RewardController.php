@@ -28,7 +28,7 @@ class RewardController extends \yii\web\Controller
         $reward->save();
       }
     }
-    
+
     /*
      *
      */
@@ -37,7 +37,7 @@ class RewardController extends \yii\web\Controller
         $reward = Reward::find()->where('userid = :id',[':id' => Yii::$app->user->identity->id])->one();
         return $reward;
     }
-    
+
     /*
     *save reward prize to database
     */
@@ -51,7 +51,7 @@ class RewardController extends \yii\web\Controller
         $reward->userid = Yii::$app->user->identity->id;
         $reward->save();
       }
-      else if ($model->fnum ==$model->snum && $model->snum == $model->tnum && $model->fnum == $model->tnum){ //check second prize
+      else if ((($model->fnum == $model->snum) == true) && (($model->snum == $model->tnum) == true)){  //check second prize
         $reward->second = 1;
         $reward->price += 5;
         $reward->userid = Yii::$app->user->identity->id;
