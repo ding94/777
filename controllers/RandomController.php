@@ -17,9 +17,11 @@ class RandomController extends Controller
     public static function randomNumGen($chance)
     {
         self::random();
+        //$reward = RewardController::getReward();
+        self::verifyLimitPrice($reward);
         $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
         
-        $reward = RewardController::getReward();
+       
         /*
          *sorting by chance before do anything
          */
@@ -84,9 +86,9 @@ class RandomController extends Controller
             for($i=1;$i<=6;$i++)
             {
                 $random = new Random();
-                $random->fnum = array_rand($number,1);
-                $random->snum = array_rand($number,1);
-                $random->tnum = array_rand($number,1);
+                $random->fnum = $number[array_rand($number,1)];
+                $random->snum = $number[array_rand($number,1)];
+                $random->tnum = $number[array_rand($number,1)];
                 $random->userid = Yii::$app->user->identity->id;
                 $random->chance = $i;
                 $random->token = 1;
@@ -97,13 +99,38 @@ class RandomController extends Controller
         {
             foreach($random as $k=>$data)
             {
-                $data->fnum = array_rand($number,1);
-                $data->snum = array_rand($number,1);
-                $data->tnum = array_rand($number,1);
+                $data->fnum = $number[array_rand($number,1)];
+                $data->snum = $number[array_rand($number,1)];
+                $data->tnum = $number[array_rand($number,1)];
                 $data->userid = Yii::$app->user->identity->id;
                 $data->chance = $k+1;
                 $data->token = 1;
                 $data->save();
+            }
+        }
+    }
+    
+    public static function verifyLimitPrice($data)
+    {
+        $number = array(1,2,3,4,5,7);
+        $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
+        foreach($random as $value)
+        {
+            if($data['first'] == '1')
+            {
+                $a=0;
+                $b=0;
+                $c=0;
+                while($a===$b ||$b===$c || $c===$a)
+                {
+                    $a = array_rand($number,1);
+                    $b = array_rand($number,1);
+                    $c = array_rand($number,1);
+                }
+                $value->fnum = $number[$a];
+                $value->snum = $number[$b];
+                $value->tnum = $number[$c];
+                $value->save();
             }
         }
     }
