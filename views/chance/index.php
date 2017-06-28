@@ -20,7 +20,6 @@
         <div id ="c" class="col-xs-4 randomNumber"><?php echo $model[0]['tnum']?></div>
     </div>
     <?php endif ;?>
-    <hr>
     <div class="row">
         <div class="col-md-4 col-md-offset-4 buttonRandom">
              <button type="button" class="btn btn-primary btn-lg btn-block" onclick="randomNumber();">Press</button>

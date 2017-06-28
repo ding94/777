@@ -17,6 +17,25 @@ class RandomController extends Controller
         self::random();
         $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
       
+      
+        /*
+         *sorting by chance before do anything
+         */
+        $count = count($random);
+        for($i = 0 ;$i<$count;$i++)
+        {
+            for($j = 1;$j<$count;$j++)
+            {
+                if($random[$i]['chance'] > $random[$j]['chance'])
+                {
+                    $temp = $random[$i]['chance'];
+                    $random[$i]['chance'] = $random[$j]['chance'];
+                    $random[$j]['chance'] = $temp;
+                }
+            }
+        }
+        
+        
         /*
          *detect wheter the chance
          *in current user play chance
@@ -24,6 +43,7 @@ class RandomController extends Controller
          *and record previos chance into value 0
          *if first time play value is null
          */
+        
         foreach($random as $k=>$data)
         {   
             if($chance->chance == $data['chance'])

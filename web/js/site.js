@@ -19,7 +19,7 @@ function randomNumber(){
    {
        
    }
-   submitData();
+   //submitData();
 }
 
 function submitData()
