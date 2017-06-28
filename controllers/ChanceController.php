@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\web\controller;
 use app\models\Chance;
 use app\models\Random;
 use app\models\Reward;
@@ -81,22 +82,11 @@ class ChanceController extends Controller
             $random->save();
             $model  = $random;
         }
-
-    // {
-    //   $user = Chance::find()->where('userid = :id ',[':id' => Yii::$app->user->identity->id])->one();
-    //   if(empty($user))
-    //   {
-    //        $model = new Chance;
-    //   }
-    //
-    //   if(Yii::$app->request->isAjax){
-    //       $data = Yii::$app->request->post();
-    //       $model->fNum = $data['fnum'];
-    //       $model->userid = Yii::$app->user->identity->id;
-    //       $model->isOn = 1;
-    //       $model->save();
-    //   }
-        $this->submitReward($random->fnum, $random->snum, $random->tnum, $chance);
+        
+       if(Yii::$app->request->isAjax){
+          $this->submitReward($random->fnum, $random->snum, $random->tnum, $chance);
+       }
+        
         return $this->render('index' ,['model' =>$model]);
     }
 
