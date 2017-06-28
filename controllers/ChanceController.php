@@ -5,8 +5,8 @@ namespace app\controllers;
 use Yii;
 use yii\web\controller;
 use app\controllers\RandomController;
+use app\controllers\RewardController;
 use app\models\Chance;
-use app\models\Reward;
 
 class ChanceController extends Controller
 {
@@ -25,7 +25,7 @@ class ChanceController extends Controller
         $today =  date('Y-m-d 00:00:00');
         $tommorow = date('Y-m-d 00:00:00', strtotime(' +1 day'));
         $chance = Chance::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->andWhere(['between','updatetime',$today ,$tommorow])->one();
-        
+
         if(empty($chance))
         {
             $chance = new Chance;
@@ -40,43 +40,44 @@ class ChanceController extends Controller
         }
 
         $model = RandomController::randomNumGen($chance);
-        
+        RewardController::emptyReward();
+
        if(Yii::$app->request->isAjax){
-          $this->submitReward($model, $chance ,$today ,$tommorow);
+          RewardController::submitReward($model,$chance,$today,$tommorow);
        }
 
         return $this->render('index' ,['model' =>$model]);
     }
 
-  public function submitReward($model,$chance,$today,$tommorow){
-
-    if ($model->fnum == 7 && $model->snum == 7 && $model->tnum == 7) {
-      $reward->first = 1;
-      $reward->price += 10;
-      $reward->userid = Yii::$app->user->identity->id;
-      $reward->save();
-    }
-    else if ($model->fnum ==$model->snum && $model->snum == $model->tnum && $model->fnumfnum == $model->tnum){
-      $reward->second = 1;
-      $reward->price += 5;
-      $reward->userid = Yii::$app->user->identity->id;
-      $reward->save();
-    }
-    else if($model->fnum == $model->snum || $model->snum == $model->tnum){
-      $reward->third += 1;
-      $reward->price += 2;
-      $reward->userid = Yii::$app->user->identity->id;
-      $reward->save();
-    }
-    else {
-
-    }
-    $chance->chance += 1;
-    $condition = [
-        'and',
-        ['between','updatetime',$today ,$tommorow],
-        ['in' ,'userid' , Yii::$app->user->identity->id],
-    ];
-    Chance::updateAll(['chance' => $chance->chance ],$condition);
-  }
+  // public function submitReward($model,$chance,$today,$tommorow){
+  //
+  //   if ($model->fnum == 7 && $model->snum == 7 && $model->tnum == 7) {
+  //     $reward->first = 1;
+  //     $reward->price += 10;
+  //     $reward->userid = Yii::$app->user->identity->id;
+  //     $reward->save();
+  //   }
+  //   else if ($model->fnum ==$model->snum && $model->snum == $model->tnum && $model->fnumfnum == $model->tnum){
+  //     $reward->second = 1;
+  //     $reward->price += 5;
+  //     $reward->userid = Yii::$app->user->identity->id;
+  //     $reward->save();
+  //   }
+  //   else if($model->fnum == $model->snum || $model->snum == $model->tnum){
+  //     $reward->third += 1;
+  //     $reward->price += 2;
+  //     $reward->userid = Yii::$app->user->identity->id;
+  //     $reward->save();
+  //   }
+  //   else {
+  //
+  //   }
+  //   $chance->chance += 1;
+  //   $condition = [
+  //       'and',
+  //       ['between','updatetime',$today ,$tommorow],
+  //       ['in' ,'userid' , Yii::$app->user->identity->id],
+  //   ];
+  //   Chance::updateAll(['chance' => $chance->chance ],$condition);
+  // }
 }
