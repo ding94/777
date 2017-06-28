@@ -24,17 +24,18 @@ class RandomController extends Controller
         $count = count($random);
         for($i = 0 ;$i<$count;$i++)
         {
-            for($j = 1;$j<$count;$j++)
+            for($j = 0;$j<$count;$j++)
             {
-                if($random[$i]['chance'] > $random[$j]['chance'])
+                if($random[$i]['chance'] < $random[$j]['chance'])
                 {
-                    $temp = $random[$i]['chance'];
-                    $random[$i]['chance'] = $random[$j]['chance'];
-                    $random[$j]['chance'] = $temp;
+                    $temp = $random[$i];
+                    $random[$i] = $random[$j];
+                    $random[$j] = $temp;
                 }
             }
         }
-
+        
+        var_dump($random);exit;
 
         /*
          *detect wheter the chance
@@ -43,7 +44,7 @@ class RandomController extends Controller
          *and record previos chance into value 0
          *if first time play value is null
          */
-
+        
         foreach($random as $k=>$data)
         {
             if($chance->chance == $data['chance'])
