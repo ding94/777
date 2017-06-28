@@ -41,7 +41,7 @@ class ChanceController extends Controller
 
         $model = RandomController::randomNumGen($chance);
         RewardController::emptyReward();
-
+        
        if(Yii::$app->request->isAjax){
           RewardController::submitReward($model[1],$chance,$today,$tommorow);
        }

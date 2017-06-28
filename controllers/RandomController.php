@@ -42,6 +42,7 @@ class RandomController extends Controller
          *and record previos chance into value 0
          *if first time play value is null
          */
+
         foreach($random as $k=>$data)
         {
             if($chance->chance == $data['chance'])
@@ -53,10 +54,9 @@ class RandomController extends Controller
                 else{
                     $value['0'] = $random[$k-1];
                 }
-
+                $value['1'] = $data;
             }
         }
-
 
         return $value;
     }
@@ -79,7 +79,7 @@ class RandomController extends Controller
 
         if(empty($random))
         {
-            for($i=1;$i<=5;$i++)
+            for($i=1;$i<=6;$i++)
             {
                 $random = new Random();
                 $random->fnum = array_rand($number,1);
