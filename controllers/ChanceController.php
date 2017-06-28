@@ -93,6 +93,7 @@ class ChanceController extends Controller
   public function submitReward($fnum,$snum,$tnum,$chance){
     $reward = Reward::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->one();
 
+
     if (empty($reward)){
       $reward = new Reward();
     }
