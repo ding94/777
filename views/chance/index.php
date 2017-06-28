@@ -25,10 +25,6 @@
              <button type="button" class="btn btn-primary btn-lg btn-block" onclick="randomNumber();">Press</button>
         </div>
     </div>
-    <input type="hidden" class="a" value="<?php echo $model[1]['fnum']?>">
-    <input type="hidden" class="b" value="<?php echo $model[1]['snum']?>">
-    <input type="hidden" class="c" value="<?php echo $model[1]['tnum']?>">
-   
 </div>
 
 
