@@ -34,8 +34,6 @@ class RandomController extends Controller
                 }
             }
         }
-        
-        var_dump($random);exit;
 
         /*
          *detect wheter the chance
