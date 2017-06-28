@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\web\controller;
 use app\models\Chance;
 use app\models\Random;
 use app\models\Reward;
@@ -95,28 +96,15 @@ class ChanceController extends Controller
     //        $model = new Chance;
     //   }
     //
-    //   if(Yii::$app->request->isAjax){
-    //       $data = Yii::$app->request->post();
-    //       $model->fNum = $data['fnum'];
-    //       $model->userid = Yii::$app->user->identity->id;
-    //       $model->isOn = 1;
-    //       $model->save();
-    //   }
-        $reward->submitReward($random->fnum, $random->snum, $random->tnum, $chance);
+      if(Yii::$app->request->isAjax){
+          $this->submitReward($random->fnum, $random->snum, $random->tnum, $chance);
+      }
+
         return $this->render('index' ,['model' =>$model]);
     }
 
   public function submitReward($fnum,$snum,$tnum,$chance){
-<<<<<<< HEAD
-=======
-    $reward = Reward::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->one();
 
-
-    if (empty($reward)){
-      $reward = new Reward();
-    }
-
->>>>>>> e3ab47f350892b8f455cc1c803383c3c4ad7f6eb
     if ($fnum == 7 && $snum == 7 && $tnum == 7) {
       $reward->first = 1;
       $reward->price += 10;
