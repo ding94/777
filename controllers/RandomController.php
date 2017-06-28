@@ -11,12 +11,12 @@ class RandomController extends Controller
     {
         return $this->render('index');
     }
-    
+
     public static function randomNumGen($chance)
     {
         self::random();
         $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
-      
+
         /*
          *detect wheter the chance
          *in current user play chance
@@ -25,7 +25,7 @@ class RandomController extends Controller
          *if first time play value is null
          */
         foreach($random as $k=>$data)
-        {   
+        {
             if($chance->chance == $data['chance'])
             {
                 if($k-1 == -1)
@@ -33,14 +33,14 @@ class RandomController extends Controller
                     $value['0'] = "";
                 }
                 else{
-                    $value['0'] = $random[$k-1]; 
+                    $value['0'] = $random[$k-1];
                 }
                 $value['1'] = $data;
             }
         }
         return $value;
     }
-    
+
     public static function random()
     {
         $number = array(1,2,3,4,5,7);
