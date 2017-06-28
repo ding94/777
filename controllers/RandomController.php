@@ -20,8 +20,9 @@ class RandomController extends Controller
         /*
          *detect wheter the chance
          *in current user play chance
-         *record it into value
-         *if first time play value is 0
+         *record it into value 1
+         *and record previos chance into value 0
+         *if first time play value is null
          */
         foreach($random as $k=>$data)
         {   
