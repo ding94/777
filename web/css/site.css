@@ -117,19 +117,21 @@ a.desc:after {
 .randomNumber{
    text-align: center;
    font-size: 100px;
+   border-left: 1px solid #bfd7ff;
+   border-right: 1px solid #bfd7ff;
 }
 
 .buttonRandom{
+   padding-top : 30px;
    text-align: center;
 }
 
-hr{
-   border-top: 1px solid #8c8b8b;
-}
-
 h1{
+    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+    color: white;
     text-align: center;
     font-size: 100px;
+    padding-bottom: 30px;
 }
 
 
