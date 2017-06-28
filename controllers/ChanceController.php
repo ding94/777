@@ -45,7 +45,7 @@ class ChanceController extends Controller
        if(Yii::$app->request->isAjax){
           RewardController::submitReward($model,$chance,$today,$tommorow);
        }
-
+       //var_dump($model);exit;
         return $this->render('index' ,['model' =>$model]);
     }
 

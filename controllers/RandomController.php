@@ -14,51 +14,75 @@ class RandomController extends Controller
     
     public static function randomNumGen($chance)
     {
+        self::random();
+        $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
+      
+        /*
+         *detect wheter the chance
+         *in current user play chance
+         *record it into value
+         *if first time play value is 0
+         */
+        foreach($random as $k=>$data)
+        {   
+            if($chance->chance == $data['chance'])
+            {
+                if($k-1 == -1)
+                {
+                    $value['0'] = "";
+                }
+                else{
+                    $value['0'] = $random[$k-1]; 
+                }
+                $value['1'] = $data;
+            }
+        }
+        return $value;
+    }
+    
+    public static function random()
+    {
         $number = array(1,2,3,4,5,7);
         $count = count($number);
-        $ansA = array_rand($number,1);
-        $ansB = array_rand($number,1);
-        $ansC = array_rand($number,1);
+        //$ansA = array_rand($number,1);
+        //$ansB = array_rand($number,1);
+        //$ansC = array_rand($number,1);
 
-         $random = Random::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->one();
-
+        $random = Random::find()->where('userid = :id ',[':id' => Yii::$app->user->identity->id])->all();
         /*
          *find wheter random datbase create
-         *if not create one
+         *if not create five
+         *loop five time with increment of chance
+         *each user only have five chance and token will be refresh everyday
          */
 
         if(empty($random))
         {
-            $random = new Random();
-            $random->fnum = $ansA;
-            $random->snum = $ansB;
-            $random->tnum = $ansC;
-            $random->userid = Yii::$app->user->identity->id;
-            $random->chance = 1;
-            $random->save();
+            for($i=1;$i<=5;$i++)
+            {
+                $random = new Random();
+                $random->fnum = array_rand($number,1);
+                $random->snum = array_rand($number,1);
+                $random->tnum = array_rand($number,1);
+                $random->userid = Yii::$app->user->identity->id;
+                $random->chance = $i;
+                $random->token = 1;
+                $random->save();
+            }
         }
-
-        /*
-         *detect wheter the chance
-         *in both random and chance database changed
-         *is same or not
-         *if not get the ansA,ansB,ansC update to the random
-         */
-        if($chance->chance == $random->chance)
+        else if($random[0]['token'] == 0)
         {
-            $model = $random;
+            foreach($random as $k=>$data)
+            {
+                $data->fnum = array_rand($number,1);
+                $data->snum = array_rand($number,1);
+                $data->tnum = array_rand($number,1);
+                $data->userid = Yii::$app->user->identity->id;
+                $data->chance = $k+1;
+                $data->token = 1;
+                $data->save();
+            }
         }
-        else if($chance->chance-$random->chance === 1)
-        {
-            $random->fnum = $ansA;
-            $random->snum = $ansB;
-            $random->tnum = $ansC;
-            $random->chance = $chance->chance;
-            $random->save();
-            $model  = $random;
-        }
-        
-        return $model;
     }
 
 }

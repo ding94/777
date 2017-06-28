@@ -29,7 +29,7 @@ class Random extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fnum', 'snum', 'tnum', 'userid','chance'], 'required'],
+            [['fnum', 'snum', 'tnum', 'userid','chance','token'], 'required'],
             [['fnum', 'snum', 'tnum', 'userid','chance'], 'integer'],
         ];
     }
