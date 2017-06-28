@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use Yii;
-use yii\web\controller;
 use app\models\Chance;
 use app\models\Random;
 use app\models\Reward;
@@ -16,6 +15,12 @@ class ChanceController extends Controller
         {
             Yii::$app->session->setFlash('info' , 'Please Login in');
             return $this->redirect(['/site/login']);
+        }
+
+        $reward = Reward::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->one();
+
+        if (empty($reward)) {
+          $reward = new Reward();
         }
 
         $number = array(1,2,3,4,5,7);
@@ -82,39 +87,41 @@ class ChanceController extends Controller
             $random->save();
             $model  = $random;
         }
-        
-       if(Yii::$app->request->isAjax){
-          $this->submitReward($random->fnum, $random->snum, $random->tnum, $chance);
-       }
-        
+
+    // {
+    //   $user = Chance::find()->where('userid = :id ',[':id' => Yii::$app->user->identity->id])->one();
+    //   if(empty($user))
+    //   {
+    //        $model = new Chance;
+    //   }
+    //
+    //   if(Yii::$app->request->isAjax){
+    //       $data = Yii::$app->request->post();
+    //       $model->fNum = $data['fnum'];
+    //       $model->userid = Yii::$app->user->identity->id;
+    //       $model->isOn = 1;
+    //       $model->save();
+    //   }
+        $reward->submitReward($random->fnum, $random->snum, $random->tnum, $chance);
         return $this->render('index' ,['model' =>$model]);
     }
 
   public function submitReward($fnum,$snum,$tnum,$chance){
-    $reward = Reward::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->one();
-
-    if (empty($reward)) {
-      $reward = new Reward();
-    }
-    else {
-      $reward = $reward;
-    }
-
     if ($fnum == 7 && $snum == 7 && $tnum == 7) {
       $reward->first = 1;
-      $reward->price = 10;
+      $reward->price += 10;
       $reward->userid = Yii::$app->user->identity->id;
       $reward->save();
     }
     else if ($fnum == $snum && $snum == $tnum && $fnum == $tnum){
       $reward->second = 1;
-      $reward->price = 5;
+      $reward->price += 5;
       $reward->userid = Yii::$app->user->identity->id;
       $reward->save();
     }
     else if($fnum == $snum || $snum == $tnum){
       $reward->third += 1;
-      $reward->price = 2;
+      $reward->price += 2;
       $reward->userid = Yii::$app->user->identity->id;
       $reward->save();
     }
