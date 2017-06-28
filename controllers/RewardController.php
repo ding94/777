@@ -63,7 +63,8 @@ class RewardController extends \yii\web\Controller
         $reward->userid = Yii::$app->user->identity->id;
         $reward->save();
       }
-      $chance->chance += 1;
+        $chance->chance += 1;
+
       $condition = [
           'and',
           ['between','updatetime',$today ,$tommorow],

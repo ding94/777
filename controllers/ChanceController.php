@@ -34,6 +34,7 @@ class ChanceController extends Controller
             $chance->createtime = date('Y-m-d G:i:s');
             $chance->save();
         }
+
         elseif($chance->chance == 6)
         {
             return $this->render('index');
