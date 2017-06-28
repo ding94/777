@@ -25,7 +25,7 @@ class ChanceController extends Controller
         $today =  date('Y-m-d 00:00:00');
         $tommorow = date('Y-m-d 00:00:00', strtotime(' +1 day'));
         $chance = Chance::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->andWhere(['between','updatetime',$today ,$tommorow])->one();
-        
+
         if(empty($chance))
         {
             $chance = new Chance;
@@ -34,7 +34,7 @@ class ChanceController extends Controller
             $chance->createtime = date('Y-m-d G:i:s');
             $chance->save();
         }
-        elseif($chance->chance == 5)
+        elseif($chance->chance == 6)
         {
             return $this->render('index');
         }
@@ -45,7 +45,7 @@ class ChanceController extends Controller
        if(Yii::$app->request->isAjax){
           RewardController::submitReward($model[1],$chance,$today,$tommorow);
        }
-       //var_dump($model);exit; 
+       //var_dump($model);exit;
         return $this->render('index' ,['model' =>$model]);
     }
 
