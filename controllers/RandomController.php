@@ -18,7 +18,7 @@ class RandomController extends Controller
     {
         self::random();
         //$reward = RewardController::getReward();
-        self::verifyLimitPrice($reward);
+        //self::verifyLimitPrice($reward);
         $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
         
        
