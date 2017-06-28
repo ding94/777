@@ -19,13 +19,13 @@ function randomNumber(){
    {
        
    }
-   //submitData();
+   submitData();
 }
 
 function submitData()
 {
     $.ajax({
-    url: "index.php?r=reward/index",
+    url: "index.php?r=chance/index",
     type: "post",
     data : {
         _csrf: '<?=Yii::$app->request->getCsrfToken()?>',
