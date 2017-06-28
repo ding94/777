@@ -28,7 +28,16 @@ class RewardController extends \yii\web\Controller
         $reward->save();
       }
     }
-
+    
+    /*
+     *
+     */
+    public static function getReward()
+    {
+        $reward = Reward::find()->where('userid = :id',[':id' => Yii::$app->user->identity->id])->one();
+        return $reward;
+    }
+    
     /*
     *save reward prize to database
     */

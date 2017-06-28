@@ -1,8 +1,10 @@
 <?php
 
 namespace app\controllers;
+
 use app\models\Random;
 use yii\web\controller;
+use app\controllers\RewardController;
 use Yii;
 
 class RandomController extends Controller
@@ -16,8 +18,8 @@ class RandomController extends Controller
     {
         self::random();
         $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
-
-
+        
+        $reward = RewardController::getReward();
         /*
          *sorting by chance before do anything
          */
