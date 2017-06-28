@@ -4,8 +4,8 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\controller;
+use app\controllers\RandomController;
 use app\models\Chance;
-use app\models\Random;
 use app\models\Reward;
 
 class ChanceController extends Controller
@@ -17,13 +17,7 @@ class ChanceController extends Controller
             Yii::$app->session->setFlash('info' , 'Please Login in');
             return $this->redirect(['/site/login']);
         }
-
-        $number = array(1,2,3,4,5,7);
-        $count = count($number);
-        $ansA = array_rand($number,1);
-        $ansB = array_rand($number,1);
-        $ansC = array_rand($number,1);
-
+        
         /*
          * find wheter chance database create
          * if not create one
@@ -31,9 +25,7 @@ class ChanceController extends Controller
         $today =  date('Y-m-d 00:00:00');
         $tommorow = date('Y-m-d 00:00:00', strtotime(' +1 day'));
         $chance = Chance::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->andWhere(['between','updatetime',$today ,$tommorow])->one();
-
-        $random = Random::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->one();
-
+        
         if(empty($chance))
         {
             $chance = new Chance;
@@ -46,45 +38,11 @@ class ChanceController extends Controller
         {
             return $this->render('index');
         }
-
-        /*
-         *find wheter random datbase create
-         *if not create one
-         */
-
-        if(empty($random))
-        {
-            $random = new Random();
-            $random->fnum = $ansA;
-            $random->snum = $ansB;
-            $random->tnum = $ansC;
-            $random->userid = Yii::$app->user->identity->id;
-            $random->chance = 1;
-            $random->save();
-        }
-
-        /*
-         *detect wheter the chance
-         *in both random and chance database changed
-         *is same or not
-         *if not get the ansA,ansB,ansC update to the random
-         */
-        if($chance->chance == $random->chance)
-        {
-            $model = $random;
-        }
-        else if($chance->chance-$random->chance === 1)
-        {
-            $random->fnum = $ansA;
-            $random->snum = $ansB;
-            $random->tnum = $ansC;
-            $random->chance = $chance->chance;
-            $random->save();
-            $model  = $random;
-        }
+        
+        $model = RandomController::randomNumGen($chance);
         
        if(Yii::$app->request->isAjax){
-          $this->submitReward($random->fnum, $random->snum, $random->tnum, $chance);
+          $this->submitReward($model->fnum, $model->snum, $model->tnum, $chance);
        }
         
         return $this->render('index' ,['model' =>$model]);
