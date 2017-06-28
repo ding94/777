@@ -107,7 +107,7 @@ class ChanceController extends Controller
       $reward = new Reward();
     }
     else {
-      $reward = new Reward();
+      $reward = $reward;
     }
 
     if ($fnum == 7 && $snum == 7 && $tnum == 7) {
