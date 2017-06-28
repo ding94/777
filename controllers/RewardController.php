@@ -30,7 +30,7 @@ class RewardController extends \yii\web\Controller
     }
 
     /*
-     *
+     *get user reward
      */
     public static function getReward()
     {

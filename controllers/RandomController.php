@@ -17,8 +17,28 @@ class RandomController extends Controller
     public static function randomNumGen($chance)
     {
         self::random();
-        //$reward = RewardController::getReward();
-        //self::verifyLimitPrice($reward);
+        $reward = RewardController::getReward();
+        /*
+         *detect whether user limit the amount set
+         *or user got 1 first , 1 second ,5 third
+         */
+        if($reward['price'] == 25)
+        {
+            self::verifyLimit($reward,1);
+        }
+        else if($reward['first'] == '1')
+        {
+            self::verifyLimit($reward,2);
+        }
+        else if($reward['second'] == '1')
+        {
+            self::verifyLimit($reward,3);
+        }
+        else if($reward['third'] == 5)
+        {
+             self::verifyLimit($reward,4);
+        }
+      
         $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
         
        
@@ -69,9 +89,6 @@ class RandomController extends Controller
     {
         $number = array(1,2,3,4,5,7);
         $count = count($number);
-        //$ansA = array_rand($number,1);
-        //$ansB = array_rand($number,1);
-        //$ansC = array_rand($number,1);
 
         $random = Random::find()->where('userid = :id ',[':id' => Yii::$app->user->identity->id])->all();
         /*
@@ -110,28 +127,68 @@ class RandomController extends Controller
         }
     }
     
-    public static function verifyLimitPrice($data)
+    
+    public static function verifyLimit($data , $type)
     {
+        /*
+         *depend of which type put in the case
+         *each case have their on format
+         */
         $number = array(1,2,3,4,5,7);
         $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
         foreach($random as $value)
         {
-            if($data['first'] == '1')
-            {
-                $a=0;
-                $b=0;
-                $c=0;
-                while($a===$b ||$b===$c || $c===$a)
-                {
-                    $a = array_rand($number,1);
-                    $b = array_rand($number,1);
-                    $c = array_rand($number,1);
-                }
-                $value->fnum = $number[$a];
-                $value->snum = $number[$b];
-                $value->tnum = $number[$c];
-                $value->save();
-            }
+            $a=$value->fnum;
+            $b=$value->snum;
+            $c=$value->tnum;
+            
+           switch($type)
+           {
+                case 1:
+                    while($a==$b || $b==$c || $c==$a)
+                    {
+                        $a = $number[array_rand($number,1)];
+                        $b = $number[array_rand($number,1)];
+                        $c = $number[array_rand($number,1)];
+                    }
+                    break;
+                case 2:
+                    while($a== 7 || $b== 7 || $c== 7)
+                    {
+                        $a = $number[array_rand($number,1)];
+                        $b = $number[array_rand($number,1)];
+                        $c = $number[array_rand($number,1)];
+                    }
+                    break;
+                case 3:
+                    while($a== $b && $b== $c)
+                    {
+                        $a = $number[array_rand($number,1)];
+                        $b = $number[array_rand($number,1)];
+                        $c = $number[array_rand($number,1)];
+                    }
+                    break;
+                case 4:
+                    if($a== $b && $b== $c)
+                    {
+                        
+                    }
+                    else{
+                        while(($a==$b)||($b==$c))
+                        {
+                            $a = $number[array_rand($number,1)];
+                            $b = $number[array_rand($number,1)];
+                            $c = $number[array_rand($number,1)];
+                        }
+                    }
+                   
+                    break;
+           }
+            
+            $value->fnum = $a;
+            $value->snum = $b;
+            $value->tnum = $c;
+            $value->save();
         }
     }
 
