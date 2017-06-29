@@ -217,11 +217,14 @@ class RandomController extends Controller
             case 5:
                 if($a != 7 && $b !=7 && $c !=7)
                 {
-                    while($a == $b && $b == $c)
+                    while($a == $b || $b == $c)
                     {
-                        $a = $number[array_rand($number,1)];
-                        $b = $number[array_rand($number,1)];
-                        $c = $number[array_rand($number,1)];  
+                        while($a == $b && $b == $c)
+                        {
+                            $a = $number[array_rand($number,1)];
+                            $b = $number[array_rand($number,1)];
+                            $c = $number[array_rand($number,1)];  
+                        }
                     }
                 }
                 break;
