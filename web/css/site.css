@@ -134,6 +134,8 @@ a.desc:after {
     padding-bottom: 30px;
 }
 
-
-
-
+.finishWarning{
+  text-align: center;
+  font-size: 50px;
+  font-style: bold;
+}

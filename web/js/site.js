@@ -39,3 +39,20 @@ function submitData()
     }
 });
 }
+
+$(document).ready(function(){
+	var one = $("[value='1']");
+  $(one).prepend('<img id="theImg" src="img/1.PNG" />');
+  var two = $("[value='2']");
+  $(two).prepend('<img id="theImg" src="img/2.PNG" />');
+  var three = $("[value='3']");
+  $(three).prepend('<img id="theImg" src="img/3.PNG" />');
+  var four = $("[value='4']");
+  $(four).prepend('<img id="theImg" src="img/4.PNG" />');
+  var five = $("[value='5']");
+  $(five).prepend('<img id="theImg" src="img/5.PNG" />');
+  var six = $("[value='6']");
+  $(six).prepend('<img id="theImg" src="img/6.PNG" />');
+  var seven = $("[value='7']");
+  $(seven).prepend('<img id="theImg" src="img/7.PNG" />');
+})
