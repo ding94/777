@@ -126,7 +126,7 @@ a.desc:after {
    text-align: center;
 }
 
-h1{
+.minigame{
     text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
     color: white;
     text-align: center;

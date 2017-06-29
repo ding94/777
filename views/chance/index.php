@@ -2,7 +2,7 @@
 /* @var $this yii\web\View */
 ?>
 <div class = "container">
-    <h1>Mini Game</h1>
+    <h1 class="minigame">Mini Game</h1>
     <?php if (empty($model[0])) :?>
     <div class="row ">
         <div id ="a" class="col-xs-4 randomNumber">1</div>
