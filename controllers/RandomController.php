@@ -23,7 +23,7 @@ class RandomController extends Controller
          *if price more than 25 user
          *will not get any price anymore
          */
-        if($reward['price'] >= 25)
+        if($reward['price'] >= 10)
         {
             self::verifyLimit($reward, $chance->chance);
         }

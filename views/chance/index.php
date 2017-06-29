@@ -23,6 +23,8 @@
     <div class="row">
         <div class="finishWarning">You have used finish all chances for today!</div>
     </div>
+    <input type="hidden" id="g" value="<?php echo $model[1]['chance']?>">
+    
     <?php else :?>
     <div class="row ">
         <div id ="a" class="col-xs-4 randomNumber" value="<?php echo $model[0]['fnum']?>"></div>
@@ -34,5 +36,10 @@
              <button type="button" class="btn btn-primary btn-lg btn-block" onclick="randomNumber();">Press</button>
         </div>
     </div>
+    <input type="hidden" id="d" value="<?php echo $model[1]['fnum']?>">
+    <input type="hidden" id="e" value="<?php echo $model[1]['snum']?>">
+    <input type="hidden" id="f" value="<?php echo $model[1]['tnum']?>">
+    <input type="hidden" id="g" value="<?php echo $model[1]['chance']?>">
+
     <?php endif ;?>
 </div>
