@@ -219,12 +219,9 @@ class RandomController extends Controller
                 {
                     while($a == $b && $b == $c)
                     {
-                        while($a == $b || $b == $c)
-                        {
-                            $a = $number[array_rand($number,1)];
-                            $b = $number[array_rand($number,1)];
-                            $c = $number[array_rand($number,1)];  
-                        }
+                        $a = $number[array_rand($number,1)];
+                        $b = $number[array_rand($number,1)];
+                        $c = $number[array_rand($number,1)];  
                     }
                 }
                 break;
