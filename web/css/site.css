@@ -117,8 +117,6 @@ a.desc:after {
 .randomNumber{
    text-align: center;
    font-size: 100px;
-   border-left: 1px solid #bfd7ff;
-   border-right: 1px solid #bfd7ff;
 }
 
 .buttonRandom{
@@ -130,12 +128,26 @@ a.desc:after {
     text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
     color: white;
     text-align: center;
-    font-size: 100px;
+    font-size:6em;
     padding-bottom: 30px;
 }
 
 .finishWarning{
+  padding-top : 30px;
   text-align: center;
-  font-size: 50px;
-  font-style: bold;
+  font-size:2em;
+}
+
+img{
+    margin:0px auto;
+}
+
+@media screen and (max-width: 568px) {
+    .minigame {
+        font-size:4em;
+    }
+    
+    .finishWarning{
+        font-size:1em;
+    }
 }

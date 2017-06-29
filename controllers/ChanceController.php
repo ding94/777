@@ -7,6 +7,7 @@ use yii\web\controller;
 use app\controllers\RandomController;
 use app\controllers\RewardController;
 use app\models\Chance;
+use app\models\Random;
 
 class ChanceController extends Controller
 {
@@ -36,7 +37,18 @@ class ChanceController extends Controller
         }
 
         RewardController::emptyReward();
-        $model = RandomController::randomNumGen($chance);
+        
+        /*
+         *to stp randomNumGen run to increase the chance
+         */
+        if($chance->chance < 6)
+        {
+            $model = RandomController::randomNumGen($chance);
+        }
+        else{
+            $model = Random::find()->where('userid = :id and token = :tk' , [':id' => Yii::$app->user->identity->id , ':tk' => '1'])->andWhere('chance > :ch',[':ch' => 4])->all();
+        }
+      
 
        if(Yii::$app->request->isAjax){
           RewardController::submitReward($model[1],$chance,$today,$tommorow);
