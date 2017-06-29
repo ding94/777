@@ -20,55 +20,14 @@ class RandomController extends Controller
         $reward = RewardController::getReward();
         /*
          *detect whether user limit the amount set
-<<<<<<< HEAD
-         *or user got 1 first , 1 second ,5 third
-         *and pass chance to tell which data selected
-         *price and thrid in dataase is int
-         *first and second is enum
-         */
-         if($reward['price'] == 25)
-         {
-             self::verifyLimit($reward,1 , $chance->chance);
-         }
-
-         else if($reward['first'] == '1' && $reward['second'] == '1')
-         {
-             self::verifyLimit($reward,2 ,$chance->chance);
-         }
-
-         else if($reward['first'] == '1' && $reward['third'] == 5)
-         {
-             self::verifyLimit($reward,4 ,$chance->chance);
-         }
-
-         else if($reward['first'] == '1')
-         {
-             self::verifyLimit($reward,3 ,$chance->chance);
-         }
-
-         else if($reward['second'] == '1' && $reward['third'] == 5)
-         {
-             self::verifyLimit($reward,5 ,$chance->chance);
-         }
-
-         else if($reward['second'] == '1')
-         {
-             self::verifyLimit($reward,6 ,$chance->chance);
-         }
-
-         else if($reward['third'] == 5)
-         {
-             self::verifyLimit($reward,7 ,$chance->chance);
-         }
-=======
-         *if price more than 25 user 
+         *if price more than 25 user
          *will not get any price anymore
          */
         if($reward['price'] >= 25)
         {
             self::verifyLimit($reward, $chance->chance);
         }
->>>>>>> ee989992bd665a1862779fbab58ef2b9a846443d
+
 
         $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
 
@@ -169,103 +128,10 @@ class RandomController extends Controller
 
         while($a==$b || $b==$c || $c==$a)
         {
-<<<<<<< HEAD
-            case 1:
-                while($a==$b || $b==$c || $c==$a)
-                {
-                    $a = $number[array_rand($number,1)];
-                    $b = $number[array_rand($number,1)];
-                    $c = $number[array_rand($number,1)];
-                }
-                break;
-            case 2:
-                while($a== $b && $b== $c)
-                {
-                    $a = $number[array_rand($number,1)];
-                    $b = $number[array_rand($number,1)];
-                    $c = $number[array_rand($number,1)];
-                }
-                break;
-            case 3:
-                while($a== 7 && $b== 7 && $c== 7)
-                {
-                    $a = $number[array_rand($number,1)];
-                    $b = $number[array_rand($number,1)];
-                    $c = $number[array_rand($number,1)];
-                }
-                break;
-            case 4:
-                if($a== 7 && $b ==7 && $c ==7)
-                {
-                    while($a== 7 && $b ==7 && $c ==7)
-                    {
-                       while($a== $b || $b == $c)
-                       {
-                            $a = $number[array_rand($number,1)];
-                            $b = $number[array_rand($number,1)];
-                            $c = $number[array_rand($number,1)];
-                       }
-                    }
-                }
-                else if($a== $b && $b== $c)
-                {
-
-                }
-                else if($a== $b || $b == $c)
-                {
-                    while($a== $b || $b == $c)
-                    {
-                        $a = $number[array_rand($number,1)];
-                        $b = $number[array_rand($number,1)];
-                        $c = $number[array_rand($number,1)];
-                    }
-                }
-                break;
-            case 5:
-                if($a != 7 && $b !=7 && $c !=7)
-                {
-                    while(($a == $b && $b == $c)===true && ($a == $b || $b == $c) === true)
-                    {
-                        $a = $number[array_rand($number,1)];
-                        $b = $number[array_rand($number,1)];
-                        $c = $number[array_rand($number,1)];
-                  }
-                }
-                break;
-            case 6:
-                if($a !=7 && $b !=7 && $c !=7)
-                {
-                     while($a== $b && $b== $c)
-                    {
-                        $a = $number[array_rand($number,1)];
-                        $b = $number[array_rand($number,1)];
-                        $c = $number[array_rand($number,1)];
-                    }
-                }
-                break;
-            case 7:
-                if($a== $b && $b== $c)
-                {
-
-                }
-                else{
-                    while(($a==$b)||($b==$c))
-                    {
-                        $a = $number[array_rand($number,1)];
-                        $b = $number[array_rand($number,1)];
-                        $c = $number[array_rand($number,1)];
-                    }
-                }
-                break;
-
-           }
-=======
             $a = $number[array_rand($number,1)];
             $b = $number[array_rand($number,1)];
             $c = $number[array_rand($number,1)];
         }
-           
->>>>>>> ee989992bd665a1862779fbab58ef2b9a846443d
 
         $random->fnum = $a;
         $random->snum = $b;
