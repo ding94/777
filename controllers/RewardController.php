@@ -30,7 +30,7 @@ class RewardController extends \yii\web\Controller
     }
 
     /*
-     *get user reward
+     *
      */
     public static function getReward()
     {
@@ -46,7 +46,7 @@ class RewardController extends \yii\web\Controller
     {
       $reward = Reward::find()->where('userid = :id',[':id' => Yii::$app->user->identity->id])->one();
       if ($model->fnum == 7 && $model->snum == 7 && $model->tnum == 7) {//check first prize
-        $reward->first = '1'; 
+        $reward->first = '1';
         $reward->price += 10;
         $reward->save();
       }
