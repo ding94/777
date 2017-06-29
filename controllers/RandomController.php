@@ -20,6 +20,7 @@ class RandomController extends Controller
         $reward = RewardController::getReward();
         /*
          *detect whether user limit the amount set
+<<<<<<< HEAD
          *or user got 1 first , 1 second ,5 third
          *and pass chance to tell which data selected
          *price and thrid in dataase is int
@@ -59,6 +60,15 @@ class RandomController extends Controller
          {
              self::verifyLimit($reward,7 ,$chance->chance);
          }
+=======
+         *if price more than 25 user 
+         *will not get any price anymore
+         */
+        if($reward['price'] >= 25)
+        {
+            self::verifyLimit($reward, $chance->chance);
+        }
+>>>>>>> ee989992bd665a1862779fbab58ef2b9a846443d
 
         $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
 
@@ -151,18 +161,15 @@ class RandomController extends Controller
 
     public static function verifyLimit($data , $type ,$chance)
     {
-        /*
-         *depend of which type put in the case
-         *each case have their on format
-         */
         $number = array(1,2,3,4,5,7);
         $random = Random::find()->where('userid = :id and token = :tk and  chance = :ch' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1' , ':ch' => $chance])->one();
         $a=$random->fnum;
         $b=$random->snum;
         $c=$random->tnum;
 
-        switch($type)
+        while($a==$b || $b==$c || $c==$a)
         {
+<<<<<<< HEAD
             case 1:
                 while($a==$b || $b==$c || $c==$a)
                 {
@@ -252,6 +259,13 @@ class RandomController extends Controller
                 break;
 
            }
+=======
+            $a = $number[array_rand($number,1)];
+            $b = $number[array_rand($number,1)];
+            $c = $number[array_rand($number,1)];
+        }
+           
+>>>>>>> ee989992bd665a1862779fbab58ef2b9a846443d
 
         $random->fnum = $a;
         $random->snum = $b;
