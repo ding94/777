@@ -20,7 +20,7 @@ class Reward extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    
+
     public static function tableName()
     {
         return 'reward';
@@ -34,7 +34,7 @@ class Reward extends \yii\db\ActiveRecord
         return [
             [['userid'], 'required'],
             [['price', 'third', 'userid'], 'integer'],
-            [['first', 'second'], 'string'],
+            [['first', 'second'], 'integer'],
             [['createtime'], 'safe'],
         ];
     }

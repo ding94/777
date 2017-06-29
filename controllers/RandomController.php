@@ -118,7 +118,7 @@ class RandomController extends Controller
     }
 
 
-    public static function verifyLimit($data , $type ,$chance)
+    public static function verifyLimit($data ,$chance)
     {
         $number = array(1,2,3,4,5,7);
         $random = Random::find()->where('userid = :id and token = :tk and  chance = :ch' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1' , ':ch' => $chance])->one();

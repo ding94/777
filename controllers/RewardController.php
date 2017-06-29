@@ -46,12 +46,12 @@ class RewardController extends \yii\web\Controller
     {
       $reward = Reward::find()->where('userid = :id',[':id' => Yii::$app->user->identity->id])->one();
       if ($model->fnum == 7 && $model->snum == 7 && $model->tnum == 7) {//check first prize
-        $reward->first = '1';
+        $reward->first += 1;
         $reward->price += 10;
         $reward->save();
       }
       else if ((($model->fnum == $model->snum) == true) && (($model->snum == $model->tnum) == true)){ //check second prize
-        $reward->second = '1';
+        $reward->second += 1;
         $reward->price += 5;
         $reward->save();
       }
