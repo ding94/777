@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\models\Random;
-use yii\web\controller;
+use yii\web\Controller;
 use app\controllers\RewardController;
 use Yii;
 
