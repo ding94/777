@@ -27,6 +27,10 @@ class RandomController extends Controller
         {
             self::verifyLimit($reward,1 , $chance->chance);
         }
+        else if($reward['first'] == '1' && $reward['second'] == '1')
+        {
+            self::verifyLimit($reward,5 ,$chance->chance);
+        }
         else if($reward['first'] == '1')
         {
             self::verifyLimit($reward,2 ,$chance->chance);
@@ -39,10 +43,10 @@ class RandomController extends Controller
         {
              self::verifyLimit($reward,4 ,$chance->chance);
         }
-      
+
         $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
-        
-       
+
+
         /*
          *sorting by chance before do anything
          */
@@ -127,8 +131,8 @@ class RandomController extends Controller
             }
         }
     }
-    
-    
+
+
     public static function verifyLimit($data , $type ,$chance)
     {
         /*
@@ -140,7 +144,7 @@ class RandomController extends Controller
         $a=$random->fnum;
         $b=$random->snum;
         $c=$random->tnum;
-            
+
         switch($type)
         {
             case 1:
@@ -152,7 +156,7 @@ class RandomController extends Controller
                 }
                 break;
             case 2:
-                while($a== 7 || $b== 7 || $c== 7)
+                while($a== 7 && $b== 7 && $c== 7)
                 {
                     $a = $number[array_rand($number,1)];
                     $b = $number[array_rand($number,1)];
@@ -173,7 +177,7 @@ class RandomController extends Controller
             case 4:
                 if($a== $b && $b== $c)
                 {
-                        
+
                 }
                 else{
                     while(($a==$b)||($b==$c))
@@ -184,13 +188,22 @@ class RandomController extends Controller
                     }
                 }
                 break;
+            case 5:
+              while($a== $b && $b== $c)
+              {
+                  $a = $number[array_rand($number,1)];
+                  $b = $number[array_rand($number,1)];
+                  $c = $number[array_rand($number,1)];
+              }
+              break;
+
            }
-            
+
         $random->fnum = $a;
         $random->snum = $b;
         $random->tnum = $c;
         $random->save();
-        
+
     }
 
 }
