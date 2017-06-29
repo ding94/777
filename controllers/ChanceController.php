@@ -43,36 +43,4 @@ class ChanceController extends Controller
        }
         return $this->render('index' ,['model' =>$model]);
     }
-
-  // public function submitReward($model,$chance,$today,$tommorow){
-  //
-  //   if ($model->fnum == 7 && $model->snum == 7 && $model->tnum == 7) {
-  //     $reward->first = 1;
-  //     $reward->price += 10;
-  //     $reward->userid = Yii::$app->user->identity->id;
-  //     $reward->save();
-  //   }
-  //   else if ($model->fnum ==$model->snum && $model->snum == $model->tnum && $model->fnumfnum == $model->tnum){
-  //     $reward->second = 1;
-  //     $reward->price += 5;
-  //     $reward->userid = Yii::$app->user->identity->id;
-  //     $reward->save();
-  //   }
-  //   else if($model->fnum == $model->snum || $model->snum == $model->tnum){
-  //     $reward->third += 1;
-  //     $reward->price += 2;
-  //     $reward->userid = Yii::$app->user->identity->id;
-  //     $reward->save();
-  //   }
-  //   else {
-  //
-  //   }
-  //   $chance->chance += 1;
-  //   $condition = [
-  //       'and',
-  //       ['between','updatetime',$today ,$tommorow],
-  //       ['in' ,'userid' , Yii::$app->user->identity->id],
-  //   ];
-  //   Chance::updateAll(['chance' => $chance->chance ],$condition);
-  // }
 }
