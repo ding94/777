@@ -38,7 +38,7 @@ class ChanceController extends Controller
             $chance->createtime = date('Y-m-d G:i:s');
             $chance->save();
         }
-        
+
         /*
          *to stp randomNumGen run to increase the chance
          */
@@ -49,7 +49,7 @@ class ChanceController extends Controller
         else{
             $model = Random::find()->where('userid = :id and token = :tk' , [':id' => Yii::$app->user->identity->id , ':tk' => '1'])->andWhere('chance > :ch',[':ch' => 4])->all();
         }
-        
+
         /*
          *get all user reward
          */
@@ -59,13 +59,13 @@ class ChanceController extends Controller
             $allReward[$k]['userid'] = User::find()->where('id = :id' ,[':id' => $reward['userid']])->one()->username;
         }
         $userReward = Reward::find()->where('userid = :id' ,[':id' =>  Yii::$app->user->identity->id])->limit(10)->orderBy('createtime')->all();
-        
+
         if(Yii::$app->request->isAjax){
            RewardController::submitReward($model[1],$chance,$today,$tommorow);
         }
         return $this->render('index' ,['model' =>$model , 'allReward' => $allReward , 'userReward' => $userReward]);
     }
-    
+
     public function actionGetdata()
     {
         if(Yii::$app->request->isAjax){

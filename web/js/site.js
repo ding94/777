@@ -22,7 +22,7 @@ function randomNumber(){
    //
   //  }
 
-  animation().done(submitData());
+  submitData();
 
 
 
@@ -46,11 +46,8 @@ function submitData()
 });
 }
 
-
-function animation(i)
+function animation(obj)
 {
-  var def = $.Deferred();
-  $("button").click(function(){
     for(i = 0; i < 12; i++) {
       $("#a").slideToggle(220,function(){
       var ctr = Math.floor(Math.random()*opts.length);
@@ -58,7 +55,7 @@ function animation(i)
     });
   };
   $("#a").slideDown(800,function(){
-    $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + first + '.PNG" />');
+    $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.fnum + '.PNG" />');
     });
     for(i = 0; i < 12; i++) {
       $("#b").slideToggle(320,function(){
@@ -67,7 +64,7 @@ function animation(i)
     });
   };
   $("#b").slideDown(800,function(){
-    $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + second + '.PNG" />');
+    $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.snum + '.PNG" />');
     });
     for(i = 0; i < 12; i++) {
       $("#c").slideToggle(260,function(){
@@ -76,13 +73,9 @@ function animation(i)
     });
   };
   $("#c").slideDown(800,function(){
-    $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + third + '.PNG" />');
+    $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.tnum + '.PNG" />');
     });
-     def.resolve();
-  });
-  return def.promise();
 }
-
 
 function getData()
 {
@@ -95,7 +88,11 @@ function getData()
    success: function (data) {
       console.log(data);
       var obj = JSON.parse(data);
-      console.log(obj);
+      if(obj.chance >= 6)
+      {
+          $('#disableOrEnable').prop('disabled', true);
+      }
+      animation(obj);
    },
    error: function (request, status, error) {
     alert(request.responseText);
@@ -106,9 +103,6 @@ function getData()
 
 
 $(document).ready(function(){
-  var first = "<?php echo $model[1]['fnum']?>";
-  var second = "<?php echo $model[1]['second']?>";
-  var third = "<?php echo $model[1]['tnum']?>";
 
 	var one = $("[value='1']");
   $(one).prepend('<img id="theImg"  class="img-responsive" src="img/1.PNG" />');
@@ -124,38 +118,7 @@ $(document).ready(function(){
   $(six).prepend('<img id="theImg" class="img-responsive" src="img/6.PNG" />');
   var seven = $("[value='7']");
   $(seven).prepend('<img id="theImg" class="img-responsive" src="img/7.PNG" />');
-
-  // $("button").click(function(){
-  //   for(i = 0; i < 12; i++) {
-  //     $("#a").slideToggle(220,function(){
-  //     var ctr = Math.floor(Math.random()*opts.length);
-  //     $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
-  //   });
-  // };
-  // $("#a").slideDown(800,function(){
-  //   $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + first + '.PNG" />');
-  //   });
-  //   for(i = 0; i < 12; i++) {
-  //     $("#b").slideToggle(320,function(){
-  //     var ctr = Math.floor(Math.random()*opts.length);
-  //     $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
-  //   });
-  // };
-  // $("#b").slideDown(800,function(){
-  //   $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + second + '.PNG" />');
-  //   });
-  //   for(i = 0; i < 12; i++) {
-  //     $("#c").slideToggle(260,function(){
-  //     var ctr = Math.floor(Math.random()*opts.length);
-  //     $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
-  //   });
-  // };
-  // $("#c").slideDown(800,function(){
-  //   $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + third + '.PNG" />');
-  //   });
-  // })
-
-  if($('#g').val() >= 6)
+  if($('#g').val() >= 5)
   {
       $('#disableOrEnable').prop('disabled', true);
   }
