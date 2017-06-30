@@ -1,3 +1,5 @@
+var opts = ['1', '2', '3', '4', '5','6','7'];
+
 function randomNumber(){
   //  var ansA = $(".a").val();
   //  var ansB = $(".b").val();
@@ -19,34 +21,11 @@ function randomNumber(){
   //  {
    //
   //  }
-  for(i = 0; i < 5; i++) {
-  $("#a").slideDown(220,function(){
-  $("#a").prepend('<img id="theImg" src="img/1.PNG" />');
-  });
-  $("#a").slideToggle(220,function(){
-  $("#a").prepend('<img id="theImg" src="img/2.PNG" />');
-  });
-  $("#a").slideToggle(220,function(){
-  $("#a").prepend('<img id="theImg" src="img/3.PNG" />');
-  });
-  $("#a").slideToggle(220,function(){
-  $("#a").prepend('<img id="theImg" src="img/4.PNG" />');
-  });
-  $("#a").slideToggle(220,function(){
-  $("#a").prepend('<img id="theImg" src="img/5.PNG" />');
-  });
-  $("#a").slideToggle(220,function(){
-  $("#a").prepend('<img id="theImg" src="img/6.PNG" />');
-  });
-  $("#a").slideToggle(220,function(){
-  $("#a").prepend('<img id="theImg" src="img/7.PNG" />');
-  });
-};
-$("#a").slideDown(1000,function(){
-  $("#a").text("hi");
-  });
 
-  submitData();
+  animation().done(submitData());
+
+
+
 }
 
 function submitData()
@@ -67,7 +46,47 @@ function submitData()
 });
 }
 
+function animation(i)
+{
+  var def = $.Deferred();
+  $("button").click(function(){
+    for(i = 0; i < 12; i++) {
+      $("#a").slideToggle(220,function(){
+      var ctr = Math.floor(Math.random()*opts.length);
+      $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
+    });
+  };
+  $("#a").slideDown(800,function(){
+    $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + first + '.PNG" />');
+    });
+    for(i = 0; i < 12; i++) {
+      $("#b").slideToggle(320,function(){
+      var ctr = Math.floor(Math.random()*opts.length);
+      $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
+    });
+  };
+  $("#b").slideDown(800,function(){
+    $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + second + '.PNG" />');
+    });
+    for(i = 0; i < 12; i++) {
+      $("#c").slideToggle(260,function(){
+      var ctr = Math.floor(Math.random()*opts.length);
+      $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
+    });
+  };
+  $("#c").slideDown(800,function(){
+    $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + third + '.PNG" />');
+    });
+     def.resolve();
+  });
+  return def.promise();
+}
+
 $(document).ready(function(){
+  var first = "<?php echo $model[1]['fnum']?>";
+  var second = "<?php echo $model[1]['second']?>";
+  var third = "<?php echo $model[1]['tnum']?>";
+
 	var one = $("[value='1']");
   $(one).prepend('<img id="theImg"  class="img-responsive" src="img/1.PNG" />');
   var two = $("[value='2']");
@@ -82,10 +101,41 @@ $(document).ready(function(){
   $(six).prepend('<img id="theImg" class="img-responsive" src="img/6.PNG" />');
   var seven = $("[value='7']");
   $(seven).prepend('<img id="theImg" class="img-responsive" src="img/7.PNG" />');
+
+  // $("button").click(function(){
+  //   for(i = 0; i < 12; i++) {
+  //     $("#a").slideToggle(220,function(){
+  //     var ctr = Math.floor(Math.random()*opts.length);
+  //     $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
+  //   });
+  // };
+  // $("#a").slideDown(800,function(){
+  //   $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + first + '.PNG" />');
+  //   });
+  //   for(i = 0; i < 12; i++) {
+  //     $("#b").slideToggle(320,function(){
+  //     var ctr = Math.floor(Math.random()*opts.length);
+  //     $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
+  //   });
+  // };
+  // $("#b").slideDown(800,function(){
+  //   $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + second + '.PNG" />');
+  //   });
+  //   for(i = 0; i < 12; i++) {
+  //     $("#c").slideToggle(260,function(){
+  //     var ctr = Math.floor(Math.random()*opts.length);
+  //     $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
+  //   });
+  // };
+  // $("#c").slideDown(800,function(){
+  //   $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + third + '.PNG" />');
+  //   });
+  // })
+
   if($('#g').val() >= 6)
   {
       $('#disableOrEnable').prop('disabled', true);
   }
 
-  
+
 })
