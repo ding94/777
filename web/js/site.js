@@ -37,8 +37,7 @@ function animation(obj)
   };
   $("#b").slideDown(800,function(){
     $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.snum + '.PNG" />');
- 
-    }); 
+    })
     for(i = 0; i < 12; i++) {
       $("#c").slideToggle(260,function(){
       var ctr = Math.floor(Math.random()*opts.length);
@@ -66,7 +65,6 @@ function getData()
       {
           $('#disableOrEnable').prop('disabled', true);
       }
-       alertReward(obj); 
    },
    error: function (request, status, error) {
     alert(request.responseText);
