@@ -46,10 +46,11 @@ class ChanceController extends Controller
         {
             $model = RandomController::randomNumGen($chance->chance);
         }
-        else{
-            $model = Random::find()->where('userid = :id and token = :tk' , [':id' => Yii::$app->user->identity->id , ':tk' => '1'])->andWhere('chance > :ch',[':ch' => 4])->all();
+        else
+        {
+            $model = Random::find()->where('userid = :id and token = :tk' , [':id' => Yii::$app->user->identity->id , ':tk' => '1'])->andWhere('chance > :ch',[':ch' => 4])->orderBy('chance')->all();
         }
-
+      
         /*
          *get all user reward
          */
@@ -59,9 +60,13 @@ class ChanceController extends Controller
             $allReward[$k]['userid'] = User::find()->where('id = :id' ,[':id' => $reward['userid']])->one()->username;
         }
         $userReward = Reward::find()->where('userid = :id' ,[':id' =>  Yii::$app->user->identity->id])->limit(10)->orderBy('createtime')->all();
-
+        
         if(Yii::$app->request->isAjax){
-           RewardController::submitReward($model[1],$chance,$today,$tommorow);
+            if($chance->chance < 6)
+            {
+                RewardController::submitReward($model[1],$chance,$today,$tommorow);
+            }
+          
         }
         return $this->render('index' ,['model' =>$model , 'allReward' => $allReward , 'userReward' => $userReward]);
     }
@@ -75,7 +80,7 @@ class ChanceController extends Controller
                  $tommorow = date('Y-m-d 00:00:00', strtotime(' +1 day'));
                  $chance = Chance::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->andWhere(['between','updatetime',$today ,$tommorow])->one();
                  $value = RandomController::randomNumGen($chance->chance);
-                 $value = Json::encode($value[1]);
+                 $value = Json::encode($value[0]);
                  return $value;
             }
         }

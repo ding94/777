@@ -28,7 +28,7 @@ class RewardController extends \yii\web\Controller
 
     public static function submitReward($model,$chance,$today,$tommorow)
     {
-        if($chance->chance <= 6)
+        if($chance->chance < 6)
         {
             $reward = new Reward;
             $reward->userid = Yii::$app->user->identity->id;

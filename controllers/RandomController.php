@@ -41,7 +41,6 @@ class RandomController extends Controller
          *orderby chance
          */
         $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->andWhere(['between','chance',$chance-1 ,$chance])->orderBy('chance')->all();
-
         /*
          *detect wheter the chance
          *in current user play chance
