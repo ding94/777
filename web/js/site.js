@@ -19,7 +19,34 @@ function randomNumber(){
   //  {
    //
   //  }
-   submitData();
+  for(i = 0; i < 5; i++) {
+  $("#a").slideDown(220,function(){
+  $("#a").prepend('<img id="theImg" src="img/1.PNG" />');
+  });
+  $("#a").slideToggle(220,function(){
+  $("#a").prepend('<img id="theImg" src="img/2.PNG" />');
+  });
+  $("#a").slideToggle(220,function(){
+  $("#a").prepend('<img id="theImg" src="img/3.PNG" />');
+  });
+  $("#a").slideToggle(220,function(){
+  $("#a").prepend('<img id="theImg" src="img/4.PNG" />');
+  });
+  $("#a").slideToggle(220,function(){
+  $("#a").prepend('<img id="theImg" src="img/5.PNG" />');
+  });
+  $("#a").slideToggle(220,function(){
+  $("#a").prepend('<img id="theImg" src="img/6.PNG" />');
+  });
+  $("#a").slideToggle(220,function(){
+  $("#a").prepend('<img id="theImg" src="img/7.PNG" />');
+  });
+};
+$("#a").slideDown(1000,function(){
+  $("#a").text("hi");
+  });
+
+  submitData();
 }
 
 function submitData()
@@ -55,4 +82,7 @@ $(document).ready(function(){
   $(six).prepend('<img id="theImg" src="img/6.PNG" />');
   var seven = $("[value='7']");
   $(seven).prepend('<img id="theImg" src="img/7.PNG" />');
+
+  // $(".buttonRandom").click(function(){
+  // })
 })
