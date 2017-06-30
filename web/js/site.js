@@ -47,6 +47,10 @@ function animation(obj)
   $("#c").slideDown(800,function(){
     $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.tnum + '.PNG" />');
     });
+
+    setTimeout(function(){
+      alertReward(obj);
+    },4000);
 }
 
 function getData()
@@ -77,15 +81,15 @@ function alertReward(obj)
 {
    if (obj.fnum == 7 && obj.snum == 7 && obj.tnum == 7)
    {
-      alert('You get the First Price');   
+      alert('You get the First Price');
    }
    else if (((obj.fnum == obj.snum) === true) && ((obj.snum == obj.tnum) === true))
    {
-       alert('You get the Second Price');   
+       alert('You get the Second Price');
    }
    else if(obj.fnum == obj.snum || obj.snum == obj.tnum)
    {
-      alert('You get the Third Price'); 
+      alert('You get the Third Price');
    }
 }
 
