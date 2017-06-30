@@ -116,11 +116,12 @@ a.desc:after {
 
 .randomNumber{
    text-align: center;
+   position: relative;
    font-size: 100px;
 }
 
 .buttonRandom{
-   padding-top : 30px;
+   padding-top : 25%;
    text-align: center;
 }
 
@@ -166,6 +167,11 @@ table{
 
 .table tbody tr td {
     border: none;
+}
+
+.lock{
+    max-height: 100px;
+    position: absolute;
 }
 
 

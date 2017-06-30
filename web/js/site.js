@@ -1,33 +1,6 @@
 var opts = ['1', '2', '3', '4', '5','6','7'];
 
-function randomNumber(){
-  //  var ansA = $(".a").val();
-  //  var ansB = $(".b").val();
-  //  var ansC = $(".c").val();
-   //
-  //  $('div > div[id=a]').text(ansA);
-  //  $('div > div[id=b]').text(ansB);
-  //  $('div > div[id=c]').text(ansC);
-   //
-  //  if(ansA == 7 && ansB == 7 && ansC ==7)
-  //  {
-   //
-  //  }
-  //  else if(ansA == ansB && ansB == ansC && ansA == ansC)
-  //  {
-   //
-  //  }
-  //  else if (ansA == ansB || ansB == ansC)
-  //  {
-   //
-  //  }
-  submitData();
-
-
-
-}
-
-function submitData()
+function randomNumber()
 {
     $.ajax({
     url: "index.php?r=chance/index",
@@ -64,7 +37,8 @@ function animation(obj)
   };
   $("#b").slideDown(800,function(){
     $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.snum + '.PNG" />');
-    });
+ 
+    }); 
     for(i = 0; i < 12; i++) {
       $("#c").slideToggle(260,function(){
       var ctr = Math.floor(Math.random()*opts.length);
@@ -87,17 +61,34 @@ function getData()
    success: function (data) {
       console.log(data);
       var obj = JSON.parse(data);
-       animation(obj);
+      animation(obj);
       if(obj.chance >= 5)
       {
           $('#disableOrEnable').prop('disabled', true);
       }
+       alertReward(obj); 
    },
    error: function (request, status, error) {
     alert(request.responseText);
    }
 
    });
+}
+
+function alertReward(obj)
+{
+   if (obj.fnum == 7 && obj.snum == 7 && obj.tnum == 7)
+   {
+      alert('You get the First Price');   
+   }
+   else if (((obj.fnum == obj.snum) === true) && ((obj.snum == obj.tnum) === true))
+   {
+       alert('You get the Second Price');   
+   }
+   else if(obj.fnum == obj.snum || obj.snum == obj.tnum)
+   {
+      alert('You get the Third Price'); 
+   }
 }
 
 
