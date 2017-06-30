@@ -54,26 +54,29 @@
                     <?php foreach($allReward as $data):?>
                     <tr>
                         <td><?php echo $data['userid']?></td>
-                        <td><?php echo $data['price']?></td>
+                        <td>RM <?php echo $data['price']?></td>
                     </tr>
                     <?php endforeach ;?>
                 </table>
         </div>
+        <?php if(empty($userReward)):?>
+        <?php else :?>
          <div class="col-sm-4 col-sm-offset-2">
              <div class="reward">
                 Your Reward
             </div>
-                <table class="table">
-                    <tr class="success">
-                        <td>Reward</td>
-                    </tr>
-                    <?php foreach($userReward as $data):?>
-                    <tr>
-                        <td><?php echo $data['price']?></td>
-                    </>
-                    </tr>
-                    <?php endforeach ;?>
-                </table>
+            <table class="table">
+                <tr class="success">
+                    <td>Reward</td>
+                </tr>
+                <?php foreach($userReward as $data):?>
+                <tr>
+                    <td>RM <?php echo $data['price']?></td>
+                </>
+                </tr>
+                <?php endforeach ;?>
+            </table>
         </div>
+        <?php endif ;?>
     </div>
 </div>

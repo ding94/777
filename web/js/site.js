@@ -21,7 +21,6 @@ function randomNumber(){
   //  {
    //
   //  }
-
   submitData();
 
 
@@ -88,11 +87,11 @@ function getData()
    success: function (data) {
       console.log(data);
       var obj = JSON.parse(data);
-      if(obj.chance >= 6)
+       animation(obj);
+      if(obj.chance >= 5)
       {
           $('#disableOrEnable').prop('disabled', true);
       }
-      animation(obj);
    },
    error: function (request, status, error) {
     alert(request.responseText);
@@ -118,7 +117,7 @@ $(document).ready(function(){
   $(six).prepend('<img id="theImg" class="img-responsive" src="img/6.PNG" />');
   var seven = $("[value='7']");
   $(seven).prepend('<img id="theImg" class="img-responsive" src="img/7.PNG" />');
-  if($('#g').val() >= 5)
+  if($('#g').val() >= 6)
   {
       $('#disableOrEnable').prop('disabled', true);
   }
