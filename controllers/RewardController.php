@@ -55,6 +55,6 @@ class RewardController extends \yii\web\Controller
                 ['in' ,'userid' , Yii::$app->user->identity->id],
             ];
             Chance::updateAll(['chance' => $chance->chance ],$condition);
-            }
         }
+    }
 }

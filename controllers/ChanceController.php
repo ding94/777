@@ -4,10 +4,13 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\controller;
+use yii\helpers\Json;
 use app\controllers\RandomController;
 use app\controllers\RewardController;
 use app\models\Chance;
 use app\models\Random;
+use app\models\Reward;
+use app\models\User;
 
 class ChanceController extends Controller
 {
@@ -46,11 +49,35 @@ class ChanceController extends Controller
         else{
             $model = Random::find()->where('userid = :id and token = :tk' , [':id' => Yii::$app->user->identity->id , ':tk' => '1'])->andWhere('chance > :ch',[':ch' => 4])->all();
         }
-      
-
-       if(Yii::$app->request->isAjax){
-          RewardController::submitReward($model[1],$chance,$today,$tommorow);
-       }
-        return $this->render('index' ,['model' =>$model]);
+        
+        /*
+         *get all user reward
+         */
+        $allReward =  Reward::find()->limit(10)->orderBy('createtime')->all();
+        foreach($allReward as $k=> $reward)
+        {
+            $allReward[$k]['userid'] = User::find()->where('id = :id' ,[':id' => $reward['userid']])->one()->username;
+        }
+        $userReward = Reward::find()->where('userid = :id' ,[':id' =>  Yii::$app->user->identity->id])->limit(10)->orderBy('createtime')->all();
+        
+        if(Yii::$app->request->isAjax){
+           RewardController::submitReward($model[1],$chance,$today,$tommorow);
+        }
+        return $this->render('index' ,['model' =>$model , 'allReward' => $allReward , 'userReward' => $userReward]);
+    }
+    
+    public function actionGetdata()
+    {
+        if(Yii::$app->request->isAjax){
+            if(Yii::$app->request->isGet)
+            {
+                 $today =  date('Y-m-d 00:00:00');
+                 $tommorow = date('Y-m-d 00:00:00', strtotime(' +1 day'));
+                 $chance = Chance::find()->where('userid = :id' ,[':id' => Yii::$app->user->identity->id])->andWhere(['between','updatetime',$today ,$tommorow])->one();
+                 $value = RandomController::randomNumGen($chance->chance);
+                 $value = Json::encode($value[1]);
+                 return $value;
+            }
+        }
     }
 }

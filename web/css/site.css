@@ -151,3 +151,21 @@ img{
         font-size:1em;
     }
 }
+
+table{
+    text-align: center;
+    font-size: 2em;
+}
+
+.reward{
+    text-align: center;
+    font-size: 2em;
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+.table tbody tr td {
+    border: none;
+}
+
+

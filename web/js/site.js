@@ -36,15 +36,16 @@ function submitData()
     data : {
         _csrf: '<?=Yii::$app->request->getCsrfToken()?>',
     },
-    success: function (data) {
-        console.log(data.search);
-        location.reload(false);
+   success: function (data) {
+      console.log(data.search);
+      getData();
    },
    error: function (request, status, error) {
     alert(request.responseText);
     }
 });
 }
+
 
 function animation(i)
 {
@@ -81,6 +82,28 @@ function animation(i)
   });
   return def.promise();
 }
+
+
+function getData()
+{
+   $.ajax({
+   url :"index.php?r=chance/getdata",
+   type: "get",
+   data :{
+
+   },
+   success: function (data) {
+      console.log(data);
+      var obj = JSON.parse(data);
+      console.log(obj);
+   },
+   error: function (request, status, error) {
+    alert(request.responseText);
+   }
+
+   });
+}
+
 
 $(document).ready(function(){
   var first = "<?php echo $model[1]['fnum']?>";
