@@ -32,9 +32,8 @@ class Reward extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['userid'], 'required'],
-            [['price', 'third', 'userid'], 'integer'],
-            [['first', 'second'], 'integer'],
+            [['userid' ,'price' ,'status'], 'required'],
+            [['price', 'status', 'userid'], 'integer'],
             [['createtime'], 'safe'],
         ];
     }
@@ -47,9 +46,7 @@ class Reward extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'price' => 'Price',
-            'first' => 'First',
-            'second' => 'Second',
-            'third' => 'Third',
+            'status' => 'Status',
             'userid' => 'Userid',
             'createtime' => 'Createtime',
         ];
