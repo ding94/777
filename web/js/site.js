@@ -27,25 +27,25 @@ function animation(obj)
     });
   };
   $("#a").slideDown(800,function(){
-    $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.fnum + '.PNG" />');
+    $("#a #theImg").replaceWith('<img id="theImg"  src="img/' + obj.fnum + '.PNG" />');
     });
     for(i = 0; i < 12; i++) {
       $("#b").slideToggle(320,function(){
       var ctr = Math.floor(Math.random()*opts.length);
-      $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
+      $("#b #theImg").replaceWith('<img id="theImg"   src="img/' + opts[ctr] + '.PNG" />');
     });
   };
   $("#b").slideDown(800,function(){
-    $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.snum + '.PNG" />');
+    $("#b #theImg").replaceWith('<img id="theImg"   src="img/' + obj.snum + '.PNG" />');
     })
     for(i = 0; i < 12; i++) {
       $("#c").slideToggle(260,function(){
       var ctr = Math.floor(Math.random()*opts.length);
-      $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
+      $("#c #theImg").replaceWith('<img id="theImg"  src="img/' + opts[ctr] + '.PNG" />');
     });
   };
   $("#c").slideDown(800,function(){
-    $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.tnum + '.PNG" />');
+    $("#c #theImg").replaceWith('<img id="theImg"  src="img/' + obj.tnum + '.PNG" />');
     });
 }
 

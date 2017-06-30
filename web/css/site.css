@@ -160,7 +160,7 @@ img{
 
     .finishWarning{
         font-size:1em;
-        padding-top: 29%;
+        padding-top: 30%;
     }
 
     .buttonRandom{
@@ -193,4 +193,5 @@ table{
     max-height: 100px;
     position: absolute;
     width: 65%;
+    left : 20%;
 }
