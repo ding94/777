@@ -4,7 +4,7 @@
 <div class = "container">
     <h1 class="minigame">Mini Game</h1>
     <div class="row">
-        
+
     </div>
     <?php if (empty($model[0])) :?>
     <div class="row ">
@@ -22,7 +22,7 @@
         <div class="finishWarning">You have used finish all chances for today!</div>
     </div>
     <input type="hidden" id="g" value="<?php echo $model[1]['chance']?>">
-    
+
     <?php else :?>
     <div class="row ">
         <div id ="a" class="col-xs-4 randomNumber" value="<?php echo $model[0]['fnum']?>"></div>
@@ -40,7 +40,6 @@
              <button id="disableOrEnable" type="button" class="btn btn-primary btn-lg btn-block" onclick="randomNumber();">Press</button>
         </div>
     </div>
-    
     <div class="row">
         <div class="col-sm-6">
             <div class="reward">

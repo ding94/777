@@ -1,3 +1,7 @@
+:root{
+  font-size: 24px;
+}
+
 html,
 body {
     height: 100%;
@@ -121,7 +125,6 @@ a.desc:after {
 
 .buttonRandom{
    padding-top : 30px;
-   text-align: center;
 }
 
 .minigame{
@@ -146,7 +149,7 @@ img{
     .minigame {
         font-size:4em;
     }
-    
+
     .finishWarning{
         font-size:1em;
     }
@@ -167,5 +170,3 @@ table{
 .table tbody tr td {
     border: none;
 }
-
-
