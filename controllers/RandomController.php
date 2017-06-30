@@ -11,7 +11,6 @@ class RandomController extends Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
     }
 
     public static function randomNumGen($chance)
@@ -50,18 +49,22 @@ class RandomController extends Controller
          *and record previos chance into value 0
          *if first time play value is null
          */
-        
-        $sum = count($random);
-        if($sum == 1)
+
+        foreach($random as $k=>$data)
         {
-            $value[0] = "";
-            $value[1] = $random[0];
+            if($chance == $data['chance'])
+            {
+                if($k-1 == -1)
+                {
+                    $value['0'] = "";
+                }
+                else{
+                    $value['0'] = $random[$k-1];
+                }
+                $value['1'] = $data;
+            }
         }
-        else{
-            $value[0] =  $random[0];
-            $value[1] = $random[1];
-        }
-        
+
         return $value;
     }
 

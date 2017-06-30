@@ -57,15 +57,36 @@ function submitData()
     data : {
         _csrf: '<?=Yii::$app->request->getCsrfToken()?>',
     },
-    success: function (data) {
-        console.log(data.search);
-        location.reload(false);
+   success: function (data) {
+      console.log(data.search);
+      getData();    
    },
    error: function (request, status, error) {
     alert(request.responseText);
     }
 });
 }
+
+function getData()
+{
+   $.ajax({
+   url :"index.php?r=chance/getdata",
+   type: "get",
+   data :{
+      
+   },
+   success: function (data) {
+      console.log(data);
+      var obj = JSON.parse(data);
+      console.log(obj);
+   },
+   error: function (request, status, error) {
+    alert(request.responseText);
+   }
+      
+   });
+}
+
 
 $(document).ready(function(){
 	var one = $("[value='1']");
@@ -85,7 +106,5 @@ $(document).ready(function(){
   if($('#g').val() >= 6)
   {
       $('#disableOrEnable').prop('disabled', true);
-  }
-
-  
+  }  
 })
