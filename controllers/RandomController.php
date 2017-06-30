@@ -19,35 +19,29 @@ class RandomController extends Controller
         self::random();
         $reward = RewardController::getReward();
         /*
-         *detect whether user limit the amount set
-         *if price more than 25 user
+         *detect whether user reach limit amount
+         *if price more than 10 user
          *will not get any price anymore
          */
-        if($reward['price'] >= 10)
+      
+        if($reward)
         {
-            self::verifyLimit($reward, $chance->chance);
-        }
-
-
-        $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->all();
-
-
-        /*
-         *sorting by chance before do anything
-         */
-        $count = count($random);
-        for($i = 0 ;$i<$count;$i++)
-        {
-            for($j = 0;$j<$count;$j++)
+            $sum = 0;
+            foreach($reward as $rewards)
             {
-                if($random[$i]['chance'] < $random[$j]['chance'])
-                {
-                    $temp = $random[$i];
-                    $random[$i] = $random[$j];
-                    $random[$j] = $temp;
-                }
+                $sum += $rewards['price'];
+            }
+            if($sum >= 10)
+            {
+                self::verifyLimit($chance);
             }
         }
+        
+        /*
+         *get data between user chance and previos chance
+         *orderby chance
+         */
+        $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->andWhere(['between','chance',$chance-1 ,$chance])->orderBy('chance')->all();
 
         /*
          *detect wheter the chance
@@ -56,22 +50,18 @@ class RandomController extends Controller
          *and record previos chance into value 0
          *if first time play value is null
          */
-
-        foreach($random as $k=>$data)
+        
+        $sum = count($random);
+        if($sum == 1)
         {
-            if($chance->chance == $data['chance'])
-            {
-                if($k-1 == -1)
-                {
-                    $value['0'] = "";
-                }
-                else{
-                    $value['0'] = $random[$k-1];
-                }
-                $value['1'] = $data;
-            }
+            $value[0] = "";
+            $value[1] = $random[0];
         }
-
+        else{
+            $value[0] =  $random[0];
+            $value[1] = $random[1];
+        }
+        
         return $value;
     }
 
@@ -118,7 +108,7 @@ class RandomController extends Controller
     }
 
 
-    public static function verifyLimit($data ,$chance)
+    public static function verifyLimit($chance)
     {
         $number = array(1,2,3,4,5,7);
         $random = Random::find()->where('userid = :id and token = :tk and  chance = :ch' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1' , ':ch' => $chance])->one();

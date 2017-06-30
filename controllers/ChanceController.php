@@ -35,15 +35,13 @@ class ChanceController extends Controller
             $chance->createtime = date('Y-m-d G:i:s');
             $chance->save();
         }
-
-        RewardController::emptyReward();
         
         /*
          *to stp randomNumGen run to increase the chance
          */
         if($chance->chance < 6)
         {
-            $model = RandomController::randomNumGen($chance);
+            $model = RandomController::randomNumGen($chance->chance);
         }
         else{
             $model = Random::find()->where('userid = :id and token = :tk' , [':id' => Yii::$app->user->identity->id , ':tk' => '1'])->andWhere('chance > :ch',[':ch' => 4])->all();
