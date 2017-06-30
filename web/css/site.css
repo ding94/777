@@ -147,6 +147,12 @@ img{
     margin:0px auto;
 }
 
+@media screen and (max-width: 350px){
+  .lock{
+    width: 85%;
+  }
+}
+
 @media screen and (max-width: 568px) {
     .minigame {
         font-size:4em;
@@ -154,6 +160,16 @@ img{
 
     .finishWarning{
         font-size:1em;
+        padding-top: 29%;
+    }
+
+    .buttonRandom{
+       padding-top : 30%;
+       text-align: center;
+    }
+
+    .lock{
+      width: 75%;
     }
 }
 
@@ -176,4 +192,5 @@ table{
 .lock{
     max-height: 100px;
     position: absolute;
+    width: 65%;
 }
