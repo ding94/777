@@ -9,7 +9,6 @@ function randomNumber()
         _csrf: '<?=Yii::$app->request->getCsrfToken()?>',
     },
    success: function (data) {
-      console.log(data.search);
       getData();
    },
    error: function (request, status, error) {
@@ -50,6 +49,8 @@ function animation(obj)
 
     setTimeout(function(){
       alertReward(obj);
+      var chanceLeft = 5-obj.chance;
+      $(".chanceValue").text("Chance left :" + chanceLeft );
     },4000);
 }
 
@@ -62,13 +63,11 @@ function getData()
 
    },
    success: function (data) {
-      console.log(data);
       var obj = JSON.parse(data);
       animation(obj);
       if(obj.chance >= 5)
       {
           $('#disableOrEnable').prop('disabled', true);
-          
       }
    },
    error: function (request, status, error) {
