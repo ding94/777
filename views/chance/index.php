@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 ?>
-<div class = "container">
+<div class = "container minigame-container">
     <h1 class="minigame">Mini Game</h1>
     <div class="row">
         <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Rules</a>
