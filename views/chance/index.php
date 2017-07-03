@@ -4,7 +4,7 @@
 <div class = "container">
     <h1 class="minigame">Mini Game</h1>
     <div class="row">
-        <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Rules</a>
+        <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Rules <span class="glyphicon glyphicon-triangle-bottom"></span></a>
         <div class="collapse" id="collapseExample">
             <div class="well">
                 Bacon ipsum dolor amet biltong turducken pork chop leberkas flank, filet mignon shank. Shankle tenderloin filet mignon, swine prosciutto shoulder bacon jowl sirloin cupim frankfurter corned beef. Ribeye pork strip steak beef picanha boudin ball tip biltong short loin rump. Ground round short ribs sausage corned beef andouille. Cow jowl alcatra tri-tip kevin pork, picanha short ribs drumstick boudin t-bone turducken capicola brisket.
@@ -51,11 +51,13 @@
                     <tr class="success">
                         <td>User Name</td>
                         <td>Reward</td>
+                        <td>Reward time</td>
                     </tr>
                     <?php foreach($allReward as $data):?>
                     <tr>
                         <td><?php echo $data['userid']?></td>
                         <td>RM <?php echo $data['price']?></td>
+                        <td class="dateEm"><?php echo $data['createtime']?></td>
                     </tr>
                     <?php endforeach ;?>
                 </table>
@@ -69,10 +71,12 @@
             <table class="table">
                 <tr class="success">
                     <td>Reward</td>
+                    <td>Reward Time</td>
                 </tr>
                 <?php foreach($userReward as $data):?>
                 <tr>
                     <td>RM <?php echo $data['price']?></td>
+                    <td class="dateEm"><?php echo $data['createtime']?></td>
                 </>
                 </tr>
                 <?php endforeach ;?>

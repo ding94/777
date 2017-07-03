@@ -16,7 +16,9 @@ function randomNumber()
     }
 });
 }
-
+$(".hideButton").on('shown.bs.collapse',function(){
+        $(this).append($("<span class='glyphicon glyphicon-triangle-top'></span>"));
+});
 function animation(obj)
 {
     for(i = 0; i < 12; i++) {
@@ -97,6 +99,9 @@ function alertReward(obj)
    else if(obj.fnum == obj.snum || obj.snum == obj.tnum)
    {
       alert('You get the Third Price');
+   }
+   else{
+        alert('You get nothing');
    }
 }
 
