@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 ?>
-<div class = "container minigame-container">
+<div class = "container">
     <h1 class="minigame">Mini Game</h1>
     <div class="row">
         <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Rules</a>
@@ -19,14 +19,14 @@
             <div id ="a" class="col-xs-4 randomNumber" value="1"></div>
             <div id ="b" class="col-xs-4 randomNumber" value="2"></div>
             <div id ="c" class="col-xs-4 randomNumber" value="3"></div>
+        </div>
         <?php else :?>
         <div class="row ">
             <div id ="a" class="col-xs-4 randomNumber" value="<?php echo $model[0]['fnum']?>"></div>
             <div id ="b" class="col-xs-4 randomNumber" value="<?php echo $model[0]['snum']?>"></div>
             <div id ="c" class="col-xs-4 randomNumber" value="<?php echo $model[0]['tnum']?>"></div>
         </div>
-        <input type="hidden" id="g" value="<?php echo $model[1]['chance']?>">
-
+        <input type="hidden" id="chanceHidden" value="<?php echo $model[1]->chance?>">
         <?php endif ;?>
     </div>
 
@@ -35,7 +35,13 @@
              <button id="disableOrEnable" type="button" class="btn btn-primary btn-lg btn-block" onclick="randomNumber();">Press</button>
         </div>
     </div>
-    <div class="chanceValue">Chance left: <?php echo 5-$model[0]->chance ?></div>
+    <?php if(empty($model[0])):?>
+    <div class="chanceValue">Chance left: 5</div>
+    <?php elseif($model[0]->chance == 5) :?>
+    <div class="chanceValue">Today Chance have finish!!</div>
+    <?php else:?>
+    <div class="chanceValue">Today chance left : <?php echo 5-$model[0]->chance?></div>
+    <?php endif ;?>
     <div class="row">
         <div class="col-sm-6">
             <div class="reward">

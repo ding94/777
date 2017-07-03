@@ -50,7 +50,14 @@ function animation(obj)
     setTimeout(function(){
       alertReward(obj);
       var chanceLeft = 5-obj.chance;
-      $(".chanceValue").text("Chance left :" + chanceLeft );
+      if(obj.chance < 5)
+      {
+        $(".chanceValue").text("Chance left :" + chanceLeft );
+      }
+      else{
+        $(".chanceValue").text("Today Chance have finish!!");
+      }
+   
     },4000);
 }
 
@@ -110,7 +117,7 @@ $(document).ready(function(){
   $(six).prepend('<img id="theImg" class="img-responsive" src="img/6.PNG" />');
   var seven = $("[value='7']");
   $(seven).prepend('<img id="theImg" class="img-responsive" src="img/7.PNG" />');
-  if($('#g').val() >= 6)
+  if($('#chanceHidden').val() >= 6)
   {
       $('#disableOrEnable').prop('disabled', true);
   }
