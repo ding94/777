@@ -125,7 +125,7 @@ a.desc:after {
 }
 
 .buttonRandom{
-   padding-top : 25%;
+   padding-top : 20%;
    text-align: center;
 }
 
@@ -197,8 +197,31 @@ table{
 }
 
 .hideButton{
-  margin-bottom: 1%;
+  margin-bottom: 3%;
+  color: #c31818;
+  background-color: white;
+  border-color: #d58512;
 }
+
+.hideButton:hover{
+    color: white;
+    background-color:#ed6809;
+    border-color: #d58512;
+}
+
+.hideButton:focus{
+  color: #c31818;
+  background-color: white;
+  border-color: #d58512;
+}
+
+.chanceValue{
+  text-align: center;
+  font-size: 3em;
+  padding-top:5%;
+}
+
+
 
 
 

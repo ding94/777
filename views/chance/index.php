@@ -4,7 +4,7 @@
 <div class = "container">
     <h1 class="minigame">Mini Game</h1>
     <div class="row">
-        <a class="btn btn-primary btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Rules</a>
+        <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Rules</a>
         <div class="collapse" id="collapseExample">
             <div class="well">
                 Bacon ipsum dolor amet biltong turducken pork chop leberkas flank, filet mignon shank. Shankle tenderloin filet mignon, swine prosciutto shoulder bacon jowl sirloin cupim frankfurter corned beef. Ribeye pork strip steak beef picanha boudin ball tip biltong short loin rump. Ground round short ribs sausage corned beef andouille. Cow jowl alcatra tri-tip kevin pork, picanha short ribs drumstick boudin t-bone turducken capicola brisket.
@@ -15,34 +15,16 @@
     </div>
     <div class="lock">
         <?php if (empty($model[0])) :?>
-        <div class="chanceValue">Chance left: 5</div>
         <div id="row ">
             <div id ="a" class="col-xs-4 randomNumber" value="1"></div>
             <div id ="b" class="col-xs-4 randomNumber" value="2"></div>
             <div id ="c" class="col-xs-4 randomNumber" value="3"></div>
-        </div>
-      <?php elseif($model[0]->chance == 5):?>
-       <div class="chanceValue">Chance left: <?php echo 5-$model[0]->chance ?></div>
-        <div class="row ">
-            <div id ="a" class="col-xs-4 randomNumber" value="<?php echo $model[0]['fnum']?>"></div>
-            <div id ="b" class="col-xs-4 randomNumber" value="<?php echo $model[0]['snum']?>"></div>
-            <div id ="c" class="col-xs-4 randomNumber" value="<?php echo $model[0]['tnum']?>"></div>
-        </div>
-        <div class="row">
-            <div class="finishWarning">You have used finish all chances for today!</div>
-        </div>
-        <input type="hidden" id="g" value="<?php echo $model[1]['chance']?>">
-
         <?php else :?>
-        <div class="chanceValue">Chance left: <?php echo 5-$model[0]->chance ?></div>
         <div class="row ">
             <div id ="a" class="col-xs-4 randomNumber" value="<?php echo $model[0]['fnum']?>"></div>
             <div id ="b" class="col-xs-4 randomNumber" value="<?php echo $model[0]['snum']?>"></div>
             <div id ="c" class="col-xs-4 randomNumber" value="<?php echo $model[0]['tnum']?>"></div>
         </div>
-        <input type="hidden" id="d" value="<?php echo $model[1]['fnum']?>">
-        <input type="hidden" id="e" value="<?php echo $model[1]['snum']?>">
-        <input type="hidden" id="f" value="<?php echo $model[1]['tnum']?>">
         <input type="hidden" id="g" value="<?php echo $model[1]['chance']?>">
 
         <?php endif ;?>
@@ -53,6 +35,7 @@
              <button id="disableOrEnable" type="button" class="btn btn-primary btn-lg btn-block" onclick="randomNumber();">Press</button>
         </div>
     </div>
+    <div class="chanceValue">Chance left: <?php echo 5-$model[0]->chance ?></div>
     <div class="row">
         <div class="col-sm-6">
             <div class="reward">
