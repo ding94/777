@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 ?>
-<div class = "container">
+<div class = "container minigame-container">
     <h1 class="minigame">Mini Game</h1>
     <div class="row">
 
