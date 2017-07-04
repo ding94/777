@@ -12,6 +12,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="imageUrl" value="<?php echo Yii::$app->params['imagepath']?>">
     <div class="lock">
         <?php if (empty($model[0])) :?>
         <div id="row ">

@@ -1,4 +1,5 @@
 var opts = ['1', '2', '3', '4', '5','6','7'];
+var imgurl = window.location.origin;
 
 function randomNumber()
 {
@@ -9,6 +10,7 @@ function randomNumber()
         _csrf: '<?=Yii::$app->request->getCsrfToken()?>',
     },
    success: function (data) {
+      console.log(data.search);
       getData();
    },
    error: function (request, status, error) {
@@ -22,29 +24,29 @@ function animation(obj)
     for(i = 0; i < 12; i++) {
       $("#a").slideToggle(220,function(){
       var ctr = Math.floor(Math.random()*opts.length);
-      $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
+      $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.PNG" />');
     });
   };
   $("#a").slideDown(800,function(){
-    $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.fnum + '.PNG" />');
+    $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.fnum + '.PNG" />');
     });
     for(i = 0; i < 12; i++) {
       $("#b").slideToggle(320,function(){
       var ctr = Math.floor(Math.random()*opts.length);
-      $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
+      $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.PNG" />');
     });
   };
   $("#b").slideDown(800,function(){
-    $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.snum + '.PNG" />');
+    $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.snum + '.PNG" />');
     })
     for(i = 0; i < 12; i++) {
       $("#c").slideToggle(260,function(){
       var ctr = Math.floor(Math.random()*opts.length);
-      $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + opts[ctr] + '.PNG" />');
+      $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.PNG" />');
     });
   };
   $("#c").slideDown(800,function(){
-    $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="img/' + obj.tnum + '.PNG" />');
+    $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.tnum + '.PNG" />');
     });
 
     setTimeout(function(){
@@ -57,7 +59,6 @@ function animation(obj)
       else{
         $(".chanceValue").text("Today Chance have finish!!");
       }
-   
     },4000);
 }
 
@@ -70,6 +71,7 @@ function getData()
 
    },
    success: function (data) {
+      console.log(data);
       var obj = JSON.parse(data);
       animation(obj);
       if(obj.chance >= 5)
@@ -105,22 +107,10 @@ function alertReward(obj)
 
 
 $(document).ready(function(){
-
-	var one = $("[value='1']");
-  $(one).prepend('<img id="theImg"  class="img-responsive" src="img/1.PNG" />');
-  var two = $("[value='2']");
-  $(two).prepend('<img id="theImg" class="img-responsive" src="img/2.PNG" />');
-  var three = $("[value='3']");
-  $(three).prepend('<img id="theImg"  class="img-responsive" src="img/3.PNG" />');
-  var four = $("[value='4']");
-  $(four).prepend('<img id="theImg" class="img-responsive" src="img/4.PNG" />');
-  var five = $("[value='5']");
-  $(five).prepend('<img id="theImg" class="img-responsive" src="img/5.PNG" />');
-  var six = $("[value='6']");
-  $(six).prepend('<img id="theImg" class="img-responsive" src="img/6.PNG" />');
-  var seven = $("[value='7']");
-  $(seven).prepend('<img id="theImg" class="img-responsive" src="img/7.PNG" />');
-  if($('#chanceHidden').val() >= 6)
+  for(i = 1; i <= 7; i++) {
+    $("[value='"+ i +"']").prepend('<img id="theImg" class="img-responsive" src="'+ imgurl + '/777/web/img/'+ i + '.PNG" />');
+  }
+  if($('#g').val() >= 6)
   {
       $('#disableOrEnable').prop('disabled', true);
   }
