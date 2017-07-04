@@ -4,11 +4,10 @@
 <div class = "container">
     <h1 class="minigame">Mini Game</h1>
     <div class="row">
-        <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Rules <span class="glyphicon glyphicon-triangle-bottom"></span></a>
-        <div class="collapse" id="collapseExample">
+        <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseRule" aria-expanded="false" aria-controls="collapseRule">Rules <span class="spanRadnom glyphicon glyphicon-triangle-bottom"></span></a>
+        <div class="collapse" id="collapseRule">
             <div class="well">
                 Bacon ipsum dolor amet biltong turducken pork chop leberkas flank, filet mignon shank. Shankle tenderloin filet mignon, swine prosciutto shoulder bacon jowl sirloin cupim frankfurter corned beef. Ribeye pork strip steak beef picanha boudin ball tip biltong short loin rump. Ground round short ribs sausage corned beef andouille. Cow jowl alcatra tri-tip kevin pork, picanha short ribs drumstick boudin t-bone turducken capicola brisket.
-
                 Boudin tri-tip salami ground round frankfurter shank. Kielbasa beef ribs tongue beef corned beef, kevin capicola burgdoggen tail ham hock ribeye tri-tip pork pancetta prosciutto. Chuck ribeye porchetta capicola pork chop leberkas corned beef swine tail fatback flank. Leberkas short ribs turducken tenderloin shankle ball tip, ground round turkey andouille. Cupim ribeye fatback tri-tip shoulder beef porchetta burgdoggen jowl cow pork chop chuck turkey shankle.
             </div>
         </div>

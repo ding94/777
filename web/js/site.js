@@ -16,9 +16,7 @@ function randomNumber()
     }
 });
 }
-$(".hideButton").on('shown.bs.collapse',function(){
-        $(this).append($("<span class='glyphicon glyphicon-triangle-top'></span>"));
-});
+
 function animation(obj)
 {
     for(i = 0; i < 12; i++) {
