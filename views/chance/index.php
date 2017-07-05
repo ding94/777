@@ -7,17 +7,17 @@
         <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseRule" aria-expanded="false" aria-controls="collapseRule">Rules <span class="spanRadnom glyphicon glyphicon-triangle-bottom"></span></a>
         <div class="collapse" id="collapseRule">
             <div class="well rule-container">
-                Complimentary 5 chances every day to PLAY & WIN SGreward up to RM5,000, click “Play” to win SGreward now!
+                <span class="rule-span1">Complimentary 5 chances every day to PLAY & WIN SGreward up to RM5,000, click “Play” to win SGreward now!</span>
                 </br>
-                T&Cs:
+                <span class="rule-span1">T&Cs:</span>
                 <ol>
-                    <li>Prize List:
+                    <li><span class="rule-span1">Prize List:</span>
                         </br>
                         <div class="table-responsive">
                             <table class="table table-bordered rule-table">
-                                <thead>
+                                <thead class="rule-table-head">
                                     <td>Symbols</td>
-                                    <td>Prize(SGreward)</td>
+                                    <td>Prize (SGreward)</td>
                                 </thead>
                                 <tbody>
                                     <tr>
@@ -50,7 +50,7 @@
                             </table>
                         </div>
                     </li>
-                    <li><a href="http://www.sgshop.com.my/member/sgreward">Click SGreward for more details.</a></li>
+                    <li><span class="rule-span1"><a href="http://www.sgshop.com.my/member/sgreward">Click SGreward for more details.</a></span></li>
                 </ol>
             </div>
         </div>
@@ -87,7 +87,7 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="reward">
-                All Reward
+                All Rewards
             </div>
                 <table class="table">
                     <tr class="success">

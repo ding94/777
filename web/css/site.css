@@ -9,6 +9,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-family: 'Fredoka One', cursive;
 }
 
 .wrap {
@@ -260,7 +261,7 @@ table{
 }
 
 .img-sample{
-  height: 35%;
+  height: 25%;
   width: auto;
 }
 
@@ -272,6 +273,7 @@ table{
 
 .rule-table-th{
   text-align: center;
+  font-size: 16px;
 }
 
 .rule-container{
@@ -283,6 +285,14 @@ table{
   opacity: 0.8;
 }
 
+.rule-span1{
+  font-size: 14px;
+}
+
 .rule-span{
+  font-size: 16px;
+}
+
+.rule-table-head{
   font-size: 18px;
 }
