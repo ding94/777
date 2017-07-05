@@ -33,7 +33,7 @@
                                             <?php for($i = 0 ;$i<3;$i++):?>
                                             <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/3.png'?>">
                                             <?php endfor;?>
-                                          </br>**Any 3 of Same Birds
+                                          </br><span class="rule-span">*Any 3 of Same Birds</span>
                                         </th>
                                         <th class="rule-table-th">RM 5</th>
                                     </tr>
@@ -42,7 +42,7 @@
                                             <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/4.png'?>">
                                             <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/4.png'?>">
                                             <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/5.png'?>">
-                                          </br>*Any 2 of Same Animals
+                                          </br><span class="rule-span">*Any 2 of Same Animals</span>
                                         </th>
                                         <th class="rule-table-th">RM 2</th>
                                     </tr>
@@ -73,14 +73,14 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4 col-md-offset-4 buttonRandom">
+        <div class="col-xs-4 col-xs-offset-4 buttonRandom">
              <button id="disableOrEnable" type="button" class="btn btn-primary btn-lg btn-block" onclick="randomNumber();">Play</button>
         </div>
     </div>
     <?php if(empty($model[0])):?>
     <div class="chanceValue">Chance left: 5</div>
     <?php elseif($model[0]->chance == 5 ) :?>
-    <div class="chanceValue" >Today's Chance has finished!!</div>
+    <div class="chanceValue" style="color: red;" >Today's Chance has finished!!</div>
     <?php else:?>
     <div class="chanceValue" >Today's chance left : <?php echo 5-$model[0]->chance?></div>
     <?php endif ;?>

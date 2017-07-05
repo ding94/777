@@ -58,6 +58,7 @@ function animation(obj)
       }
       else{
         $(".chanceValue").text("Today's Chance has finished!!");
+        $(".chanceValue").css("color","red");
       }
     },4000);
 }

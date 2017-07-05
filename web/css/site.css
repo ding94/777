@@ -4,7 +4,7 @@
 
 html,
 body {
-  background: url(../img/6-vector-game-backgrounds-8003_imgs_8003_4.png) no-repeat center center fixed;
+  background: url(../img/background.jpg);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -141,6 +141,12 @@ a.desc:after {
     padding-bottom: 30px;
 }
 
+.chanceValue{
+  text-align: center;
+  font-size: 3em;
+  padding-top:5%;
+}
+
 .finishWarning{
   padding-top : 30px;
   text-align: center;
@@ -154,6 +160,10 @@ img{
 @media screen and (max-width: 350px){
   .lock{
     width: 85%;
+  }
+
+  .chanceValue{
+    font-size: 0.5em;
   }
 }
 
@@ -175,6 +185,35 @@ img{
     .lock{
       width: 75%;
     }
+
+    #theImg{
+      max-width: 150%;
+    }
+
+    .chanceValue{
+      font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 720px){
+  #theImg{
+    max-width: 150%;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  #theImg{
+    height: 230px;
+  }
+
+  .buttonRandom{
+     padding-top : 25%;
+     text-align: center;
+  }
+
+  .chanceValue{
+    font-size: 2em;
+  }
 }
 
 table{
@@ -220,12 +259,6 @@ table{
   border-color: #d58512;
 }
 
-.chanceValue{
-  text-align: center;
-  font-size: 3em;
-  padding-top:5%;
-}
-
 .img-sample{
   height: 35%;
   width: auto;
@@ -248,4 +281,8 @@ table{
 .reward-table-tr{
   background-color: white;
   opacity: 0.8;
+}
+
+.rule-span{
+  font-size: 18px;
 }
