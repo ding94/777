@@ -54,10 +54,10 @@ function animation(obj)
       var chanceLeft = 5-obj.chance;
       if(obj.chance < 5)
       {
-        $(".chanceValue").text("Today chance left :" + chanceLeft );
+        $(".chanceValue").text("Today's chance left :" + chanceLeft );
       }
       else{
-        $(".chanceValue").text("Today Chance have finish!!");
+        $(".chanceValue").text("Today's Chance has finished!!");
       }
     },4000);
 }

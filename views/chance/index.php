@@ -6,7 +6,7 @@
     <div class="row">
         <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseRule" aria-expanded="false" aria-controls="collapseRule">Rules <span class="spanRadnom glyphicon glyphicon-triangle-bottom"></span></a>
         <div class="collapse" id="collapseRule">
-            <div class="well">
+            <div class="well rule-container">
                 Complimentary 5 chances every day to PLAY & WIN SGreward up to RM5,000, click “Play” to win SGreward now!
                 </br>
                 T&Cs:
@@ -14,7 +14,7 @@
                     <li>Prize List:
                         </br>
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered rule-table">
                                 <thead>
                                     <td>Symbols</td>
                                     <td>Prize(SGreward)</td>
@@ -23,28 +23,28 @@
                                     <tr>
                                         <th>
                                             <?php for($i = 0 ;$i<3;$i++):?>
-                                            <img src="<?php echo Yii::$app->params['imagepath'].'/7.png'?>">
+                                            <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/7.png'?>">
                                             <?php endfor;?>
                                         </th>
-                                        <th>RM 10</th>
+                                        <th class="rule-table-th">RM 10</th>
                                     </tr>
                                     <tr>
                                         <th>
                                             <?php for($i = 0 ;$i<3;$i++):?>
-                                            <img src="<?php echo Yii::$app->params['imagepath'].'/3.png'?>">
+                                            <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/3.png'?>">
                                             <?php endfor;?>
-                                            </br>**Any 3 Same Birds
+                                          </br>**Any 3 of Same Birds
                                         </th>
-                                        <th>RM 5</th>
+                                        <th class="rule-table-th">RM 5</th>
                                     </tr>
                                     <tr>
                                         <th>
-                                            <img src="<?php echo Yii::$app->params['imagepath'].'/4.png'?>">
-                                            <img src="<?php echo Yii::$app->params['imagepath'].'/4.png'?>">
-                                            <img src="<?php echo Yii::$app->params['imagepath'].'/5.png'?>">
-                                            </br>*Any 2 Same Birds
+                                            <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/4.png'?>">
+                                            <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/4.png'?>">
+                                            <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/5.png'?>">
+                                          </br>*Any 2 of Same Animals
                                         </th>
-                                        <th>RM 2</th>
+                                        <th class="rule-table-th">RM 2</th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -74,15 +74,15 @@
 
     <div class="row">
         <div class="col-md-4 col-md-offset-4 buttonRandom">
-             <button id="disableOrEnable" type="button" class="btn btn-primary btn-lg btn-block" onclick="randomNumber();">Press</button>
+             <button id="disableOrEnable" type="button" class="btn btn-primary btn-lg btn-block" onclick="randomNumber();">Play</button>
         </div>
     </div>
     <?php if(empty($model[0])):?>
     <div class="chanceValue">Chance left: 5</div>
     <?php elseif($model[0]->chance == 5 ) :?>
-    <div class="chanceValue" >Today Chance have finish!!</div>
+    <div class="chanceValue" >Today's Chance has finished!!</div>
     <?php else:?>
-    <div class="chanceValue" >Today chance left : <?php echo 5-$model[0]->chance?></div>
+    <div class="chanceValue" >Today's chance left : <?php echo 5-$model[0]->chance?></div>
     <?php endif ;?>
     <div class="row">
         <div class="col-sm-6">
@@ -96,7 +96,7 @@
                         <td>Reward time</td>
                     </tr>
                     <?php foreach($allReward as $data):?>
-                    <tr>
+                    <tr class="reward-table-tr">
                         <td><?php echo $data['userid']?></td>
                         <td>RM <?php echo $data['price']?></td>
                         <td class="dateEm"><?php echo $data['createtime']?></td>
@@ -116,7 +116,7 @@
                     <td>Reward Time</td>
                 </tr>
                 <?php foreach($userReward as $data):?>
-                <tr>
+                <tr class="reward-table-tr">
                     <td>RM <?php echo $data['price']?></td>
                     <td class="dateEm"><?php echo $data['createtime']?></td>
                 </>

@@ -4,7 +4,7 @@
 
 html,
 body {
-  background: url(../img/6-vector-game-backgrounds-8003_imgs_8003_4.png) no-repeat center center fixed; 
+  background: url(../img/6-vector-game-backgrounds-8003_imgs_8003_4.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -226,7 +226,26 @@ table{
   padding-top:5%;
 }
 
+.img-sample{
+  height: 35%;
+  width: auto;
+}
 
+.rule-table{
+  width: 60%;
+  height: auto;
+  margin: auto;
+}
 
+.rule-table-th{
+  text-align: center;
+}
 
+.rule-container{
+  opacity: 0.9;
+}
 
+.reward-table-tr{
+  background-color: white;
+  opacity: 0.8;
+}
