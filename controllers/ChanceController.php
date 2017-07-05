@@ -53,14 +53,14 @@ class ChanceController extends Controller
         /*
          *get all user reward
          */
-        $allReward =  Reward::find()->limit(10)->orderBy('createtime')->all();
+        $allReward =  Reward::find()->limit(10)->orderBy(['(createtime)'=> SORT_DESC])->all();
         foreach($allReward as $k=> $reward)
         {
             $allReward[$k]['userid'] = User::find()->where('id = :id' ,[':id' => $reward['userid']])->one()->username;
             $allReward[$k]['createtime'] = date("M-d G:i" , strtotime($reward['createtime']));
         }
 
-        $userReward = Reward::find()->where('userid = :id' ,[':id' =>  Yii::$app->user->identity->id])->limit(10)->orderBy('createtime')->all();
+        $userReward = Reward::find()->where('userid = :id' ,[':id' =>  Yii::$app->user->identity->id])->limit(10)->orderBy(['(createtime)'=> SORT_DESC])->all();
         foreach($userReward as $k=>$userRewards)
         {
             $userReward[$k]['createtime'] = date("M-d G:i" , strtotime($userRewards['createtime']));

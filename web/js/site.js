@@ -90,7 +90,7 @@ function alertReward(obj)
 {
    if (obj.fnum == 7 && obj.snum == 7 && obj.tnum == 7)
    {
-      alert('Congratulation! You have won RM 10 SGreward!');
+        alert('Congratulation! You have won RM 10 SGreward!');
    }
    else if (((obj.fnum == obj.snum) === true) && ((obj.snum == obj.tnum) === true))
    {
