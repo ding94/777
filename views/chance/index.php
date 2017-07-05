@@ -2,17 +2,59 @@
 /* @var $this yii\web\View */
 ?>
 <div class = "container">
-    <h1 class="minigame">Mini Game</h1>
+    <h1 class="minigame">PLAY & WIN SGreward!</h1>
     <div class="row">
         <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseRule" aria-expanded="false" aria-controls="collapseRule">Rules <span class="spanRadnom glyphicon glyphicon-triangle-bottom"></span></a>
         <div class="collapse" id="collapseRule">
             <div class="well">
-                Bacon ipsum dolor amet biltong turducken pork chop leberkas flank, filet mignon shank. Shankle tenderloin filet mignon, swine prosciutto shoulder bacon jowl sirloin cupim frankfurter corned beef. Ribeye pork strip steak beef picanha boudin ball tip biltong short loin rump. Ground round short ribs sausage corned beef andouille. Cow jowl alcatra tri-tip kevin pork, picanha short ribs drumstick boudin t-bone turducken capicola brisket.
-                Boudin tri-tip salami ground round frankfurter shank. Kielbasa beef ribs tongue beef corned beef, kevin capicola burgdoggen tail ham hock ribeye tri-tip pork pancetta prosciutto. Chuck ribeye porchetta capicola pork chop leberkas corned beef swine tail fatback flank. Leberkas short ribs turducken tenderloin shankle ball tip, ground round turkey andouille. Cupim ribeye fatback tri-tip shoulder beef porchetta burgdoggen jowl cow pork chop chuck turkey shankle.
+                Complimentary 5 chances every day to PLAY & WIN SGreward up to RM5,000, click “Play” to win SGreward now!
+                </br>
+                T&Cs:
+                <ol>
+                    <li>Prize List:
+                        </br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <td>Symbols</td>
+                                    <td>Prize(SGreward)</td>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <?php for($i = 0 ;$i<3;$i++):?>
+                                            <img src="<?php echo Yii::$app->params['imagepath'].'/7.png'?>">
+                                            <?php endfor;?>
+                                        </th>
+                                        <th>RM 10</th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <?php for($i = 0 ;$i<3;$i++):?>
+                                            <img src="<?php echo Yii::$app->params['imagepath'].'/3.png'?>">
+                                            <?php endfor;?>
+                                            </br>**Any 3 Same Birds
+                                        </th>
+                                        <th>RM 5</th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <img src="<?php echo Yii::$app->params['imagepath'].'/4.png'?>">
+                                            <img src="<?php echo Yii::$app->params['imagepath'].'/4.png'?>">
+                                            <img src="<?php echo Yii::$app->params['imagepath'].'/5.png'?>">
+                                            </br>*Any 2 Same Birds
+                                        </th>
+                                        <th>RM 2</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                    <li><a href="http://www.sgshop.com.my/member/sgreward">Click SGreward for more details.</a></li>
+                </ol>
             </div>
         </div>
     </div>
-    <input type="hidden" id="imageUrl" value="<?php echo Yii::$app->params['imagepath']?>">
     <div class="lock">
         <?php if (empty($model[0])) :?>
         <div id="row ">
@@ -37,10 +79,10 @@
     </div>
     <?php if(empty($model[0])):?>
     <div class="chanceValue">Chance left: 5</div>
-    <?php elseif($model[0]->chance == 5) :?>
-    <div class="chanceValue">Today Chance have finish!!</div>
+    <?php elseif($model[0]->chance == 5 ) :?>
+    <div class="chanceValue" >Today Chance have finish!!</div>
     <?php else:?>
-    <div class="chanceValue">Today chance left : <?php echo 5-$model[0]->chance?></div>
+    <div class="chanceValue" >Today chance left : <?php echo 5-$model[0]->chance?></div>
     <?php endif ;?>
     <div class="row">
         <div class="col-sm-6">

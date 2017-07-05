@@ -54,7 +54,7 @@ function animation(obj)
       var chanceLeft = 5-obj.chance;
       if(obj.chance < 5)
       {
-        $(".chanceValue").text("Chance left :" + chanceLeft );
+        $(".chanceValue").text("Today chance left :" + chanceLeft );
       }
       else{
         $(".chanceValue").text("Today Chance have finish!!");
@@ -90,18 +90,18 @@ function alertReward(obj)
 {
    if (obj.fnum == 7 && obj.snum == 7 && obj.tnum == 7)
    {
-      alert('You get the First Price');
+      alert('Congratulation! You have won RM 10 SGreward!');
    }
    else if (((obj.fnum == obj.snum) === true) && ((obj.snum == obj.tnum) === true))
    {
-       alert('You get the Second Price');
+       alert('Congratulation! You have won RM 5 SGreward!');
    }
    else if(obj.fnum == obj.snum || obj.snum == obj.tnum)
    {
-      alert('You get the Third Price');
+      alert('Congratulation! You have won RM 2 SGreward!');
    }
    else{
-        alert('You get nothing');
+        alert('Play it again, you are almost get it!');
    }
 }
 
@@ -110,7 +110,7 @@ $(document).ready(function(){
   for(i = 1; i <= 7; i++) {
     $("[value='"+ i +"']").prepend('<img id="theImg" class="img-responsive" src="'+ imgurl + '/777/web/img/'+ i + '.PNG" />');
   }
-  if($('#g').val() >= 6)
+  if($('#chanceHidden').val() >= 6)
   {
       $('#disableOrEnable').prop('disabled', true);
   }

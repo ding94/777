@@ -4,7 +4,11 @@
 
 html,
 body {
-    height: 100%;
+  background: url(../img/6-vector-game-backgrounds-8003_imgs_8003_4.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .wrap {
