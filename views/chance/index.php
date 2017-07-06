@@ -9,6 +9,23 @@
             <div class="well rule-container">
                 <span class="rule-span1">Complimentary 5 chances every day to PLAY & WIN SGreward up to RM5,000, click “Play” to win SGreward now!</span>
                 </br>
+                </br>
+                <span class="rule-span1">How to win?</span>
+                <ol>
+                    <li>
+                      <span class="rule-span1">Click "Play";</span>
+                    </li>
+                    <li>
+                      <span class="rule-span1">Animals will be kept changing;</span>
+                    </li>
+                    <li>
+                      <span class="rule-span1">Wait until the changing stop;</span>
+                    </li>
+                    <li>
+                      <span class="rule-span1">You may check out whether you are the lucky one!</span>
+                    </li>
+                </ol>
+                </br>
                 <span class="rule-span1">T&Cs:</span>
                 <ol>
                     <li><span class="rule-span1">Prize List:</span>
@@ -25,6 +42,7 @@
                                             <?php for($i = 0 ;$i<3;$i++):?>
                                             <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/7.png'?>">
                                             <?php endfor;?>
+                                          </br><span class="rule-span">*Must be these 3 of SGshop mascot</span>
                                         </th>
                                         <th class="rule-table-th">RM 10</th>
                                     </tr>
@@ -42,7 +60,7 @@
                                             <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/4.png'?>">
                                             <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/4.png'?>">
                                             <img class="img-sample" src="<?php echo Yii::$app->params['imagepath'].'/5.png'?>">
-                                          </br><span class="rule-span">*Any 2 of Same Animals</span>
+                                          </br><span class="rule-span">*Any 2 of Same Animals side by side</span>
                                         </th>
                                         <th class="rule-table-th">RM 2</th>
                                     </tr>
@@ -50,7 +68,13 @@
                             </table>
                         </div>
                     </li>
-                    <li><span class="rule-span1"><a href="http://www.sgshop.com.my/member/sgreward">Click SGreward for more details.</a></span></li>
+                    </br>
+                    <li><span class="rule-span1">This activity is valid from 6th July to 10th July 2017;</span></li>
+                    <li><span class="rule-span1">Every day each SGshop Malaysia member has 5 chances to play & win SGreward;</span></li>
+                    <li><span class="rule-span1">SGreward can only be used to offset item price (1st payment);</span></li>
+                    <li><span class="rule-span1">SGshop reserves the right of final explanation towards this activity;</span></li>
+                    <li><span class="rule-span1">Click <a href="http://www.sgshop.com.my/member/sgreward">SGreward </a>for more details;</span></li>
+                    <li><span class="rule-span1">Click <a href="https://www.sgshop.com.my/member">Member Center</a> for your SGreward checking.</span></li>
                 </ol>
             </div>
         </div>
