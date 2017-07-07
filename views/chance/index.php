@@ -145,7 +145,6 @@
                 <tr class="reward-table-tr">
                     <td>RM <?php echo $data['price']?></td>
                     <td class="dateEm"><?php echo $data['createtime']?></td>
-                </>
                 </tr>
                 <?php endforeach ;?>
             </table>
