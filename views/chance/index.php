@@ -128,25 +128,30 @@
                     <?php endforeach ;?>
                 </table>
         </div>
-        <?php if(empty($userReward)):?>
-        <?php else :?>
          <div class="col-sm-4 col-sm-offset-2">
              <div class="reward">
                 Your Reward
             </div>
-            <table class="table">
+            <table class="table userReward">
                 <tr class="success">
                     <td>Reward</td>
                     <td>Reward Time</td>
                 </tr>
+                <?php if(empty($userReward)):?>
+                <tr class="reward-table-tr">
+                    <td>0</td>
+                    <td class="dateEm">0</td>
+                </tr>
+                <?php else :?>
                 <?php foreach($userReward as $data):?>
                 <tr class="reward-table-tr">
                     <td>RM <?php echo $data['price']?></td>
                     <td class="dateEm"><?php echo $data['createtime']?></td>
                 </tr>
                 <?php endforeach ;?>
+                <?php endif ;?>
             </table>
         </div>
-        <?php endif ;?>
+       
     </div>
 </div>

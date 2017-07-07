@@ -1,8 +1,10 @@
 <?php
 
 namespace app\controllers;
+use yii\helpers\Json;
 use app\models\Reward;
 use app\models\Chance;
+use app\models\User;
 use yii\web\controller;
 use Yii;
 
@@ -12,13 +14,47 @@ class RewardController extends \yii\web\Controller
     {
         return $this->render('index');
     }
+    
+    public function actionGetdata()
+    {
+        $value = self::getReward(3);
+        $value = Json::encode($value[0]);
+        return $value;
+    }
 
     /*
      *
      */
-    public static function getReward()
+    public static function getReward($choice)
     {
-        $reward = Reward::find()->where('userid = :id',[':id' => Yii::$app->user->identity->id])->all();
+        if($choice == 1)
+        {
+            $reward = Reward::find()->where('userid = :id',[':id' => Yii::$app->user->identity->id])->all();
+        }
+        
+        elseif($choice == 2)
+        {
+            $reward =  Reward::find()->limit(10)->orderBy(['(createtime)'=> SORT_DESC])->all();
+            foreach($reward as $rewards)
+            {
+                $rewards['userid'] = User::find()->where('id = :id' ,[':id' => $rewards['userid']])->one()->username;
+                $rewards['createtime'] = date("M-d G:i" , strtotime($rewards['createtime']));
+            }
+            
+        }
+        elseif($choice == 3)
+        {
+            $reward = Reward::find()->where('userid = :id' ,[':id' =>  Yii::$app->user->identity->id])->limit(10)->orderBy(['(createtime)'=> SORT_DESC])->all();
+            foreach($reward as $rewards)
+            {
+                $rewards['createtime'] = date("M-d G:i" , strtotime($rewards['createtime']));
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
         return $reward;
     }
 
@@ -43,7 +79,7 @@ class RewardController extends \yii\web\Controller
               $reward->save();
             }
             else if($model->fnum == $model->snum || $model->snum == $model->tnum){ //check third prize
-              $reward->status = 1;
+              $reward->status = 3;
               $reward->price = 2;
               $reward->save();
             }
