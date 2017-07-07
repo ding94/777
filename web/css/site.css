@@ -188,6 +188,13 @@ img{
       left: 13%;
     }
 
+    .reward{
+      padding-top: 20px;
+      text-align: center;
+      font-size: 2em;
+      padding-bottom: 20px;
+    }
+
     #theImg{
       max-width: 150%;
     }
@@ -220,6 +227,13 @@ img{
   .chanceValue{
     font-size: 2em;
   }
+
+  .reward{
+    padding-top: 100px;
+    text-align: center;
+    font-size: 2em;
+    padding-bottom: 20px;
+  }
 }
 
 .img-title{
@@ -231,13 +245,6 @@ img{
 table{
     text-align: center;
     font-size: 2em;
-}
-
-.reward{
-    text-align: center;
-    font-size: 2em;
-    padding-top: 100px;
-    padding-bottom: 20px;
 }
 
 .table tbody tr td {
@@ -306,4 +313,12 @@ table{
 
 .rule-table-head{
   font-size: 18px;
+}
+
+.game-area{
+  height: auto;
+  width: auto;
+  padding: 20px;
+  border: solid;
+  border-color: black;
 }

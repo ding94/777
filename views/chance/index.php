@@ -79,6 +79,7 @@
             </div>
         </div>
     </div>
+    <div class="game-area">
     <div class="lock">
         <?php if (empty($model[0])) :?>
         <div id="row ">
@@ -108,6 +109,7 @@
     <?php else:?>
     <div class="chanceValue" >Today's chance left : <?php echo 5-$model[0]->chance?></div>
     <?php endif ;?>
+  </div>
     <div class="row">
         <div class="col-sm-6">
             <div class="reward">
