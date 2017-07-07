@@ -1,6 +1,10 @@
 var opts = ['1', '2', '3', '4', '5','6','7'];
 var imgurl = window.location.origin;
 
+/*
+ *post ajax when user press play button
+ *success the go to getData
+ */
 function randomNumber()
 {
     $.ajax({
@@ -19,6 +23,13 @@ function randomNumber()
 });
 }
 
+/*
+ *setTimeout to let animation finsih first
+ *pass obj to reward to detect wheter user get prize
+ *chacnce less than 5 unlock button click function
+ *add red color css to when chance more than 5
+ *
+ */
 function animation(obj)
 {
     for(i = 0; i < 12; i++) {
@@ -64,6 +75,11 @@ function animation(obj)
     },4000);
 }
 
+/*
+ *receive data and pass to animation
+ *disable button click function to prevent user press when animation run
+ */
+
 function getData()
 {
    $.ajax({
@@ -86,6 +102,10 @@ function getData()
    });
 }
 
+
+/*
+ *get data from reward and add to table
+ */
 function getRewardData()
 {
    $.ajax({
@@ -97,8 +117,12 @@ function getRewardData()
    success: function (data) {
       console.log(data);
       var obj = JSON.parse(data);
-        $('.userReward').find('tr:first').after("<tr class='reward-table-tr'><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
-        $('.allReward').find('tr:first').after("<tr class='reward-table-tr'><td>"+obj.userid+"</td><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
+        if(obj.length > 0)
+        {
+            $('.userReward').find('tr:first').after("<tr class='reward-table-tr'><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
+             $('.allReward').find('tr:first').after("<tr class='reward-table-tr'><td>"+obj.userid+"</td><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
+        }
+      
    },
    error: function (request, status, error) {
     alert(request.responseText);
@@ -108,9 +132,10 @@ function getRewardData()
 }
 
 
-
-
-
+/*
+ *if user get reward alert and go to another getRewardData
+ *to add table
+ */
 function alertReward(obj)
 {
    if (obj.fnum == 7 && obj.snum == 7 && obj.tnum == 7)
