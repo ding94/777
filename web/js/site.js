@@ -115,10 +115,10 @@ function getRewardData()
 
    },
    success: function (data) {
-      console.log(data);
-      var obj = JSON.parse(data);
-        if(obj.length > 0)
+        if(data.length > 0)
         {
+            var obj = JSON.parse(data);
+            console.log(obj);
             $('.userReward').find('tr:first').after("<tr class='reward-table-tr'><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
              $('.allReward').find('tr:first').after("<tr class='reward-table-tr'><td>"+obj.userid+"</td><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
         }
