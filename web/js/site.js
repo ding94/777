@@ -55,6 +55,7 @@ function animation(obj)
       if(obj.chance < 5)
       {
         $(".chanceValue").text("Today's chance left :" + chanceLeft );
+          $('#disableOrEnable').prop('disabled', false);
       }
       else{
         $(".chanceValue").text("Today's Chance has finished!!");
@@ -74,11 +75,9 @@ function getData()
    success: function (data) {
       console.log(data);
       var obj = JSON.parse(data);
+      $('#disableOrEnable').prop('disabled', true);
       animation(obj);
-      if(obj.chance >= 5)
-      {
-          $('#disableOrEnable').prop('disabled', true);
-      }
+      
    },
    error: function (request, status, error) {
     alert(request.responseText);
