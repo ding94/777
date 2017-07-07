@@ -168,6 +168,69 @@ img{
   }
 }
 
+@media screen and (max-width: 1200px){
+  #theImg{
+    max-width: 700%;
+  }
+
+  .lock{
+    max-height: 100px;
+    position: absolute;
+    width: 65%;
+    left: 20%;
+  }
+
+  .chanceValue{
+    font-size: 1.5em;
+  }
+
+  .reward{
+    padding-top: 40px;
+  }
+}
+
+@media screen and (max-width: 1024px){
+  #theImg{
+    max-width: 75%;
+  }
+
+  .lock{
+    max-height: 100px;
+    position: absolute;
+    width: 65%;
+    left: 20%;
+  }
+
+  .chanceValue{
+    font-size: 1.5em;
+  }
+
+  .reward{
+    padding-top: 40px;
+  }
+}
+
+@media screen and (max-width:800px){
+  #theImg{
+    max-width: 100%;
+  }
+
+  .lock{
+    max-height: 100px;
+    position: absolute;
+    width: 65%;
+    left: 20%;
+  }
+
+  .chanceValue{
+    font-size: 1.5em;
+  }
+
+  .reward{
+    padding-top: 40px;
+  }
+}
+
 @media screen and (max-width: 568px) {
     .minigame {
         font-size:4em;
@@ -184,12 +247,21 @@ img{
     }
 
     .lock{
+      max-height: 100px;
+      position: absolute;
       width: 75%;
       left: 13%;
     }
 
+    .reward{
+      padding-top: 40px;
+      text-align: center;
+      font-size: 2em;
+      padding-bottom: 20px;
+    }
+
     #theImg{
-      max-width: 150%;
+      max-width: 120%;
     }
 
     .chanceValue{
@@ -199,12 +271,7 @@ img{
     .img-title{
       content: url(../img/titlemobile.jpg);
     }
-}
 
-@media screen and (max-width: 720px){
-  #theImg{
-    max-width: 150%;
-  }
 }
 
 @media screen and (min-width: 1200px){
@@ -220,6 +287,20 @@ img{
   .chanceValue{
     font-size: 2em;
   }
+
+  .reward{
+    padding-top: 100px;
+    text-align: center;
+    font-size: 2em;
+    padding-bottom: 20px;
+  }
+
+  .lock{
+    max-height: 100px;
+    position: absolute;
+    width: 65%;
+    left: 20%;
+  }
 }
 
 .img-title{
@@ -233,23 +314,9 @@ table{
     font-size: 2em;
 }
 
-.reward{
-    text-align: center;
-    font-size: 2em;
-    padding-top: 100px;
-    padding-bottom: 20px;
-}
-
 .table tbody tr td {
     border: none;
     font-size: 0.6em;
-}
-
-.lock{
-    max-height: 100px;
-    position: absolute;
-    width: 65%;
-    left: 20%;
 }
 
 .hideButton{
@@ -306,4 +373,13 @@ table{
 
 .rule-table-head{
   font-size: 18px;
+}
+
+.game-area{
+  height: auto;
+  width: auto;
+  padding: 20px;
+  border: solid;
+  border-radius: 15px;
+  border-color: black;
 }
