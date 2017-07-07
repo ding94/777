@@ -1,8 +1,8 @@
 <?php
 /* @var $this yii\web\View */
 ?>
+
 <div class = "container">
-    <h1 class="minigame">PLAY & WIN SGreward!</h1>
     <div class="row">
         <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseRule" aria-expanded="false" aria-controls="collapseRule">Rules <span class="spanRadnom glyphicon glyphicon-triangle-bottom"></span></a>
         <div class="collapse" id="collapseRule">
