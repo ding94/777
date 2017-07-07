@@ -18,12 +18,18 @@ class RewardController extends \yii\web\Controller
     public function actionGetdata()
     {
         $value = self::getReward(3);
-        $value = Json::encode($value[0]);
-        return $value;
+        if($value == false)
+        {
+            return false;
+        }
+        else{
+             $value = Json::encode($value[0]);
+             return $value;
+        }
     }
 
     /*
-     *
+     *detect which type of reward
      */
     public static function getReward($choice)
     {
@@ -45,6 +51,10 @@ class RewardController extends \yii\web\Controller
         elseif($choice == 3)
         {
             $reward = Reward::find()->where('userid = :id' ,[':id' =>  Yii::$app->user->identity->id])->limit(10)->orderBy(['(createtime)'=> SORT_DESC])->all();
+            if(empty($reward))
+            {
+                return false;
+            }
             foreach($reward as $rewards)
             {
                 $rewards['userid'] = User::find()->where('id = :id' ,[':id' => $rewards['userid']])->one()->username;
