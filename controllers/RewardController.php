@@ -47,6 +47,7 @@ class RewardController extends \yii\web\Controller
             $reward = Reward::find()->where('userid = :id' ,[':id' =>  Yii::$app->user->identity->id])->limit(10)->orderBy(['(createtime)'=> SORT_DESC])->all();
             foreach($reward as $rewards)
             {
+                $rewards['userid'] = User::find()->where('id = :id' ,[':id' => $rewards['userid']])->one()->username;
                 $rewards['createtime'] = date("M-d G:i" , strtotime($rewards['createtime']));
             }
         }

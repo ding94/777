@@ -115,7 +115,7 @@
             <div class="reward">
                 All Rewards
             </div>
-                <table class="table">
+                <table class="table allReward">
                     <tr class="success">
                         <td>User Name</td>
                         <td>Reward</td>

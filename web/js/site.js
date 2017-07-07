@@ -98,6 +98,7 @@ function getRewardData()
       console.log(data);
       var obj = JSON.parse(data);
         $('.userReward').find('tr:first').after("<tr class='reward-table-tr'><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
+        $('.allReward').find('tr:first').after("<tr class='reward-table-tr'><td>"+obj.userid+"</td><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
    },
    error: function (request, status, error) {
     alert(request.responseText);
