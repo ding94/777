@@ -86,19 +86,48 @@ function getData()
    });
 }
 
+function getRewardData()
+{
+   $.ajax({
+   url :"index.php?r=reward/getdata",
+   type: "get",
+   data :{
+
+   },
+   success: function (data) {
+      console.log(data);
+      var obj = JSON.parse(data);
+        $('.userReward').find('tr:first').after("<tr class='reward-table-tr'><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
+        $('.allReward').find('tr:first').after("<tr class='reward-table-tr'><td>"+obj.userid+"</td><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
+   },
+   error: function (request, status, error) {
+    alert(request.responseText);
+   }
+
+   });
+}
+
+
+
+
+
 function alertReward(obj)
 {
    if (obj.fnum == 7 && obj.snum == 7 && obj.tnum == 7)
    {
         alert('Congratulation! You have won RM 10 SGreward!');
+        getRewardData();
    }
    else if (((obj.fnum == obj.snum) === true) && ((obj.snum == obj.tnum) === true))
    {
        alert('Congratulation! You have won RM 5 SGreward!');
+       getRewardData();
+       
    }
    else if(obj.fnum == obj.snum || obj.snum == obj.tnum)
    {
       alert('Congratulation! You have won RM 2 SGreward!');
+      getRewardData();
    }
    else{
         alert('Play it again, you are almost get it!');
@@ -114,6 +143,4 @@ $(document).ready(function(){
   {
       $('#disableOrEnable').prop('disabled', true);
   }
-
-
 })
