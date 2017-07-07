@@ -21,7 +21,7 @@ class ChanceController extends Controller
             Yii::$app->session->setFlash('info' , 'Please Login in');
             return $this->redirect(['/site/login']);
         }
-
+          $this->layout = "minigame";
         /*
          * find wheter chance database create
          * if not create one
@@ -65,15 +65,15 @@ class ChanceController extends Controller
         {
             $userReward[$k]['createtime'] = date("M-d G:i" , strtotime($userRewards['createtime']));
         }
-       
+
         if(Yii::$app->request->isAjax){
             if($chance->chance < 6)
             {
                 RewardController::submitReward($model[1],$chance,$today,$tommorow);
             }
-          
+
         }
-        
+
         return $this->render('index' ,['model' =>$model , 'allReward' => $allReward , 'userReward' => $userReward]);
     }
 
