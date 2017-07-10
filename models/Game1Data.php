@@ -32,8 +32,8 @@ class Game1Data extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['dataID', 'record_1', 'record_2', 'record_3', 'record_4', 'record_5', 'usedTimes'], 'required'],
-            [['dataID', 'record_1', 'record_2', 'record_3', 'record_4', 'record_5', 'success', 'usedTimes'], 'integer'],
+            [['recordID'], 'required'],
+            [['recordID', 'record_1', 'record_2', 'record_3', 'record_4', 'record_5', 'success'], 'integer'],
         ];
     }
 
@@ -43,6 +43,7 @@ class Game1Data extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => 'id',
             'dataID' => 'Data ID',
             'record_1' => 'Record 1',
             'record_2' => 'Record 2',

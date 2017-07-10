@@ -74,25 +74,22 @@ class RewardController extends \yii\web\Controller
         {
             $reward = new Reward;
             $reward->userid = Yii::$app->user->identity->id;
+            $reward->game_id = "A1";
             if ($model->fnum == 7 && $model->snum == 7 && $model->tnum == 7) {//check first prize
                 $reward->status = 1;
                 $reward->price = 10;
-                $reward->game_id = "A1";
-                $reward->save();
             }
             else if ((($model->fnum == $model->snum) == true) && (($model->snum == $model->tnum) == true)){ //check second prize
                 $reward->status = 2;
                 $reward->price = 5;
-                $reward->game_id = "A1";
-                $reward->save();
             }
             else if($model->fnum == $model->snum || $model->snum == $model->tnum){ //check third prize
               $reward->status = 3;
               $reward->price = 2;
-                $reward->game_id = "A1";
-              $reward->save();
             }
-              $chance->chance += 1;
+            
+            $reward->save();
+            $chance->chance += 1;
       
             $condition = [
                 'and',

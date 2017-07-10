@@ -33,8 +33,9 @@ class Game1Record extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['userID', 'playDate', 'playTime', 'token', 'playingNow', 'ans'], 'required'],
-            [['userID', 'token', 'min_value', 'max_value', 'playingNow', 'ans'], 'integer'],
+            [['userID', 'playDate', 'playTime', 'ans'], 'required'],
+            [['userID', 'token', 'min_value', 'max_value', 'playingNow', 'ans' ], 'integer'],
+            ['usedTime' ,'integer', 'max' => 10],
             [['playDate', 'playTime'], 'safe'],
         ];
     }
@@ -54,6 +55,7 @@ class Game1Record extends \yii\db\ActiveRecord
             'max_value' => 'Max Value',
             'playingNow' => 'Playing Now',
             'ans' => 'Ans',
+            'usedTime' => 'usedTime',
         ];
     }
 }
