@@ -61,7 +61,6 @@ class ChanceController extends Controller
             {
                 RewardController::submitReward($model[1],$chance,$today,$tommorow);
             }
-
         }
 
         return $this->render('index' ,['model' =>$model , 'allReward' => $allReward , 'userReward' => $userReward]);
