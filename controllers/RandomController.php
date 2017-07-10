@@ -9,10 +9,6 @@ use Yii;
 
 class RandomController extends Controller
 {
-    public function actionIndex()
-    {
-    }
-
     public static function randomNumGen($chance)
     {
         self::random();
