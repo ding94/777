@@ -7,6 +7,7 @@ var imgurl = window.location.origin;
  */
 function randomNumber()
 {
+    $('#disableOrEnable').prop('disabled', true);
     $.ajax({
     url: "index.php?r=chance/index",
     type: "post",
@@ -91,7 +92,7 @@ function getData()
    success: function (data) {
       console.log(data);
       var obj = JSON.parse(data);
-      $('#disableOrEnable').prop('disabled', true);
+      //$('#disableOrEnable').prop('disabled', true);
       animation(obj);
 
    },
