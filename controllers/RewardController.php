@@ -33,37 +33,36 @@ class RewardController extends \yii\web\Controller
      */
     public static function getReward($choice)
     {
-        if($choice == 1)
-        {
-            $reward = Reward::find()->where('userid = :id',[':id' => Yii::$app->user->identity->id])->all();
-        }
-        
-        elseif($choice == 2)
-        {
-            $reward =  Reward::find()->limit(10)->orderBy(['(createtime)'=> SORT_DESC])->all();
-            foreach($reward as $rewards)
-            {
-                $rewards['userid'] = User::find()->where('id = :id' ,[':id' => $rewards['userid']])->one()->username;
-                $rewards['createtime'] = date("M-d G:i" , strtotime($rewards['createtime']));
-            }
+        switch($choice){
+            case 1:
+                $reward = Reward::find()->where('userid = :id',[':id' => Yii::$app->user->identity->id])->all();
+                break;
             
-        }
-        elseif($choice == 3)
-        {
-            $reward = Reward::find()->where('userid = :id' ,[':id' =>  Yii::$app->user->identity->id])->limit(10)->orderBy(['(createtime)'=> SORT_DESC])->all();
-            if(empty($reward))
-            {
-                return false;
-            }
-            foreach($reward as $rewards)
-            {
-                $rewards['userid'] = User::find()->where('id = :id' ,[':id' => $rewards['userid']])->one()->username;
-                $rewards['createtime'] = date("M-d G:i" , strtotime($rewards['createtime']));
-            }
-        }
-        else
-        {
-            return false;
+            case 2:
+                $reward =  Reward::find()->limit(10)->orderBy(['(createtime)'=> SORT_DESC])->all();
+                foreach($reward as $rewards)
+                {
+                    $rewards['userid'] = User::find()->where('id = :id' ,[':id' => $rewards['userid']])->one()->username;
+                    $rewards['createtime'] = date("M-d G:i" , strtotime($rewards['createtime']));
+                }
+                break;
+            
+            case 3:
+                $reward = Reward::find()->where('userid = :id' ,[':id' =>  Yii::$app->user->identity->id])->limit(10)->orderBy(['(createtime)'=> SORT_DESC])->all();
+                if(empty($reward))
+                {
+                    return false;
+                }
+                foreach($reward as $rewards)
+                {
+                    $rewards['userid'] = User::find()->where('id = :id' ,[':id' => $rewards['userid']])->one()->username;
+                    $rewards['createtime'] = date("M-d G:i" , strtotime($rewards['createtime']));
+                }
+                break;
+            default:
+                $reward = "No inside the choice";
+            break;
+                
         }
         
         return $reward;
