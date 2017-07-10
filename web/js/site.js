@@ -35,29 +35,29 @@ function animation(obj)
     for(i = 0; i < 12; i++) {
       $("#a").slideToggle(220,function(){
       var ctr = Math.floor(Math.random()*opts.length);
-      $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.PNG" />');
+      $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.png" />');
     });
   };
   $("#a").slideDown(800,function(){
-    $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.fnum + '.PNG" />');
+    $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.fnum + '.png" />');
     });
     for(i = 0; i < 12; i++) {
       $("#b").slideToggle(320,function(){
       var ctr = Math.floor(Math.random()*opts.length);
-      $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.PNG" />');
+      $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.png" />');
     });
   };
   $("#b").slideDown(800,function(){
-    $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.snum + '.PNG" />');
+    $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.snum + '.png" />');
     })
     for(i = 0; i < 12; i++) {
       $("#c").slideToggle(260,function(){
       var ctr = Math.floor(Math.random()*opts.length);
-      $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.PNG" />');
+      $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.png" />');
     });
   };
   $("#c").slideDown(800,function(){
-    $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.tnum + '.PNG" />');
+    $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.tnum + '.png" />');
     });
 
     setTimeout(function(){
@@ -93,7 +93,7 @@ function getData()
       var obj = JSON.parse(data);
       $('#disableOrEnable').prop('disabled', true);
       animation(obj);
-      
+
    },
    error: function (request, status, error) {
     alert(request.responseText);
@@ -122,7 +122,7 @@ function getRewardData()
             $('.userReward').find('tr:first').after("<tr class='reward-table-tr'><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
              $('.allReward').find('tr:first').after("<tr class='reward-table-tr'><td>"+obj.userid+"</td><td>RM "+obj.price+"</td><td class='dateEm'>"+obj.createtime+"</td></tr>");
         }
-      
+
    },
    error: function (request, status, error) {
     alert(request.responseText);
@@ -147,7 +147,7 @@ function alertReward(obj)
    {
        alert('Congratulation! You have won RM 5 SGreward!');
        getRewardData();
-       
+
    }
    else if(obj.fnum == obj.snum || obj.snum == obj.tnum)
    {
@@ -162,7 +162,7 @@ function alertReward(obj)
 
 $(document).ready(function(){
   for(i = 1; i <= 7; i++) {
-    $("[value='"+ i +"']").prepend('<img id="theImg" class="img-responsive" src="'+ imgurl + '/777/web/img/'+ i + '.PNG" />');
+    $("[value='"+ i +"']").prepend('<img id="theImg" class="img-responsive" src="'+ imgurl + '/777/web/img/'+ i + '.png" />');
   }
   if($('#chanceHidden').val() >= 6)
   {
