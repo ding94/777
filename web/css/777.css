@@ -506,7 +506,6 @@ table{
   padding: 8px;
   text-align: center;
   height:70px;
-  position:relative;
 }
 
 
@@ -584,4 +583,17 @@ table{
   height: 20px;
   width: 20px;
   background-color: white;
+}
+
+.gamespan{
+  padding: 10px;
+  font-size: 18px;
+}
+
+.numberInput{
+  padding: 10px;
+}
+
+.gamebutton{
+  padding: 10px;
 }
