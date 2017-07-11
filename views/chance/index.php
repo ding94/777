@@ -1,7 +1,6 @@
 <?php
 /* @var $this yii\web\View */
 ?>
-
 <div class = "container">
     <div class="row">
         <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseRule" aria-expanded="false" aria-controls="collapseRule">Rules <span class="spanRadnom glyphicon glyphicon-triangle-bottom"></span></a>

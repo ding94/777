@@ -28,32 +28,35 @@ class InbetweenController extends Controller
         }
         
         if(Yii::$app->request->isAjax){
-            $data = Yii::$app->request->post()['record'];
+            if($record->usedTime <= 5)
+            {
+                $data = Yii::$app->request->post()['record'];
             
-            if($data <= $record->min_value || $data >= $record->max_value)
-            {
-                return false;
-            }
-            
-            if($data == $record->ans)
-            {
-                $record->token = 0;
-            }
-            else
-            {
-                if($data > $record->ans)
+                if($data <= $record->min_value || $data >= $record->max_value)
                 {
-					$record->max_value=$data;
+                    return false;
                 }
-				elseif($data < $record->ans)
+                
+                if($data == $record->ans)
                 {
-					$record->min_value=$data;
+                    $record->token = 0;
                 }
+                else
+                {
+                    if($data > $record->ans)
+                    {
+                        $record->max_value=$data;
+                    }
+                    elseif($data < $record->ans)
+                    {
+                        $record->min_value=$data;
+                    }
+                }
+                $record->usedTime +=1;
+                $record->playingNow = $data;
+                $record->save();
+                GamedataController::gameDataGen($record->recordID,$data,$record->token,$record->usedTime);
             }
-            $record->usedTime +=1;
-            $record->playingNow = $data;
-            $record->save();
-            GamedataController::gameDataGen($record->recordID,$data,$record->token,$record->usedTime);
         }
         return $this->render('index');
     }
