@@ -7,6 +7,7 @@ use yii\helpers\Json;
 use app\controllers\GamedataController;
 use app\models\Game1Record;
 use app\models\Reward;
+use yii\helpers\ArrayHelper;
 
 class InbetweenController extends Controller
 {
@@ -63,5 +64,30 @@ class InbetweenController extends Controller
         $reward = RewardController:: rewardTable(); 
         //var_dump($reward);exit;
         return $this->render('index' ,['record' => $record, 'reward' => $reward]);
+    }
+
+    public function actionGetinput()
+    {  
+        if(Yii::$app->request->isAjax){
+            if(Yii::$app->request->isGet)
+            {
+                 $today =  date('Y-m-d');
+                $record = Game1Record::find()->where('userid = :id and playDate = :date' ,[':id' => Yii::$app->user->identity->id , ':date' => $today])->one();
+                    unset($record['userID']);
+                    unset($record['recordID']);
+                   
+                if ($record->token == 1) {
+                     unset($record['token']);
+                    unset($record['ans']);
+                    unset($record['usedTime']);
+                }
+                else{
+
+                }
+                
+                 $value = Json::encode($record);
+                 return $value;
+            }
+        }
     }
 }

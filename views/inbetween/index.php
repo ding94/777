@@ -1,8 +1,8 @@
 <body>
 <div class = "container">
-	<div id="top">
+	<div>
 
-			<h1> <?php if($record->usedTime <=0 ){
+			<h1 id="top"> <?php if($record->usedTime <=0 ){
 					echo "您是否是我们要找的那个有缘人呢~~~";
 						}
 			else {
@@ -66,7 +66,7 @@
 		</div>
 	</div>
 
-	<div class="row chg">
+	<div class="row chg" id="times">
 
 
 			<?php
