@@ -6,6 +6,7 @@ use yii\web\controller;
 use yii\helpers\Json;
 use app\controllers\GamedataController;
 use app\models\Game1Record;
+use app\models\Reward;
 
 class InbetweenController extends Controller
 {
@@ -55,6 +56,9 @@ class InbetweenController extends Controller
             $record->save();
             GamedataController::gameDataGen($record->recordID,$data,$record->token,$record->usedTime);
         }
-        return $this->render('index');
+
+        $reward = RewardController:: rewardTable(); 
+        //var_dump($reward);exit;
+        return $this->render('index' ,['record' => $record, 'reward' => $reward]);
     }
 }
