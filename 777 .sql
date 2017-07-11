@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2017 at 06:09 AM
+-- Generation Time: Jul 11, 2017 at 02:47 AM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -39,17 +39,60 @@ CREATE TABLE `chance` (
 --
 
 INSERT INTO `chance` (`id`, `chance`, `userid`, `createtime`, `updatetime`) VALUES
-(31, 6, 9, '2017-07-07 02:42:10', '2017-07-07 02:42:10'),
-(30, 6, 8, '2017-07-07 02:33:26', '2017-07-07 02:33:26'),
-(29, 6, 8, '2017-07-06 03:35:31', '2017-07-06 03:35:31'),
-(28, 4, 11, '2017-07-05 04:28:16', '2017-07-05 04:28:16'),
-(27, 6, 8, '2017-07-05 03:37:51', '2017-07-05 03:37:51'),
-(26, 6, 24, '2017-07-05 03:03:23', '2017-07-05 03:03:23'),
-(25, 2, 24, '2017-07-04 01:39:23', '2017-07-04 01:39:24'),
-(24, 6, 24, '2017-07-03 10:03:55', '2017-07-03 10:03:55'),
-(23, 6, 13, '2017-07-03 02:01:51', '2017-07-03 02:01:51'),
-(22, 6, 8, '2017-07-03 01:49:50', '2017-07-03 01:49:50'),
-(21, 2, 15, '2017-06-30 08:17:34', '2017-06-30 07:40:44');
+(29, 6, 9, '2017-07-10 06:39:38', '2017-07-10 06:39:38'),
+(30, 6, 8, '2017-07-10 06:45:58', '2017-07-10 06:45:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `game_1_data`
+--
+
+CREATE TABLE `game_1_data` (
+  `id` int(11) NOT NULL,
+  `recordID` int(11) NOT NULL,
+  `record_1` int(11) DEFAULT '0',
+  `record_2` int(11) DEFAULT '0',
+  `record_3` int(11) DEFAULT '0',
+  `record_4` int(11) DEFAULT '0',
+  `record_5` int(11) DEFAULT '0',
+  `success` int(11) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `game_1_data`
+--
+
+INSERT INTO `game_1_data` (`id`, `recordID`, `record_1`, `record_2`, `record_3`, `record_4`, `record_5`, `success`) VALUES
+(2, 17, 41, 42, 43, 50, 0, 1),
+(6, 21, 50, 0, 0, 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `game_1_record`
+--
+
+CREATE TABLE `game_1_record` (
+  `recordID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `playDate` date NOT NULL,
+  `playTime` time NOT NULL,
+  `token` int(11) NOT NULL DEFAULT '1',
+  `min_value` int(11) NOT NULL DEFAULT '1',
+  `max_value` int(11) NOT NULL DEFAULT '99',
+  `playingNow` int(11) NOT NULL DEFAULT '0',
+  `ans` int(11) NOT NULL,
+  `usedTime` int(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `game_1_record`
+--
+
+INSERT INTO `game_1_record` (`recordID`, `userID`, `playDate`, `playTime`, `token`, `min_value`, `max_value`, `playingNow`, `ans`, `usedTime`) VALUES
+(17, 8, '2017-07-10', '16:38:57', 0, 43, 99, 50, 50, 4),
+(21, 8, '2017-07-11', '10:28:02', 0, 1, 99, 50, 50, 1);
 
 -- --------------------------------------------------------
 
@@ -72,42 +115,18 @@ CREATE TABLE `random` (
 --
 
 INSERT INTO `random` (`id`, `fnum`, `snum`, `tnum`, `userid`, `chance`, `token`) VALUES
-(119, 5, 2, 3, 9, 6, '1'),
-(118, 7, 2, 7, 9, 5, '1'),
-(117, 2, 5, 4, 9, 4, '1'),
-(116, 1, 7, 5, 9, 3, '1'),
-(115, 2, 2, 4, 9, 2, '1'),
-(114, 2, 7, 3, 9, 1, '1'),
-(113, 2, 3, 7, 11, 1, '0'),
-(112, 5, 3, 1, 11, 2, '0'),
-(111, 2, 3, 7, 11, 3, '0'),
-(110, 5, 2, 1, 11, 4, '0'),
-(109, 7, 7, 4, 11, 5, '0'),
-(108, 2, 7, 5, 11, 6, '0'),
-(107, 1, 3, 5, 24, 1, '0'),
-(106, 2, 4, 3, 24, 2, '0'),
-(105, 7, 2, 3, 24, 3, '0'),
-(104, 1, 7, 2, 24, 4, '0'),
-(103, 4, 7, 5, 24, 5, '0'),
-(102, 2, 5, 1, 24, 6, '0'),
-(101, 5, 5, 3, 13, 1, '0'),
-(100, 1, 5, 5, 13, 2, '0'),
-(99, 4, 4, 1, 13, 3, '0'),
-(98, 3, 5, 2, 13, 4, '0'),
-(97, 7, 5, 4, 13, 5, '0'),
-(96, 7, 2, 5, 13, 6, '0'),
-(95, 5, 2, 1, 8, 1, '1'),
-(94, 4, 2, 7, 8, 2, '1'),
-(93, 4, 7, 3, 8, 3, '1'),
-(92, 2, 5, 4, 8, 4, '1'),
-(91, 2, 4, 3, 8, 5, '1'),
-(90, 5, 1, 4, 8, 6, '1'),
-(89, 2, 2, 4, 15, 1, '0'),
-(88, 2, 2, 2, 15, 2, '0'),
-(87, 2, 2, 1, 15, 3, '0'),
-(86, 7, 7, 7, 15, 4, '0'),
-(85, 7, 4, 2, 15, 5, '0'),
-(84, 2, 2, 2, 15, 6, '0');
+(114, 1, 7, 5, 9, 1, '1'),
+(115, 1, 2, 3, 9, 2, '1'),
+(116, 1, 7, 2, 9, 3, '1'),
+(117, 4, 2, 3, 9, 4, '1'),
+(118, 3, 3, 5, 9, 5, '1'),
+(119, 7, 1, 3, 9, 6, '1'),
+(120, 1, 2, 3, 8, 1, '1'),
+(121, 5, 1, 7, 8, 2, '1'),
+(122, 1, 4, 3, 8, 3, '1'),
+(123, 1, 3, 5, 8, 4, '1'),
+(124, 4, 4, 5, 8, 5, '1'),
+(125, 2, 1, 1, 8, 6, '1');
 
 -- --------------------------------------------------------
 
@@ -118,6 +137,7 @@ INSERT INTO `random` (`id`, `fnum`, `snum`, `tnum`, `userid`, `chance`, `token`)
 CREATE TABLE `reward` (
   `id` int(11) NOT NULL,
   `price` int(11) NOT NULL,
+  `game_id` varchar(10) DEFAULT NULL,
   `status` int(1) NOT NULL,
   `userid` int(11) NOT NULL,
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -127,27 +147,32 @@ CREATE TABLE `reward` (
 -- Dumping data for table `reward`
 --
 
-INSERT INTO `reward` (`id`, `price`, `status`, `userid`, `createtime`) VALUES
-(82, 2, 1, 13, '2017-07-03 05:35:00'),
-(81, 2, 1, 13, '2017-07-03 05:34:53'),
-(83, 2, 1, 24, '2017-07-03 10:04:22'),
-(80, 2, 1, 13, '2017-07-03 05:34:45'),
-(79, 2, 1, 13, '2017-07-03 03:20:06'),
-(78, 2, 1, 13, '2017-07-03 02:02:58'),
-(77, 5, 2, 8, '2017-07-03 01:51:42'),
-(76, 2, 1, 15, '2017-06-30 09:23:22'),
-(84, 2, 1, 24, '2017-07-05 03:05:31'),
-(85, 2, 1, 24, '2017-07-05 03:05:46'),
-(86, 10, 1, 24, '2017-07-05 03:07:02'),
-(87, 2, 1, 8, '2017-07-05 03:38:00'),
-(88, 2, 1, 8, '2017-07-05 04:05:49'),
-(89, 2, 1, 8, '2017-07-05 04:07:57'),
-(90, 2, 1, 11, '2017-07-05 04:28:17'),
-(91, 2, 1, 11, '2017-07-05 06:25:00'),
-(92, 2, 1, 11, '2017-07-05 06:27:37'),
-(93, 2, 1, 11, '2017-07-05 06:28:42'),
-(94, 2, 1, 9, '2017-07-07 02:42:20'),
-(95, 2, 1, 9, '2017-07-07 02:45:42');
+INSERT INTO `reward` (`id`, `price`, `game_id`, `status`, `userid`, `createtime`) VALUES
+(86, 2, 'A1', 3, 9, '2017-07-10 06:40:08'),
+(87, 2, 'A1', 3, 8, '2017-07-10 06:46:31'),
+(92, 10, 'B1', 1, 8, '2017-07-11 02:28:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sg_game_reward_balance`
+--
+
+CREATE TABLE `sg_game_reward_balance` (
+  `sg_reward_id` int(11) NOT NULL,
+  `sg_reward_name` varchar(50) NOT NULL,
+  `sg_balance` int(10) NOT NULL,
+  `sg_positive_balance` int(10) NOT NULL,
+  `sg_negative_balance` int(10) NOT NULL,
+  `in_charge_admin_id` int(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sg_game_reward_balance`
+--
+
+INSERT INTO `sg_game_reward_balance` (`sg_reward_id`, `sg_reward_name`, `sg_balance`, `sg_positive_balance`, `sg_negative_balance`, `in_charge_admin_id`) VALUES
+(1, 'Guessing Real Number(in between 1 - 99)', 2590, 2600, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -201,6 +226,18 @@ ALTER TABLE `chance`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `game_1_data`
+--
+ALTER TABLE `game_1_data`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `game_1_record`
+--
+ALTER TABLE `game_1_record`
+  ADD PRIMARY KEY (`recordID`);
+
+--
 -- Indexes for table `random`
 --
 ALTER TABLE `random`
@@ -211,6 +248,12 @@ ALTER TABLE `random`
 --
 ALTER TABLE `reward`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sg_game_reward_balance`
+--
+ALTER TABLE `sg_game_reward_balance`
+  ADD PRIMARY KEY (`sg_reward_id`);
 
 --
 -- Indexes for table `user`
@@ -231,17 +274,32 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `chance`
 --
 ALTER TABLE `chance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `game_1_data`
+--
+ALTER TABLE `game_1_data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `game_1_record`
+--
+ALTER TABLE `game_1_record`
+  MODIFY `recordID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `random`
 --
 ALTER TABLE `random`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 --
 -- AUTO_INCREMENT for table `reward`
 --
 ALTER TABLE `reward`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+--
+-- AUTO_INCREMENT for table `sg_game_reward_balance`
+--
+ALTER TABLE `sg_game_reward_balance`
+  MODIFY `sg_reward_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `user`
 --
@@ -251,7 +309,7 @@ DELIMITER $$
 --
 -- Events
 --
-CREATE DEFINER=`root`@`localhost` EVENT `radom_0` ON SCHEDULE EVERY '0 1' DAY_HOUR STARTS '2017-07-04 09:38:00' ON COMPLETION NOT PRESERVE ENABLE COMMENT 'update random to 0' DO UPDATE random SET token = '0'$$
+CREATE DEFINER=`root`@`localhost` EVENT `radom_0` ON SCHEDULE EVERY '0 1' DAY_HOUR STARTS '2017-06-30 00:00:00' ON COMPLETION NOT PRESERVE ENABLE COMMENT 'update random to 0' DO UPDATE random SET token = '0'$$
 
 DELIMITER ;
 
