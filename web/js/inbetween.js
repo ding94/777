@@ -8,7 +8,7 @@ function randomNumber()
     url: "index.php?r=inbetween/index",
     type: "post",
     data : {
-        record: 50,
+        record: 51,
         _csrf: '<?=Yii::$app->request->getCsrfToken()?>',
     },
    success: function (data) {

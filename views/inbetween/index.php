@@ -1,19 +1,5 @@
-
-<?php
-use app\models\GameRecord;
-use app\models\GameResult;
-use app\models\User;
-?>
-
 <body>
 	<div id="top">
-	<span id="user"><?php echo Yii::$app->session['userName'];?></span>
-		<?php
-			//var_dump($record);exit;
-		?>
-
-		<a href="<?php echo yii\helpers\Url::to(['site/logout'])?>" class="log">登出</a>
-
 			<h1> <?php
 					if($record->usedTime <=0 ){
 					echo "您是否是我们要找的那个有缘人呢~~~";

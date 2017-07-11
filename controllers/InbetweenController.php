@@ -29,7 +29,7 @@ class InbetweenController extends Controller
         }
         
         if(Yii::$app->request->isAjax){
-            if($record->usedTime <= 5)
+            if($record->token == 1)
             {
                 $data = Yii::$app->request->post()['record'];
             
