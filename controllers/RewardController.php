@@ -126,4 +126,15 @@ class RewardController extends \yii\web\Controller
         $reward->save();
         SgGameRewardBalanceController::reduceBalance($reward->price);
     }
+
+    public static function rewardTable()
+    {
+       $reward = Reward::find()->where('game_id = :gid',['gid' => "B1"])->limit(7)->orderBy(['(createtime)'=> SORT_DESC])->all();
+        foreach($reward as $rewards)
+                {
+                    $rewards['userid'] = User::find()->where('id = :id' ,[':id' => $rewards['userid']])->one()->username;
+                }
+
+       return $reward;
+    }
 }
