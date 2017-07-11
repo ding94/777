@@ -1,14 +1,14 @@
 $(document).ready(function(){
-    randomNumber();
+    //randomNumber();
 })
 
-function randomNumber()
+function enterValue(userInput)
 {
     $.ajax({
     url: "index.php?r=inbetween/index",
     type: "post",
     data : {
-        record: 51,
+        record: userInput,
         _csrf: '<?=Yii::$app->request->getCsrfToken()?>',
     },
    success: function (data) {
@@ -20,3 +20,11 @@ function randomNumber()
     }
 });
 }
+
+$('#value').keypress(function(e){
+  if(e.which == 13)
+  {
+    enterValue($(this).val());
+  }
+
+});

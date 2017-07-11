@@ -62,7 +62,7 @@
 		<input class="col-xs-4 col-xs-offset-4 numberInput" type="text" maxlength="2" name="value" id="value" placeholder="1 - 99" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  autofocus />
 		</div>
 		<div class="col-xs-4 col-xs-offset-4 gamebutton">
-		<button type="button" class="btn btn-primary btn-lg btn-block" value="提交" id="btnSubmit" onclick="verifyorder(document.getElementById('value').value)">Press</button>
+		<button type="button" class="btn btn-primary btn-lg btn-block" value="提交" id="btnSubmit" onclick="enterValue(document.getElementById('value').value)">Press</button>
 		</div>
 	</div>
 
