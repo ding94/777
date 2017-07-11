@@ -6,6 +6,7 @@ use app\models\Reward;
 use app\models\Chance;
 use app\models\User;
 use yii\web\controller;
+use app\controllers\SgGameRewardBalanceController;
 use Yii;
 
 class RewardController extends \yii\web\Controller
@@ -57,15 +58,14 @@ class RewardController extends \yii\web\Controller
                 break;
             default:
                 $reward = "No inside the choice";
-            break;
-                
+            break;  
         }
         
         return $reward;
     }
 
     /*
-    *save reward prize to database
+    *save reward of random prize to database
     */
 
     public static function submitReward($model,$chance,$today,$tommorow)
@@ -98,5 +98,32 @@ class RewardController extends \yii\web\Controller
             ];
             Chance::updateAll(['chance' => $chance->chance ],$condition);
         }
+    }
+    
+    /*
+     *save reward Inbetween prize to database
+     */
+    
+    public static function submitInbetween($usedTime)
+    {
+        $reward = new Reward;
+        $reward->userid = Yii::$app->user->identity->id;
+        $reward->game_id = "B1";
+        if($usedTime == 1)
+        {
+            $reward->status =1;
+            $reward->price = 10;
+        }
+        elseif($usedTime == 2 || $usedTime == 3)
+        {
+            $reward->status =2;
+            $reward->price = 5;
+        }
+        else{
+            $reward->status =3;
+            $reward->price = 2;
+        }
+        $reward->save();
+        SgGameRewardBalanceController::reduceBalance($reward->price);
     }
 }
