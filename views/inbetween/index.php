@@ -16,7 +16,7 @@
 	</div>
 
 	<div class="row middle">
-		<div class="col-xs-4">
+		<div id="min" class="col-xs-4">
 			<?php
 					if($record->usedTime >0){
 						if($record->playingNow != $record->ans){
@@ -24,7 +24,7 @@
 						}
 			}?>
 		</div>
-		<div class="col-xs-4">
+		<div id="mid" class="col-xs-4">
 			<?php
 				if($record->usedTime >0){
 					if($record->playingNow != $record->ans){
@@ -35,7 +35,7 @@
 					}
 			}?>
 		</div>
-		<div class="col-xs-4">
+		<div id="max" class="col-xs-4">
 			<?php
 				if($record->usedTime >0){
 					if($record->playingNow != $record->ans){
@@ -60,9 +60,7 @@
 	</div>
 
 
-	<div class="row chg">
-
-
+	<div id="times" class="row chg">
 			<?php
 
 			if($record->usedTime >=5 || $record->token == 0){
