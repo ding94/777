@@ -100,7 +100,7 @@ AppAsset::register($this);
 
 							
 						}	
-			elseif($record->usedTime >=0 ){
+			elseif($record->usedTime <5 ){
 				?>
 				您还有 <?php echo 5-$record->usedTime ?> 次机会哟。
 				<?php
