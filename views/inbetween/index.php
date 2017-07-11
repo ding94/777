@@ -1,8 +1,8 @@
 <body>
 <div class = "container">
-	<div id="top">
+	<div>
 
-			<h1> <?php if($record->usedTime <=0 ){
+			<h1 id="top"> <?php if($record->usedTime <=0 ){
 					echo "您是否是我们要找的那个有缘人呢~~~";
 						}
 			else {
@@ -59,8 +59,12 @@
 		</div>
 	</div>
 
+
 	<div class="row chg">
-		<?php
+
+
+			<?php
+
 			if($record->usedTime >=5 || $record->token == 0){
 					echo "您今天的次数已达成。请明天再来。";
 			}	
