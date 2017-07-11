@@ -94,11 +94,8 @@ AppAsset::register($this);
 
 
 			<?php
-
-			if($record->usedTime >=5){
+			if($record->usedTime >=5 || $record->token == 0){
 							echo "您今天的次数已达成。请明天再来。";
-
-							
 						}	
 			elseif($record->usedTime <5 ){
 				?>
