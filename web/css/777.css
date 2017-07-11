@@ -430,12 +430,15 @@ table{
 #mid{
 
   text-align:center;
-  font-size:50px;
   width:20%;
   height:100%;
   float:left;
 
 
+}
+
+#to{
+    font-size:100px;
 }
 
 #right{
@@ -475,13 +478,10 @@ table{
 
 
 #showrule{
-  background-color: white;
-  position:relative;
-  font-size: 14px;
+  font-size: 18px;
+  background-color: #F5EFD6;
   text-align: left;
   padding:10px;
-  font-family: verdana;
-
 }
 
 /* #reward{
@@ -522,7 +522,7 @@ table{
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-  background-color: white;
+    background-color: white;
     color: black;
     border: 2px solid #555555;
   }
@@ -551,31 +551,6 @@ table{
 
 }
 
-
-#copyright{
-
-  position:relative;
-  font-size: 14px;
-  color: black;
-  float:right;
-
-}
-
-#user{
-  font-size: 16px;
-  color: black;
-  font-family: verdana;
-}
-
-.log{
-
-  position:relative;
-  float:right;
-  color: black;
-
-
-}
-
 .box{
   position: absolute;
   left: 60%;
@@ -596,4 +571,9 @@ table{
 
 .gamebutton{
   padding: 10px;
+}
+
+.game-rule-tr{
+  font-size: 24px;
+  text-align: center;
 }
