@@ -14,6 +14,7 @@ function randomNumber()
    success: function (data) {
       console.log(data.search);
    },
+
    error: function (request, status, error) {
     alert(request.responseText);
     }
