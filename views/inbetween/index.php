@@ -15,22 +15,17 @@
 				}?> </h1>
 	</div>
 
-
-	<div id="middle">
-		<div id="left" >
-			<h2 id="min" >
-				<?php
-				if($record->usedTime >0){
-					if($record->playingNow != $record->ans){
-						echo $record->min_value;
-					}
-				}?>
-			</h2>
+	<div class="row middle">
+		<div class="col-xs-4">
+			<?php
+					if($record->usedTime >0){
+						if($record->playingNow != $record->ans){
+							echo $record->min_value;
+						}
+			}?>
 		</div>
-
-		<div id="mid">
-			<h2 id="to" >
-				<?php
+		<div class="col-xs-4">
+			<?php
 				if($record->usedTime >0){
 					if($record->playingNow != $record->ans){
 						echo "到";
@@ -38,55 +33,48 @@
 					elseif($record->playingNow == $record->ans){
 						echo $record->ans;
 					}
-				}?>
-			</h2>
+			}?>
 		</div>
-
-		<div id="right" >
-			<h2 id="max" >
-				<?php
+		<div class="col-xs-4">
+			<?php
 				if($record->usedTime >0){
 					if($record->playingNow != $record->ans){
 						echo $record->max_value;
-					}
-				}?>
-			</h2>
+				}
+			}?>
 		</div>
 	</div>
 
 
-<div id="bottom">
-	<div class="row" id="game">
-		<span class="col-xs-4 col-xs-offset-4 gamespan">请输入您的号码。</span>
-		<div>
-		<input class="col-xs-4 col-xs-offset-4 numberInput" type="text" maxlength="2" name="value" id="value" placeholder="1 - 99" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  autofocus />
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 gamespan">请输入您的号码。</div>
+		<div class="col-md-4 col-md-offset-4 numberInput">
+			<div class="input-group">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-pencil "></span></span>
+				<input type="text" class="form-control"  maxlength="2" name="value" id="value" placeholder="1 - 99" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  autofocus />
+			</div>
 		</div>
 		<div class="col-xs-4 col-xs-offset-4 gamebutton">
-		<button type="button" class="btn btn-primary btn-lg btn-block" value="提交" id="btnSubmit" onclick="enterValue(document.getElementById('value').value)">Press</button>
+			<button type="button" class="btn btn-primary btn-lg btn-block" value="提交" id="btnSubmit" onclick="enterValue(document.getElementById('value').value)">Press</button>
 		</div>
 	</div>
 
 	<div class="row chg">
-
-
-			<?php
+		<?php
 			if($record->usedTime >=5 || $record->token == 0){
-							echo "您今天的次数已达成。请明天再来。";
-						}	
+					echo "您今天的次数已达成。请明天再来。";
+			}	
 			elseif($record->usedTime <5 ){
-				?>
-				您还有 <?php echo 5-$record->usedTime ?> 次机会哟。
-				<?php
-				}
 			?>
-
-
-			</div>
+				您还有 <?php echo 5-$record->usedTime ?> 次机会哟。
+			<?php
+			}
+		?>
+	</div>
 
 
 
 		<div class="rule">
-
 			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapses" aria-expanded="false" aria-controls="collapses">游戏规则 </button>
 			<div class="collapse" id="collapses">
 				 <div id="showrule">
@@ -114,7 +102,6 @@
 				  </tr>
 				  </table>
 				</div>
-
 			</div>
 		</div>
 		
@@ -126,10 +113,6 @@
 					<td>奖励</td>
 					<td>时间</td>
 				  </tr>
-				  
-				  
-					
-					
 				
 					<?php foreach($reward as $data):?>
                     <tr class="reward-table-tr">
@@ -137,21 +120,14 @@
                         <td>RM <?php echo $data['price']?></td>
                         <td><?php echo $data['createtime']?></td>
                     </tr>
-						 <?php endforeach ;?>		
-								
-				
-								
-								
-					
+					<?php endforeach ;?>		
 				 
-				  </table>
+			</table>
 			
 		
-		
-		</div>
-			<h5 id="copyright"></h5>
+	</div>
 </div>
-</div>
+
 
 </body>
 
