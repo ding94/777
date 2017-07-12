@@ -79,6 +79,7 @@ function getVal(){
        // document.getElementById("max").innerHTML = result.max_value;
         $("#max").text(result.max_value).addClass('bounceInRight');
         if (result.usedTime >= 5) { 
+          document.getElementById("top").innerHTML = "Game End";
           document.getElementById("times").innerHTML = "Your chances today had finished. Please come again tomorrow.";
       }
       else {

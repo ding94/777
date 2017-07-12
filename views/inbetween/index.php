@@ -9,6 +9,9 @@
 					if($record->token == 0){
 						echo "Congratulations! You have won our price!";
 					}
+					elseif($record->token == 1 && $record->usedTime >= 5){
+						echo "Game End";
+					}
 					else{
 						echo "Game in progress...........";
 					}
@@ -47,7 +50,7 @@
 
 
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4 gamespan">Please enter the number.</div>
+		<div class="col-md-4 col-md-offset-4 gamespan">Please enter a number.</div>
 		<div class="col-sm-4 col-sm-offset-4 numberInput">
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-pencil "></span></span>
