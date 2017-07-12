@@ -12,6 +12,8 @@ function enterValue(userInput)
     },
    success: function (data) {
       console.log(data.search);
+      $("#min").toggleClass('bounceInLeft');
+      $("#max").toggleClass('bounceInRight');
       getVal();
    },
 
@@ -64,10 +66,11 @@ function getVal(){
 
       }else{
         document.getElementById("value").value = "";
-        document.getElementById("min").innerHTML = result.min_value;
+        //document.getElementById("min").innerHTML = result.min_value;
         document.getElementById("mid").innerHTML = "到";
-        document.getElementById("max").innerHTML = result.max_value;
-        $("#max").toggle('bounce', {times:3}, 500);
+        $("#min").text(result.min_value).addClass('bounceInLeft');
+       // document.getElementById("max").innerHTML = result.max_value;
+        $("#max").text(result.max_value).addClass('bounceInRight');
         if (result.usedTime >= 5) { 
           document.getElementById("times").innerHTML = "您今天的次数已达成。请明天再来。";
       }
