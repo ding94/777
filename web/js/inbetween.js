@@ -8,7 +8,10 @@ $(document).ready(function(){
 
 function enterValue(userInput)
 {
-  if (userInput <= document.getElementById("min").innerHTML.trim() || userInput >= document.getElementById("max").innerHTML.trim() ) 
+  var input = parseInt(userInput ,2);
+  var minValue = parseInt(document.getElementById("min").innerHTML.trim() ,2);
+  var maxValue = parseInt(document.getElementById("max").innerHTML.trim() ,2);
+  if (input <= minValue || input >= maxValue) 
   {
     alert("Please enter number between "+ document.getElementById("min").innerHTML.trim() + " to " +document.getElementById("max").innerHTML.trim() +" !");
   }else{
