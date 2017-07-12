@@ -14,6 +14,13 @@ class InbetweenController extends Controller
     public function actionIndex(){
         $this->layout = "inbetween";
         
+        if(Yii::$app->user->getIsGuest())
+        {
+            Yii::$app->session->setFlash('info' , 'Please Login in');
+            return $this->redirect(['/site/login']);
+        }
+
+
         $today =  date('Y-m-d');
         $record = Game1Record::find()->where('userid = :id and playDate = :date' ,[':id' => Yii::$app->user->identity->id , ':date' => $today])->one();
         
@@ -79,7 +86,6 @@ class InbetweenController extends Controller
                 if ($record->token == 1) {
                      unset($record['token']);
                     unset($record['ans']);
-                    unset($record['usedTime']);
                 }
                 else{
 
