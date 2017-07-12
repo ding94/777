@@ -43,7 +43,9 @@ function getVal(){
 
       }else{
       document.getElementById("min").innerHTML = val.min_value;
+      document.getElementById("mid").innerHTML = "到";
       document.getElementById("max").innerHTML = val.max_value;
+
     }
    },
 
