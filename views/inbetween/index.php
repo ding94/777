@@ -18,7 +18,7 @@
 	<div class="row middle">
 		<div id="min" class="col-xs-4">
 			<?php
-					if($record->usedTime >0){
+					if($record->usedTime >=0){
 						if($record->playingNow != $record->ans){
 							echo $record->min_value;
 						}
@@ -26,7 +26,7 @@
 		</div>
 		<div id="mid" class="col-xs-4">
 			<?php
-				if($record->usedTime >0){
+				if($record->usedTime >=0){
 					if($record->playingNow != $record->ans){
 						echo "到";
 					}
@@ -37,7 +37,7 @@
 		</div>
 		<div id="max" class="col-xs-4">
 			<?php
-				if($record->usedTime >0){
+				if($record->usedTime >=0){
 					if($record->playingNow != $record->ans){
 						echo $record->max_value;
 				}
