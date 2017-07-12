@@ -9,9 +9,10 @@ $this->title = 'My Yii Application';
     <div class="jumbotron">
         <h1>Welcome</h1>
 
-        <p class="lead">Press below button to start the game</p>
+        <p class="lead">Press below button to start the game </p>
 
-        <p><a class="btn btn-lg btn-success" href="<?php echo yii\helpers\Url::to(['chance/index'])?>">Play!!</a></p>
+        <p><a class="btn btn-lg btn-lg btn-block btn-success" href="<?php echo yii\helpers\Url::to(['chance/index'])?>">777</a></p>
+        <p><a class="btn btn-lg btn-lg btn-block btn-success" href="<?php echo yii\helpers\Url::to(['inbetween/index'])?>">In Between</a></p>
     </div>
 
 
