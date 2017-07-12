@@ -61,7 +61,7 @@ function getVal(){
           document.getElementById("mid").innerHTML = result.ans;
           document.getElementById("min").innerHTML = "";
           document.getElementById("max").innerHTML = "";
-          document.getElementById("top").innerHTML = "恭喜你，您就是我们要找的幸运儿!";
+          document.getElementById("top").innerHTML = "恭喜您，您就是我们要找的幸运儿!";
           document.getElementById("times").innerHTML = "您今天的次数已达成。请明天再来。";
 
       }else{
