@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use Yii;
-use yii\web\controller;
+use yii\web\Controller;
 use yii\helpers\Json;
 use app\controllers\RandomController;
 use app\controllers\RewardController;
@@ -12,7 +12,7 @@ use app\models\Random;
 use app\models\Reward;
 use app\models\User;
 
-class ChanceController extends Controller
+class ChanceController extends controller
 {
     public function actionIndex(){
         if(Yii::$app->user->getIsGuest())

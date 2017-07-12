@@ -7,7 +7,7 @@ use yii\web\Controller;
 use app\controllers\RewardController;
 use Yii;
 
-class RandomController extends Controller
+class RandomController extends controller
 {
     public static function randomNumGen($chance)
     {

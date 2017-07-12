@@ -2,11 +2,11 @@
 namespace app\controllers;
 
 use Yii;
-use yii\web\controller;
+use yii\web\Controller;
 use app\models\Game1Data;
 use app\controllers\RewardController;
 
-class GamedataController extends Controller
+class GamedataController extends controller
 {
      public static function gameDataGen($recordID,$userInput,$token,$usedTime)
      {
