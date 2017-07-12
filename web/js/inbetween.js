@@ -59,7 +59,7 @@ function getVal(){
           document.getElementById("mid").innerHTML = val.ans;
           document.getElementById("min").innerHTML = "";
           document.getElementById("max").innerHTML = "";
-          document.getElementById("top").innerHTML = "恭喜你，您就是我们要找的幸运儿";
+          document.getElementById("top").innerHTML = "恭喜你，您就是我们要找的幸运儿!";
           document.getElementById("times").innerHTML = "您今天的次数已达成。请明天再来。";
 
       }else{
@@ -67,6 +67,12 @@ function getVal(){
       document.getElementById("min").innerHTML = val.min_value;
       document.getElementById("mid").innerHTML = "到";
       document.getElementById("max").innerHTML = val.max_value;
+        if (val.usedTime >= 5) { 
+          document.getElementById("times").innerHTML = "您今天的次数已达成。请明天再来。";
+      }
+      else {
+       document.getElementById("times").innerHTML = "您还有"+(5 - val.usedTime)+"次机会哟。";
+      }
 
     }
    },
