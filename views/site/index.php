@@ -11,8 +11,8 @@ $this->title = 'My Yii Application';
 
         <p class="lead">Press below button to start the game </p>
 
-        <p><a class="btn btn-lg btn-lg btn-block btn-success" href="<?php echo yii\helpers\Url::to(['chance/index'])?>">777</a></p>
-        <p><a class="btn btn-lg btn-lg btn-block btn-success" href="<?php echo yii\helpers\Url::to(['inbetween/index'])?>">In Between</a></p>
+        <p><a class="btn btn-lg btn-lg btn-block btn-warning" href="<?php echo yii\helpers\Url::to(['chance/index'])?>">777</a></p>
+        <p><a class="btn btn-lg btn-lg btn-block btn-danger" href="<?php echo yii\helpers\Url::to(['inbetween/index'])?>">In Between</a></p>
     </div>
 
 
