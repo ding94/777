@@ -5,11 +5,11 @@ use yii\helpers\Json;
 use app\models\Reward;
 use app\models\Chance;
 use app\models\User;
-use yii\web\controller;
+use yii\web\Controller;
 use app\controllers\SgGameRewardBalanceController;
 use Yii;
 
-class RewardController extends \yii\web\Controller
+class RewardController extends controller
 {
     
     public function actionGetdata()

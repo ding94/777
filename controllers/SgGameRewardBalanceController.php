@@ -6,7 +6,7 @@ use app\models\SgGameRewardBalance;
 use yii\web\Controller;
 use Yii;
 
-class SgGameRewardBalanceController extends Controller
+class SgGameRewardBalanceController extends controller
 {
     public static function reduceBalance($value)
     {

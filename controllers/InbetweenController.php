@@ -2,14 +2,14 @@
 namespace app\controllers;
 
 use Yii;
-use yii\web\controller;
+use yii\web\Controller;
 use yii\helpers\Json;
 use app\controllers\GamedataController;
 use app\models\Game1Record;
 use app\models\Reward;
 use yii\helpers\ArrayHelper;
 
-class InbetweenController extends Controller
+class InbetweenController extends controller
 {
     public function actionIndex(){
         $this->layout = "inbetween";
