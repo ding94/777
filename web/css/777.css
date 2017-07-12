@@ -428,16 +428,6 @@ table{
   padding:10px;
 }
 
-/* #reward{
-  position:relative;
-  font-size: 14px;
-  text-align: left;
-  padding:10px;
-  font-family: verdana;
-
-  
-} */
-
 #rewardtable{
   font-size: 1em;
 }
@@ -521,4 +511,14 @@ table{
 .game-rule-tr{
   font-size: 24px;
   text-align: center;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
