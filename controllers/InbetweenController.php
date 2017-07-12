@@ -32,7 +32,7 @@ class InbetweenController extends controller
             $record->playTime = date('G:i:s');
             $record->min_value = 1;
             $record->max_value = 99;
-            $record->ans = 51;
+            $record->ans = rand(2,98);
             $record->save();
             $record = Game1Record::find()->where('userid = :id and playDate = :date' ,[':id' => Yii::$app->user->identity->id , ':date' => $today])->one();
         }

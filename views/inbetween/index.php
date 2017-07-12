@@ -59,10 +59,10 @@
 		</div>
 	</div>
 
-
+	<input type="hidden" id ="token" value="<?php echo $record->token?>">
+	<input type="hidden" id ="usedTime" value="<?php echo $record->usedTime?>">
 	<div id="times" class="row chg">
 			<?php
-
 			if($record->usedTime >=5 || $record->token == 0){
 					echo "Your chances today had finished. Please come again tomorrow.";
 			}	

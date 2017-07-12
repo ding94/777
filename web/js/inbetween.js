@@ -1,5 +1,9 @@
 $(document).ready(function(){
-
+    if($("#usedTime").val() >= 5 || $("#token") == 0)
+    {
+        $("#btnSubmit").prop('disabled', true);
+        $("#value").prop('disabled', true);
+    }
 })
 
 function enterValue(userInput)
@@ -62,7 +66,8 @@ function getVal(){
 //     }
 // }, 1500 / 50);
 //       }
-
+            $("#btnSubmit").prop('disabled', true);
+            $("#value").prop('disabled', true);
           document.getElementById("value").value = "";
           document.getElementById("mid").innerHTML = result.ans;
           document.getElementById("min").innerHTML = "";
@@ -79,6 +84,8 @@ function getVal(){
        // document.getElementById("max").innerHTML = result.max_value;
         $("#max").text(result.max_value).addClass('bounceInRight');
         if (result.usedTime >= 5) { 
+            $("#btnSubmit").prop('disabled', true);
+            $("#value").prop('disabled', true);
           document.getElementById("times").innerHTML = "Your chances today had finished. Please come again tomorrow.";
       }
       else {
