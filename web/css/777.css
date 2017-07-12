@@ -187,6 +187,14 @@ img{
   .reward{
     padding-top: 40px;
   }
+
+  .chg{
+    font-size: 200%;
+  }
+
+  .gamespan{
+    font-size: 2.5em;
+  }
 }
 
 @media screen and (max-width: 1024px){
@@ -207,6 +215,10 @@ img{
 
   .reward{
     padding-top: 40px;
+  }
+
+  .chg{
+    font-size: 150%;
   }
 }
 
@@ -271,6 +283,14 @@ img{
     .img-title{
       content: url(../img/titlemobile.jpg);
     }
+
+    .chg{
+      font-size: 120%;
+    }
+
+    .gamespan{
+      font-size: 1.5em;
+    }
 }
 
 @media screen and (min-width: 1200px){
@@ -299,6 +319,14 @@ img{
     position: absolute;
     width: 65%;
     left: 18%;
+  }
+
+  .chg{
+    font-size: 200%;
+  }
+
+  .gamespan{
+    font-size: 2.5em;
   }
 }
 
@@ -433,9 +461,6 @@ table{
 }
 
 .chg{
-
-
-  font-size:200%;
   color: black;
   padding: 8px;
   text-align: center;
@@ -497,7 +522,6 @@ table{
 .gamespan{
   text-align:center;
   padding: 10px;
-  font-size: 2.5em;
 }
 
 .numberInput{

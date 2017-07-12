@@ -86,6 +86,7 @@ function getVal(){
         if (result.usedTime >= 5) { 
             $("#btnSubmit").prop('disabled', true);
             $("#value").prop('disabled', true);
+          document.getElementById("top").innerHTML = "Game End";
           document.getElementById("times").innerHTML = "Your chances today had finished. Please come again tomorrow.";
       }
       else {
