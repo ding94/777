@@ -66,21 +66,22 @@ function getVal(){
           document.getElementById("mid").innerHTML = result.ans;
           document.getElementById("min").innerHTML = "";
           document.getElementById("max").innerHTML = "";
-          document.getElementById("top").innerHTML = "恭喜您，您就是我们要找的幸运儿!";
-          document.getElementById("times").innerHTML = "您今天的次数已达成。请明天再来。";
+          document.getElementById("top").innerHTML = "Congratulations! You have won our price!";
+          document.getElementById("times").innerHTML = "Your chances today had finished. Please come again tomorrow.";
+
 
       }else{
         document.getElementById("value").value = "";
         //document.getElementById("min").innerHTML = result.min_value;
-        document.getElementById("mid").innerHTML = "到";
+        document.getElementById("mid").innerHTML = "to";
         $("#min").text(result.min_value).addClass('bounceInLeft');
        // document.getElementById("max").innerHTML = result.max_value;
         $("#max").text(result.max_value).addClass('bounceInRight');
         if (result.usedTime >= 5) { 
-          document.getElementById("times").innerHTML = "您今天的次数已达成。请明天再来。";
+          document.getElementById("times").innerHTML = "Your chances today had finished. Please come again tomorrow.";
       }
       else {
-       document.getElementById("times").innerHTML = "您还有"+(5 - result.usedTime)+"次机会哟。";
+       document.getElementById("times").innerHTML = "You have "+(5 - result.usedTime)+"chances left.";
       }
 
     }
