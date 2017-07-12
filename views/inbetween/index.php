@@ -3,14 +3,14 @@
 	<div>
 
 			<h1 id="top"> <?php if($record->usedTime <=0 ){
-					echo "您是否是我们要找的那个有缘人呢~~~";
+					echo "Will you be our lucky user?~~~~~~~";
 						}
 			else {
 					if($record->token == 0){
-						echo "恭喜您，您就是我们要找的幸运儿！";
+						echo "Congratulations! You have won our price!";
 					}
 					else{
-						echo "游戏正在进行中..";
+						echo "Game in progress...........";
 					}
 				}?> </h1>
 	</div>
@@ -28,7 +28,7 @@
 			<?php
 				if($record->usedTime >=0){
 					if($record->playingNow != $record->ans){
-						echo "到";
+						echo "to";
 					}
 					elseif($record->playingNow == $record->ans){
 						echo $record->ans;
@@ -47,7 +47,7 @@
 
 
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4 gamespan">请输入您的号码。</div>
+		<div class="col-md-4 col-md-offset-4 gamespan">Please enter the number.</div>
 		<div class="col-sm-4 col-sm-offset-4 numberInput">
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-pencil "></span></span>
@@ -55,7 +55,7 @@
 			</div>
 		</div>
 		<div class="col-xs-4 col-xs-offset-4 gamebutton">
-			<button type="button" class="btn btn-primary btn-lg btn-block" value="提交" id="btnSubmit" onclick="enterValue(document.getElementById('value').value)">Press</button>
+			<button type="button" class="btn btn-primary btn-lg btn-block" value="submit" id="btnSubmit" onclick="enterValue(document.getElementById('value').value)">Press</button>
 		</div>
 	</div>
 
@@ -64,11 +64,11 @@
 			<?php
 
 			if($record->usedTime >=5 || $record->token == 0){
-					echo "您今天的次数已达成。请明天再来。";
+					echo "Your chances today had finished. Please come again tomorrow.";
 			}	
 			elseif($record->usedTime <5 ){
 			?>
-				您还有 <?php echo 5-$record->usedTime ?> 次机会哟。
+				You have <?php echo 5-$record->usedTime ?> chances left.
 			<?php
 			}
 		?>
@@ -77,29 +77,29 @@
 
 
 		<div class="rule">
-			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapses" aria-expanded="false" aria-controls="collapses">游戏规则 </button>
+			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapses" aria-expanded="false" aria-controls="collapses">Game Rules </button>
 			<div class="collapse" id="collapses">
 				 <div id="showrule">
-					<span>用户只需在1 - 99 之间猜个数字。每位用户只能有<mark><b>5</b></mark>次机会，您只需要猜中系统给予的号码，就能领取我们派送的奖励。</span>
+					<span>User can enter a number between 1-99. Every user only have <mark><b>5</b></mark>chances, If you guess the answer correctly, you will get rewarded.</span>
 				</div>
 
 				<div id="reward">
 					<table class="table allReward">
 				  <tr class="success game-rule-tr">
-					<th>次数</th>
-					<th>金额</th>
+					<th>Tries</th>
+					<th>Reward</th>
 
 				  </tr>
 				  <tr class="reward-table-tr">
-					<td>1次</td>
+					<td>First try</td>
 					<td>RM10</td>
 				  </tr>
 				  <tr class="reward-table-tr">
-					<td>2次</td>
+					<td>Second try</td>
 					<td>RM5</td>
 				  </tr>
 				  <tr class="reward-table-tr">
-					<td>3,4,5次</td>
+					<td>3rd, 4th or 5th try</td>
 					<td>RM2</td>
 				  </tr>
 				  </table>
@@ -111,9 +111,9 @@
 		<div id="reward" class="reward">
 			<table id="rewardtable" class="table allReward">
 				  <tr class="success">
-					<td>中奖者</td>
-					<td>奖励</td>
-					<td>时间</td>
+					<td>Username</td>
+					<td>Reward</td>
+					<td>Reward Time</td>
 				  </tr>
 				
 					<?php foreach($reward as $data):?>

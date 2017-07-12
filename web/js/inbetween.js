@@ -4,10 +4,10 @@ $(document).ready(function(){
 
 function enterValue(userInput)
 {
-  if (userInput <= document.getElementById("min").innerHTML || userInput >= document.getElementById("max").innerHTML ) 
+  if (userInput <= document.getElementById("min").innerHTML.trim() || userInput >= document.getElementById("max").innerHTML.trim() ) 
   {
-    alert("Please enter number between "+ document.getElementById("min").innerHTML + " to " +document.getElementById("max").innerHTML +" !");
-  }
+    alert("Please enter number between "+ document.getElementById("min").innerHTML.trim() + " to " +document.getElementById("max").innerHTML.trim() +" !");
+  }else{
     $.ajax({
     url: "index.php?r=inbetween/index",
     type: "post",
@@ -26,6 +26,7 @@ function enterValue(userInput)
     alert(request.responseText);
     }
 });
+  }
 }
 
 
@@ -81,7 +82,7 @@ function getVal(){
           document.getElementById("times").innerHTML = "Your chances today had finished. Please come again tomorrow.";
       }
       else {
-       document.getElementById("times").innerHTML = "You have "+(5 - result.usedTime)+"chances left.";
+       document.getElementById("times").innerHTML = "You have "+(5 - result.usedTime)+" chances left.";
       }
 
     }
