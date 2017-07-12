@@ -48,7 +48,7 @@
 
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4 gamespan">请输入您的号码。</div>
-		<div class="col-md-4 col-md-offset-4 numberInput">
+		<div class="col-sm-4 col-sm-offset-4 numberInput">
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-pencil "></span></span>
 				<input type="text" class="form-control"  maxlength="2" name="value" id="value" placeholder="1 - 99" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  autofocus />

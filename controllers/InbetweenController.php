@@ -27,6 +27,7 @@ class InbetweenController extends Controller
             $record->max_value = 99;
             $record->ans = 51;
             $record->save();
+            $record = Game1Record::find()->where('userid = :id and playDate = :date' ,[':id' => Yii::$app->user->identity->id , ':date' => $today])->one();
         }
         
         if(Yii::$app->request->isAjax){
@@ -60,7 +61,6 @@ class InbetweenController extends Controller
                 GamedataController::gameDataGen($record->recordID,$data,$record->token,$record->usedTime);
             }
         }
-        $record = Game1Record::find()->where('userid = :id and playDate = :date' ,[':id' => Yii::$app->user->identity->id , ':date' => $today])->one();
         $reward = RewardController:: rewardTable(); 
         //var_dump($reward);exit;
         return $this->render('index' ,['record' => $record, 'reward' => $reward]);

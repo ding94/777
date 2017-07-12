@@ -34,7 +34,7 @@ function getVal(){
     var val = JSON.parse(data);
       console.log(val);
       if (val.token==0) {
-          document.getElementById("value").innerHTML = "";
+          document.getElementById("value").value = "";
           document.getElementById("mid").innerHTML = val.ans;
           document.getElementById("min").innerHTML = "";
           document.getElementById("max").innerHTML = "";
@@ -42,6 +42,7 @@ function getVal(){
           document.getElementById("times").innerHTML = "您今天的次数已达成。请明天再来。";
 
       }else{
+        document.getElementById("value").value = "";
       document.getElementById("min").innerHTML = val.min_value;
       document.getElementById("max").innerHTML = val.max_value;
     }
