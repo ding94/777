@@ -1,8 +1,13 @@
 $(document).ready(function(){
+
 })
 
 function enterValue(userInput)
 {
+  if (userInput <= document.getElementById("min").innerHTML || userInput >= document.getElementById("max").innerHTML ) 
+  {
+    alert("Please enter number between "+ document.getElementById("min").innerHTML + " to " +document.getElementById("max").innerHTML +" !");
+  }
     $.ajax({
     url: "index.php?r=inbetween/index",
     type: "post",
