@@ -19,32 +19,24 @@
 	</div>
 
 	<div class="row middle">
-		<div id="min" class="col-xs-4">
-			<?php
-					if($record->usedTime >=0){
-						if($record->playingNow != $record->ans){
-							echo $record->min_value;
-						}
-			}?>
+		<div id="min" class="col-xs-4" value="<?php echo $record->min_value;?>">
+			<?php if($record->usedTime >= 0):?>
+			<?php echo $record->min_value;?>	
+			<?php endif;?>
 		</div>
 		<div id="mid" class="col-xs-4">
-			<?php
-				if($record->usedTime >=0){
-					if($record->playingNow != $record->ans){
-						echo "to";
-					}
-					elseif($record->playingNow == $record->ans){
-						echo $record->ans;
-					}
-			}?>
+			<?php if($record->usedTime >= 0):?>
+				<?php if($record->playingNow != $record->ans):?>
+					to
+				<?php else :?>
+					<?php echo $record->ans;?>	
+				<?php endif;?>
+			<?php endif;?>
 		</div>
-		<div id="max" class="col-xs-4">
-			<?php
-				if($record->usedTime >=0){
-					if($record->playingNow != $record->ans){
-						echo $record->max_value;
-				}
-			}?>
+		<div id="max" class="col-xs-4" value="<?php echo $record->max_value;?>">
+			<?php if($record->usedTime >= 0):?>
+			<?php echo $record->max_value;?>	
+			<?php endif;?>
 		</div>
 	</div>
 
@@ -64,6 +56,8 @@
 
 	<input type="hidden" id ="token" value="<?php echo $record->token?>">
 	<input type="hidden" id ="usedTime" value="<?php echo $record->usedTime?>">
+	<input type="hidden" id ="minvalue" value="<?php echo $record->min_value?>">
+	<input type="hidden" id ="maxvalue" value="<?php echo $record->max_value?>">
 	<div id="times" class="row chg">
 			<?php
 			if($record->usedTime >=5 || $record->token == 0){
