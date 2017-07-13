@@ -20,7 +20,7 @@
 
 	<div class="row middle">
 		<div id="min" class="col-xs-4" value="<?php echo $record->min_value;?>">
-			<?php if($record->usedTime >= 0 || $record->token ==0):?>
+			<?php if($record->usedTime >= 0 && $record->token ==1):?>
 			<?php echo $record->min_value;?>	
 			<?php endif;?>
 		</div>
@@ -34,7 +34,7 @@
 			<?php endif;?>
 		</div>
 		<div id="max" class="col-xs-4" value="<?php echo $record->max_value;?>">
-			<?php if($record->usedTime >= 0 || $record->token == 0):?>
+			<?php if($record->usedTime >= 0 && $record->token == 1):?>
 			<?php echo $record->max_value;?>	
 			<?php endif;?>
 		</div>
