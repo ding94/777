@@ -49,26 +49,26 @@ function getVal(){
     var result = JSON.parse(data);
       console.log(result);
       if (result.token==0) {
-//       if (document.getElementById("mid").innerHTML = result.ans) {
-//         document.body.appendChild(canvas);
-//         canvas.width = SCREEN_WIDTH;
-//         canvas.height = SCREEN_HEIGHT;
-//         var startTime = new Date().getTime();
-//         var interval = setInterval(function(){ launch();
-//         if(new Date().getTime() - startTime > 10000){
-//         clearInterval(interval);
-//         $('canvas').fadeOut('2000');
-//         return;
-//     }
-// }, 100);
-//         var interval1 = setInterval(function(){ loop();
-//         if(new Date().getTime() - startTime > 10000){
-//         clearInterval(interval1);
-//         $('canvas').fadeOut('2000');
-//         return;
-//     }
-// }, 1500 / 50);
-//       }
+          if (document.getElementById("mid").innerHTML = result.ans) {
+            document.body.appendChild(canvas);
+            canvas.width = SCREEN_WIDTH;
+            canvas.height = SCREEN_HEIGHT;
+            var startTime = new Date().getTime();
+            var interval = setInterval(function(){ launch();
+            if(new Date().getTime() - startTime > 10000){
+            clearInterval(interval);
+            $('canvas').fadeOut('2000');
+            return;
+        }
+    }, 100);
+            var interval1 = setInterval(function(){ loop();
+            if(new Date().getTime() - startTime > 10000){
+            clearInterval(interval1);
+            $('canvas').fadeOut('2000');
+            return;
+        }
+    }, 1500 / 50);
+          }
             $("#btnSubmit").prop('disabled', true);
             $("#value").prop('disabled', true);
           document.getElementById("value").value = "";
