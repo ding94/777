@@ -82,9 +82,9 @@
 
 				<div id="reward">
 					<table class="table allReward">
-				  <tr class="success game-rule-tr">
-					<th>Tries</th>
-					<th>Reward</th>
+				  <tr>
+					<th class="success game-rule-tr">Tries</th>
+					<th class="success game-rule-tr">Reward</th>
 
 				  </tr>
 				  <tr class="reward-table-tr">
