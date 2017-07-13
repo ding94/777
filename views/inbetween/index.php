@@ -74,8 +74,8 @@
 
 
 		<div class="rule">
-			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapses" aria-expanded="false" aria-controls="collapses">Game Rules </button>
-			<div class="collapse" id="collapses">
+		
+			<div class="" id="collapses">
 				 <div id="showrule">
 					<span>User can enter a number between 1-99. Every user only have <mark><b>5</b></mark>chances, If you guess the answer correctly, you will get rewarded.</span>
 				</div>
