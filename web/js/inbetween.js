@@ -13,7 +13,7 @@ function enterValue(userInput)
   var maxValue = parseInt(document.getElementById("max").innerHTML.trim());
   if (input <= minValue || input >= maxValue) 
   {
-    alert("Please enter number between "+ document.getElementById("min").innerHTML.trim() + " to " +document.getElementById("max").innerHTML.trim() +" !");
+    alert("Please enter number between "+ minValue + " to " + maxValue +" !");
   }else{
     $.ajax({
     url: "index.php?r=inbetween/index",
