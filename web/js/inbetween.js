@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    if($("#usedTime").val() >= 5 || $("#token") == 0)
+    if($("#usedTime").val() >= 5 || $("#token") == '0')
     {
         $("#btnSubmit").prop('disabled', true);
         $("#value").prop('disabled', true);

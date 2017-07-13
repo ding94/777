@@ -3,7 +3,7 @@
 ?>
 <div class = "container">
     <div class="row">
-        <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseRule" aria-expanded="false" aria-controls="collapseRule">Rules <span class="spanRadnom glyphicon glyphicon-triangle-bottom"></span></a>
+        <a class="btn btn-warning btn-lg btn-block hideButton" role="button" data-toggle="collapse" href="#collapseRule" aria-expanded="false" aria-controls="collapseRule">Click for Rules <span class="spanRadnom glyphicon glyphicon-triangle-bottom"></span></a>
         <div class="collapse" id="collapseRule">
             <div class="well rule-container">
                 <span class="rule-span1">Complimentary 5 chances every day to PLAY & WIN SGreward up to RM5,000, click “Play” to win SGreward now!</span>
