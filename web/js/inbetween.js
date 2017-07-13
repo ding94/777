@@ -8,9 +8,9 @@ $(document).ready(function(){
 
 function enterValue(userInput)
 {
-  var input = parseInt(userInput ,2);
-  var minValue = parseInt(document.getElementById("min").innerHTML.trim() ,2);
-  var maxValue = parseInt(document.getElementById("max").innerHTML.trim() ,2);
+  var input = parseInt(userInput);
+  var minValue = parseInt(document.getElementById("min").innerHTML.trim());
+  var maxValue = parseInt(document.getElementById("max").innerHTML.trim());
   if (input <= minValue || input >= maxValue) 
   {
     alert("Please enter number between "+ document.getElementById("min").innerHTML.trim() + " to " +document.getElementById("max").innerHTML.trim() +" !");
