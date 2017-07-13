@@ -20,12 +20,12 @@
 
 	<div class="row middle">
 		<div id="min" class="col-xs-4" value="<?php echo $record->min_value;?>">
-			<?php if($record->usedTime >= 0):?>
+			<?php if($record->usedTime >= 0 || $record->token ==0):?>
 			<?php echo $record->min_value;?>	
 			<?php endif;?>
 		</div>
 		<div id="mid" class="col-xs-4">
-			<?php if($record->usedTime >= 0):?>
+			<?php if($record->usedTime >= 0 || $record->token == 0):?>
 				<?php if($record->playingNow != $record->ans):?>
 					to
 				<?php else :?>
@@ -34,7 +34,7 @@
 			<?php endif;?>
 		</div>
 		<div id="max" class="col-xs-4" value="<?php echo $record->max_value;?>">
-			<?php if($record->usedTime >= 0):?>
+			<?php if($record->usedTime >= 0 || $record->token == 0):?>
 			<?php echo $record->max_value;?>	
 			<?php endif;?>
 		</div>
