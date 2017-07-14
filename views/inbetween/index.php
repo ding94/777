@@ -81,7 +81,7 @@
 				</div>
 
 				<div id="reward">
-					<table class="table allReward">
+					<table class="table">
 				  <tr>
 					<th class="success game-rule-tr">Tries</th>
 					<th class="success game-rule-tr">Reward</th>
