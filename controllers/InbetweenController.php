@@ -7,6 +7,7 @@ use yii\helpers\Json;
 use app\controllers\GamedataController;
 use app\models\Game1Record;
 use app\models\Reward;
+use app\models\User;
 use yii\helpers\ArrayHelper;
 
 class InbetweenController extends controller
@@ -80,7 +81,7 @@ class InbetweenController extends controller
             {
                  $today =  date('Y-m-d');
                 $record = Game1Record::find()->where('userid = :id and playDate = :date' ,[':id' => Yii::$app->user->identity->id , ':date' => $today])->one();
-                    unset($record['userID']);
+                    $record->userID = User::find()->where('id = :uid' ,[':uid' => Yii::$app->user->identity->id])->one()->username;
                     unset($record['recordID']);
                    
                 if ($record->token == 1) {

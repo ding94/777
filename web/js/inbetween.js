@@ -79,6 +79,24 @@ function getVal(){
           document.getElementById("max").innerHTML = "";
           document.getElementById("top").innerHTML = "Congratulations! You have won our price!";
           document.getElementById("times").innerHTML = "Your chances today had finished. Please come again tomorrow.";
+          switch(result.usedTime) {
+                  case 1:
+                      var price = 10;
+                      break;
+                  case 2:
+                       var price = 5;
+                      break;
+                  case 3:
+                       var price = 2;
+                      break;
+                  case 4:
+                       var price = 2;
+                      break;
+                  case 5:
+                      var price = 2;
+                      break;
+              }
+          $('.allReward').find('tr:first').after("<tr class='reward-table-tr'><td>"+result.userID+"</td><td>RM "+price+"</td><td class='dateEm'>"+result.playDate+" "+result.playTime+"</td></tr>");
 
 
       }else{
