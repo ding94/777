@@ -54,14 +54,16 @@ function getVal(){
             canvas.width = SCREEN_WIDTH;
             canvas.height = SCREEN_HEIGHT;
             var startTime = new Date().getTime();
-            var interval = setInterval(function(){ launch();
+            var interval = setInterval(function(){ 
+                launch();
             if(new Date().getTime() - startTime > 10000){
             clearInterval(interval);
             $('canvas').fadeOut('2000');
             return;
         }
     }, 100);
-            var interval1 = setInterval(function(){ loop();
+            var interval1 = setInterval(function(){ 
+                loop();
             if(new Date().getTime() - startTime > 10000){
             clearInterval(interval1);
             $('canvas').fadeOut('2000');
