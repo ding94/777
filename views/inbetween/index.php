@@ -56,8 +56,6 @@
 
 	<input type="hidden" id ="token" value="<?php echo $record->token?>">
 	<input type="hidden" id ="usedTime" value="<?php echo $record->usedTime?>">
-	<input type="hidden" id ="minvalue" value="<?php echo $record->min_value?>">
-	<input type="hidden" id ="maxvalue" value="<?php echo $record->max_value?>">
 	<div id="times" class="row chg">
 			<?php
 			if($record->usedTime >=5 || $record->token == 0){
