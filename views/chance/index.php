@@ -72,8 +72,8 @@
                     <li><span class="rule-span1">Every day each SGshop Malaysia member has 5 chances to play & win SGreward;</span></li>
                     <li><span class="rule-span1">SGreward can only be used to offset item price (1st payment);</span></li>
                     <li><span class="rule-span1">SGshop reserves the right of final explanation towards this activity;</span></li>
-                    <li><span class="rule-span1">Click <a href="http://www.sgshop.com.my/member/sgreward">SGreward </a>for more details;</span></li>
-                    <li><span class="rule-span1">Click <a href="https://www.sgshop.com.my/member">Member Center</a> for your SGreward checking.</span></li>
+                    <li><span class="rule-span1">Click <a href="http://www.sgshop.com.my/member/sgreward" target="_blank">SGreward </a>for more details;</span></li>
+                    <li><span class="rule-span1">Click <a href="https://www.sgshop.com.my/member" target="_blank">Member Center</a> for your SGreward checking.</span></li>
                 </ol>
             </div>
         </div>
