@@ -1,5 +1,7 @@
 var opts = ['1', '2', '3', '4', '5','6','7'];
-var imgurl = window.location.origin;
+var base_url = window.location.origin;
+var pathArray = window.location.pathname.split( '/' );
+var imgurl = base_url+"/" + pathArray[1]+"/" + pathArray[2];
 
 /*
  *post ajax when user press play button
@@ -36,29 +38,29 @@ function animation(obj)
     for(i = 0; i < 12; i++) {
       $("#a").slideToggle(220,function(){
       var ctr = Math.floor(Math.random()*opts.length);
-      $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.png" />');
+      $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/img/' + opts[ctr] + '.png" />');
     });
   };
   $("#a").slideDown(800,function(){
-    $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.fnum + '.png" />');
+    $("#a #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/img/' + obj.fnum + '.png" />');
     });
     for(i = 0; i < 12; i++) {
       $("#b").slideToggle(320,function(){
       var ctr = Math.floor(Math.random()*opts.length);
-      $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.png" />');
+      $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/img/' + opts[ctr] + '.png" />');
     });
   };
   $("#b").slideDown(800,function(){
-    $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.snum + '.png" />');
+    $("#b #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/img/' + obj.snum + '.png" />');
     })
     for(i = 0; i < 12; i++) {
       $("#c").slideToggle(260,function(){
       var ctr = Math.floor(Math.random()*opts.length);
-      $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + opts[ctr] + '.png" />');
+      $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/img/' + opts[ctr] + '.png" />');
     });
   };
   $("#c").slideDown(800,function(){
-    $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/777/web/img/' + obj.tnum + '.png" />');
+    $("#c #theImg").replaceWith('<img id="theImg"  class="img-responsive" src="'+ imgurl + '/img/' + obj.tnum + '.png" />');
     });
 
     setTimeout(function(){
@@ -163,7 +165,7 @@ function alertReward(obj)
 
 $(document).ready(function(){
   for(i = 1; i <= 7; i++) {
-    $("[value='"+ i +"']").prepend('<img id="theImg" class="img-responsive" src="'+ imgurl + '/777/web/img/'+ i + '.png" />');
+    $("[value='"+ i +"']").prepend('<img id="theImg" class="img-responsive" src="'+ imgurl + '/img/'+ i + '.png" />');
   }
   if($('#chanceHidden').val() >= 6)
   {
