@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Random;
+use app\model\chance;
 use yii\web\Controller;
 use app\controllers\RewardController;
 use Yii;
@@ -11,7 +12,7 @@ class RandomController extends controller
 {
     public static function randomNumGen($chance)
     {
-        self::random();
+        //self::random();
         $reward = RewardController::getReward(1);
         /*
          *detect whether user reach limit amount
@@ -90,7 +91,7 @@ class RandomController extends controller
                 $random->save();
             }
         }
-        else if($random[0]['token'] == 0)
+        elseif($random) 
         {
             foreach($random as $k=>$data)
             {

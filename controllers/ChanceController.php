@@ -36,6 +36,7 @@ class ChanceController extends controller
             $chance->userid = Yii::$app->user->identity->id;
             $chance->createtime = date('Y-m-d G:i:s');
             $chance->save();
+            RandomController:: random();
         }
 
         /*
