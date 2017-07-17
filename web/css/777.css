@@ -676,3 +676,7 @@ canvas {
     transform: none;
     }
   } 
+
+  .hiddenInput{
+    display:none;
+  }

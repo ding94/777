@@ -49,6 +49,7 @@ function getVal(){
     var result = JSON.parse(data);
       console.log(result);
       if (result.token==0) {
+          $(".numberInput").toggleClass('hiddenInput');
           if (document.getElementById("mid").innerHTML = result.ans) {
             document.body.appendChild(canvas);
             canvas.width = SCREEN_WIDTH;
@@ -67,6 +68,7 @@ function getVal(){
             if(new Date().getTime() - startTime > 10000){
             clearInterval(interval1);
             $('canvas').fadeOut('2000');
+              $(".numberInput").toggleClass('hiddenInput');
             return;
         }
     }, 1500 / 50);
