@@ -73,33 +73,55 @@
 
 		<div class="rule">
 		
-			<div class="" id="collapses">
 				 <div id="showrule">
-					<span>User can enter a number between 1-99. Every user only have <mark><b>5</b></mark>chances, If you guess the answer correctly, you will get rewarded.</span>
+					<span>T&Cs:</span>
+					<ol>
+	                    <li>
+	                      <span class="rule-span1">Prize List:</span>
+		                      <div id="reward">
+								<table class="table">
+								  <tr>
+									<th class="success game-rule-tr">Tries</th>
+									<th class="success game-rule-tr">Reward(SGreward)</th>
+
+								  </tr>
+								  <tr class="reward-table-tr">
+									<td>First try</td>
+									<td>RM10</td>
+								  </tr>
+								  <tr class="reward-table-tr">
+									<td>Second try</td>
+									<td>RM5</td>
+								  </tr>
+								  <tr class="reward-table-tr">
+									<td>3rd, 4th or 5th try</td>
+									<td>RM2</td>
+								  </tr>
+							  </table>
+						</div>
+	                    </li>
+	                    <li>
+	                      <span class="rule-span1">This activity is valid from 17th July 2017 to 21th July 2017;</span>
+	                    </li>
+	                    <li>
+	                      <span class="rule-span1">Every day each SGshop Malaysia member has 5 chances to play & win SGreward;</span>
+	                    </li>
+	                    <li>
+	                      <span class="rule-span1">SGreward can only be used to offset item price (1st payment);</span>
+	                    </li>
+	                    <li>
+	                      <span class="rule-span1">SGshop reserves the right of final explanation towards this activity;</span>
+	                    </li>
+	                    <li>
+	                      <span class="rule-span1">Click <a href="http://www.sgshop.com.my/member/sgreward" target="_blank">SGreward </a>for more details;</span>
+	                    </li>
+	                    <li>
+	                      <span class="rule-span1">Click <a href="https://www.sgshop.com.my/member" target="_blank">Member Center</a> for your SGreward checking.</span>
+	                    </li>
+                </ol>
 				</div>
 
-				<div id="reward">
-					<table class="table">
-				  <tr>
-					<th class="success game-rule-tr">Tries</th>
-					<th class="success game-rule-tr">Reward</th>
-
-				  </tr>
-				  <tr class="reward-table-tr">
-					<td>First try</td>
-					<td>RM10</td>
-				  </tr>
-				  <tr class="reward-table-tr">
-					<td>Second try</td>
-					<td>RM5</td>
-				  </tr>
-				  <tr class="reward-table-tr">
-					<td>3rd, 4th or 5th try</td>
-					<td>RM2</td>
-				  </tr>
-				  </table>
-				</div>
-			</div>
+				
 		</div>
 		
 		
