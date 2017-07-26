@@ -68,9 +68,12 @@ class RewardController extends controller
     *save reward of random prize to database
     */
 
-    public static function submitReward($model,$chance,$today,$tommorow)
+    public static function submitReward($model,$chance)
     {
-        if($chance->chance < 6)
+        $today =  date('Y-m-d 00:00:00');
+        $tommorow = date('Y-m-d 00:00:00', strtotime(' +1 day'));
+
+        if($chance < 6)
         {
             $reward = new Reward;
             $reward->userid = Yii::$app->user->identity->id;
@@ -89,14 +92,14 @@ class RewardController extends controller
             }
             
             $reward->save();
-            $chance->chance += 1;
+            $chance += 1;
       
             $condition = [
                 'and',
                 ['between','updatetime',$today ,$tommorow],
                 ['in' ,'userid' , Yii::$app->user->identity->id],
             ];
-            Chance::updateAll(['chance' => $chance->chance ],$condition);
+            Chance::updateAll(['chance' => $chance ],$condition);
         }
     }
     

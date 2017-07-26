@@ -13,6 +13,7 @@ class RandomController extends controller
     public static function randomNumGen($chance)
     {
         //self::random();
+
         $reward = RewardController::getReward(1);
         /*
          *detect whether user reach limit amount
