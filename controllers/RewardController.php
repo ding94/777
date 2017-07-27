@@ -112,11 +112,11 @@ class RewardController extends controller
     {
         $reward = new Reward;
         $reward->userid = Yii::$app->user->identity->id;
-        $reward->game_id = "B1";
-        if($usedTime == 1)
+        $reward->game_id = "B1"; // 只获得这个游戏的代号
+        if($usedTime == 1) // 用户游玩机会尚在
         {
-            $reward->status =1;
-            $reward->price = 10;
+            $reward->status =1; // status = 奖励状态，似奖励ID
+            $reward->price = 10; // price = 奖励价格
         }
         elseif($usedTime == 2 || $usedTime == 3)
         {
@@ -133,6 +133,7 @@ class RewardController extends controller
 
     public static function rewardTable()
     {
+        //获得 得奖名单
        $reward = Reward::find()->where('game_id = :gid',['gid' => "B1"])->limit(7)->orderBy(['(createtime)'=> SORT_DESC])->all();
         foreach($reward as $rewards)
         {

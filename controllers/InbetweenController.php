@@ -62,7 +62,7 @@ class InbetweenController extends controller
                 $record->usedTime +=1; //游玩次数+1
                 $record->playingNow = $data; //用户当前输入
                 $record->save(); //储存
-                GamedataController::gameDataGen($record->recordID,$data,$record->token,$record->usedTime); //记录用户输入信息，以及使用次数
+                GamedataController::gameDataGen($record->recordID,$data,$record->token,$record->usedTime); //记录用户输入信息
             }
         }
         $reward = RewardController:: rewardTable(); //获得中奖名单
