@@ -16,7 +16,9 @@ class RandomController extends controller
         /*
          *detect whether user reach limit amount
          *if price more than 10 user
-         *will not get any price anymore
+         *return true
+         *查看用户的中奖次数，
+         *超过返回 true
          */
       
         if($reward)
@@ -38,6 +40,13 @@ class RandomController extends controller
 
     public static function random($chance)
     {
+        /*
+         *  create random number based on user chance
+         *  if MaxLimit is true, loop until 3 random number dif
+         *  创建三组号码对比用户的次数
+         *  如果 MaxLimit 返回 对， 重复号码直到
+         *  3组号码都不一样
+         */
         $number = array(1,2,3,4,5,7);
 
         $a=$number[array_rand($number,1)];
@@ -82,8 +91,9 @@ class RandomController extends controller
     public static function randomSorting($chance)
     {
         /*
-         *get data between user chance and previos chance
+         *get data between user chance 
          *orderby chance
+         *根据用户的次数来放回数据
          */
         $random = Random::find()->where('userid = :id and token = :tk and chance = :ch' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1' ,':ch' => $chance])->orderBy('chance')->one();
         

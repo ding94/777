@@ -15,6 +15,11 @@ class RewardController extends controller
     
     public function actionGetdata()
     {
+        /*
+         *拿用户的中奖数据
+         *并放回给用户
+         *如果空， 返回 false
+         */
         $value = self::getReward(3);
         if($value == false)
         {
@@ -28,6 +33,7 @@ class RewardController extends controller
 
     /*
      *detect which type of reward
+     *查看是全部中奖名单或用户中间名单
      */
     public static function getReward($choice)
     {
@@ -67,6 +73,8 @@ class RewardController extends controller
 
     /*
     *save reward of random prize to database
+    *如果中奖存进数据库
+    *用户的次数不管有没用中奖都会增加
     */
 
     public static function submitReward($chance)
