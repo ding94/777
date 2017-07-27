@@ -137,7 +137,7 @@ class RewardController extends controller
         {
             $rewards['userid'] = User::find()->where('id = :id' ,[':id' => $rewards['userid']])->one()->username;
         }
-
+        
        return $reward;
     }
 }

@@ -133,13 +133,16 @@
 					<td>Reward Time</td>
 				  </tr>
 				
-					<?php foreach($reward as $data):?>
-                    <tr class="reward-table-tr">
-                        <td><?php echo $data['userid'] ?></td>
-                        <td>RM <?php echo $data['price']?></td>
-                        <td><?php echo $data['createtime']?></td>
-                    </tr>
-					<?php endforeach ;?>		
+					<?php if(!empty($reward)) 
+					{
+						foreach($reward as $data):?>
+		                    <tr class="reward-table-tr">
+		                        <td><?php echo $data['userid'] ?></td>
+		                        <td>RM <?php echo $data['price']?></td>
+		                        <td><?php echo $data['createtime']?></td>
+		                    </tr>
+						<?php endforeach ;
+					}?>		
 				 
 			</table>
 			
