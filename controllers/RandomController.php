@@ -12,8 +12,6 @@ class RandomController extends controller
 {
     public static function randomNumGen($chance)
     {
-        //self::random();
-
         $reward = RewardController::getReward(1);
         /*
          *detect whether user reach limit amount
@@ -34,77 +32,33 @@ class RandomController extends controller
             }
         }
         
-        /*
-         *get data between user chance and previos chance
-         *orderby chance
-         */
-        $random = Random::find()->where('userid = :id and token = :tk' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1'])->andWhere(['between','chance',$chance-1 ,$chance])->orderBy('chance')->all();
-        /*
-         *detect wheter the chance
-         *in current user play chance
-         *record it into value 1
-         *and record previos chance into value 0
-         *if first time play value is null
-         */
-
-        foreach($random as $k=>$data)
-        {
-            if($chance == $data['chance'])
-            {
-                if($k-1 == -1)
-                {
-                    $value['0'] = "";
-                }
-                else{
-                    $value['0'] = $random[$k-1];
-                }
-                $value['1'] = $data;
-            }
-        }
-
+        $value = self::randomSorting($chance);
         return $value;
     }
 
-    public static function random()
+    public static function random($chance)
     {
         $number = array(1,2,3,4,5,7);
-        $count = count($number);
 
-        $random = Random::find()->where('userid = :id ',[':id' => Yii::$app->user->identity->id])->all();
+        $random = Random::find()->where('userid = :id and chance = :ch ',[':id' => Yii::$app->user->identity->id ,':ch' => $chance])->one();
         /*
          *find wheter random datbase create
-         *if not create five
-         *loop five time with increment of chance
-         *each user only have five chance and token will be refresh everyday
+         *if not create 
+         *each user only have five chance
          */
 
         if(empty($random))
         {
-            for($i=1;$i<=6;$i++)
-            {
-                $random = new Random();
-                $random->fnum = $number[array_rand($number,1)];
-                $random->snum = $number[array_rand($number,1)];
-                $random->tnum = $number[array_rand($number,1)];
-                $random->userid = Yii::$app->user->identity->id;
-                $random->chance = $i;
-                $random->token = 1;
-                $random->save();
-            }
+            $random = new Random();
         }
-        elseif($random) 
-        {
-            foreach($random as $k=>$data)
-            {
-                $data->fnum = $number[array_rand($number,1)];
-                $data->snum = $number[array_rand($number,1)];
-                $data->tnum = $number[array_rand($number,1)];
-                $data->userid = Yii::$app->user->identity->id;
-                $data->chance = $k+1;
-                $data->token = 1;
-                $data->save();
-            }
-        }
+
+        $random->fnum = $number[array_rand($number,1)];
+        $random->snum = $number[array_rand($number,1)];
+        $random->tnum = $number[array_rand($number,1)];
+        $random->userid = Yii::$app->user->identity->id;
+        $random->chance = $chance;
+        $random->token = 1;
+        $random->save();
     }
 
 
@@ -112,21 +66,35 @@ class RandomController extends controller
     {
         $number = array(1,2,3,4,5,7);
         $random = Random::find()->where('userid = :id and token = :tk and  chance = :ch' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1' , ':ch' => $chance])->one();
-        $a=$random->fnum;
-        $b=$random->snum;
-        $c=$random->tnum;
-
-        while($a==$b || $b==$c || $c==$a)
+        if($random)
         {
-            $a = $number[array_rand($number,1)];
-            $b = $number[array_rand($number,1)];
-            $c = $number[array_rand($number,1)];
-        }
+            $a=$random->fnum;
+            $b=$random->snum;
+            $c=$random->tnum;
 
-        $random->fnum = $a;
-        $random->snum = $b;
-        $random->tnum = $c;
-        $random->save();
+            while($a==$b || $b==$c || $c==$a)
+            {
+                $a = $number[array_rand($number,1)];
+                $b = $number[array_rand($number,1)];
+                $c = $number[array_rand($number,1)];
+            }
+
+            $random->fnum = $a;
+            $random->snum = $b;
+            $random->tnum = $c;
+            $random->save();
+        }
+    }
+
+    public static function randomSorting($chance)
+    {
+        /*
+         *get data between user chance and previos chance
+         *orderby chance
+         */
+        $random = Random::find()->where('userid = :id and token = :tk and chance = :ch' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1' ,':ch' => $chance])->orderBy('chance')->one();
+        
+        return $random;
     }
 
 }

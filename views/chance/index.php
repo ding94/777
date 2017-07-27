@@ -80,7 +80,7 @@
     </div>
     <div class="game-area">
     <div class="lock">
-        <?php if (empty($model[0])) :?>
+        <?php if (empty($model)) :?>
         <div id="row ">
             <div id ="a" class="col-xs-4 randomNumber" value="1"></div>
             <div id ="b" class="col-xs-4 randomNumber" value="2"></div>
@@ -88,11 +88,11 @@
         </div>
         <?php else :?>
         <div class="row ">
-            <div id ="a" class="col-xs-4 randomNumber" value="<?php echo $model[0]['fnum']?>"></div>
-            <div id ="b" class="col-xs-4 randomNumber" value="<?php echo $model[0]['snum']?>"></div>
-            <div id ="c" class="col-xs-4 randomNumber" value="<?php echo $model[0]['tnum']?>"></div>
+            <div id ="a" class="col-xs-4 randomNumber" value="<?php echo $model['fnum']?>"></div>
+            <div id ="b" class="col-xs-4 randomNumber" value="<?php echo $model['snum']?>"></div>
+            <div id ="c" class="col-xs-4 randomNumber" value="<?php echo $model['tnum']?>"></div>
         </div>
-        <input type="hidden" id="chanceHidden" value="<?php echo $model[1]->chance?>">
+        <input type="hidden" id="chanceHidden" value="<?php echo $model->chance?>">
         <?php endif ;?>
     </div>
 
@@ -101,12 +101,12 @@
              <button id="disableOrEnable" type="button" class="btn btn-primary btn-lg btn-block" onclick="randomNumber();">Play</button>
         </div>
     </div>
-    <?php if(empty($model[0])):?>
+    <?php if(empty($model)):?>
     <div class="chanceValue">Chance left: 5</div>
-    <?php elseif($model[0]->chance == 5 ) :?>
+    <?php elseif($model->chance == 5 ) :?>
     <div class="chanceValue" style="color: red;" >Today's Chance has finished!!</div>
     <?php else:?>
-    <div class="chanceValue" >Today's chance left : <?php echo 5-$model[0]->chance?></div>
+    <div class="chanceValue" >Today's chance left : <?php echo 5-$model->chance?></div>
     <?php endif ;?>
   </div>
     <div class="row">

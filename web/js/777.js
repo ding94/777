@@ -66,7 +66,7 @@ function animation(obj)
     setTimeout(function(){
       alertReward(obj);
       var chanceLeft = 5-obj.chance;
-      if(obj.chance < 5)
+      if(chanceLeft > 0)
       {
         $(".chanceValue").text("Today's chance left :" + chanceLeft );
           $('#disableOrEnable').prop('disabled', false);
@@ -167,7 +167,7 @@ $(document).ready(function(){
   for(i = 1; i <= 7; i++) {
     $("[value='"+ i +"']").prepend('<img id="theImg" class="img-responsive" src="'+ imgurl + '/img/'+ i + '.png" />');
   }
-  if($('#chanceHidden').val() >= 6)
+  if($('#chanceHidden').val() >= 5)
   {
       $('#disableOrEnable').prop('disabled', true);
   }
