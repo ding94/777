@@ -26,7 +26,7 @@ class ChanceController extends controller
         $chance = self::getChance();
 
         $model = self::getNumber($chance);
-   
+       
         /*
          *get all user reward
          */
@@ -35,9 +35,10 @@ class ChanceController extends controller
         $userReward = RewardController::getReward(3);
 
         if(Yii::$app->request->isAjax){
-            if($chance < 6)
+            if($chance < 5)
             {
-                RewardController::submitReward($model[1],$chance);
+                RandomController::random($chance+1);
+                RewardController::submitReward($chance+1);
             }
         }
 
@@ -47,10 +48,9 @@ class ChanceController extends controller
     public function actionGetdata()
     {
         if(Yii::$app->request->isAjax){
-
             $chance = self::getChance();
-            $value = RandomController::randomNumGen($chance);
-            $value = Json::encode($value[0]);
+            $value = RandomController::randomSorting($chance);
+            $value = Json::encode($value);
             return $value;
         }
     }
@@ -69,7 +69,7 @@ class ChanceController extends controller
         if(empty($chance))
         {
             $chance = new Chance;
-            $chance->chance = 1;
+            $chance->chance = 0;
             $chance->userid = Yii::$app->user->identity->id;
             $chance->createtime = date('Y-m-d G:i:s');
             $chance->save();
@@ -85,7 +85,7 @@ class ChanceController extends controller
          */
         if($chance < 6)
         {
-            $model = RandomController::randomNumGen($chance);
+            $model = RandomController::randomSorting($chance);
         }
         else
         {

@@ -7,6 +7,7 @@ use app\models\Chance;
 use app\models\User;
 use yii\web\Controller;
 use app\controllers\SgGameRewardBalanceController;
+use app\controllers\RandomController;
 use Yii;
 
 class RewardController extends controller
@@ -68,11 +69,12 @@ class RewardController extends controller
     *save reward of random prize to database
     */
 
-    public static function submitReward($model,$chance)
+    public static function submitReward($chance)
     {
         $today =  date('Y-m-d 00:00:00');
         $tommorow = date('Y-m-d 00:00:00', strtotime(' +1 day'));
-
+        $value = RandomController::randomNumGen($chance);
+        $model = $value;
         if($chance < 6)
         {
             $reward = new Reward;
@@ -92,8 +94,7 @@ class RewardController extends controller
             }
             
             $reward->save();
-            $chance += 1;
-      
+
             $condition = [
                 'and',
                 ['between','updatetime',$today ,$tommorow],
