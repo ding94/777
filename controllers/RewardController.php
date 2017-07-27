@@ -73,7 +73,7 @@ class RewardController extends controller
     {
         $today =  date('Y-m-d 00:00:00');
         $tommorow = date('Y-m-d 00:00:00', strtotime(' +1 day'));
-        $value = RandomController::randomNumGen($chance);
+        $value = RandomController::randomSorting($chance);
         $model = $value;
         if($chance < 6)
         {

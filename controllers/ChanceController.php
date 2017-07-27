@@ -81,7 +81,7 @@ class ChanceController extends controller
     public static function getNumber($chance)
     {
         /*
-         *to stp randomNumGen run to increase the chance
+         *to stp randomSorting run to increase the chance
          */
         if($chance < 6)
         {

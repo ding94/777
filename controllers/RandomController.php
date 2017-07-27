@@ -10,7 +10,7 @@ use Yii;
 
 class RandomController extends controller
 {
-    public static function randomNumGen($chance)
+    public static function MaxLimit()
     {
         $reward = RewardController::getReward(1);
         /*
@@ -28,17 +28,21 @@ class RandomController extends controller
             }
             if($sum >= 10)
             {
-                self::verifyLimit($chance);
+                return true;
             }
         }
         
-        $value = self::randomSorting($chance);
-        return $value;
+        //$value = self::randomSorting($chance);
+        return false;
     }
 
     public static function random($chance)
     {
         $number = array(1,2,3,4,5,7);
+
+        $a=$number[array_rand($number,1)];
+        $b=$number[array_rand($number,1)];
+        $c=$number[array_rand($number,1)];
 
         $random = Random::find()->where('userid = :id and chance = :ch ',[':id' => Yii::$app->user->identity->id ,':ch' => $chance])->one();
         /*
@@ -46,45 +50,34 @@ class RandomController extends controller
          *if not create 
          *each user only have five chance
          */
+        $limit = self::MaxLimit();
 
         if(empty($random))
         {
             $random = new Random();
         }
 
-        $random->fnum = $number[array_rand($number,1)];
-        $random->snum = $number[array_rand($number,1)];
-        $random->tnum = $number[array_rand($number,1)];
-        $random->userid = Yii::$app->user->identity->id;
-        $random->chance = $chance;
-        $random->token = 1;
-        $random->save();
-    }
-
-
-    public static function verifyLimit($chance)
-    {
-        $number = array(1,2,3,4,5,7);
-        $random = Random::find()->where('userid = :id and token = :tk and  chance = :ch' ,[':id' => Yii::$app->user->identity->id ,':tk' => '1' , ':ch' => $chance])->one();
-        if($random)
+        if($limit == true)
         {
-            $a=$random->fnum;
-            $b=$random->snum;
-            $c=$random->tnum;
-
-            while($a==$b || $b==$c || $c==$a)
+             while($a==$b || $b==$c || $c==$a)
             {
                 $a = $number[array_rand($number,1)];
                 $b = $number[array_rand($number,1)];
                 $c = $number[array_rand($number,1)];
             }
-
-            $random->fnum = $a;
-            $random->snum = $b;
-            $random->tnum = $c;
-            $random->save();
         }
+
+        $random->fnum = $a;
+        $random->snum = $b;
+        $random->tnum = $c;
+
+        $random->userid = Yii::$app->user->identity->id;
+        $random->chance = $chance;
+        $random->token = 1;
+
+        $random->save();
     }
+
 
     public static function randomSorting($chance)
     {

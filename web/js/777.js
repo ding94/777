@@ -66,14 +66,14 @@ function animation(obj)
     setTimeout(function(){
       alertReward(obj);
       var chanceLeft = 5-obj.chance;
-      if(chanceLeft > 0)
+      if(chanceLeft == 0 )
       {
-        $(".chanceValue").text("Today's chance left :" + chanceLeft );
-          $('#disableOrEnable').prop('disabled', false);
-      }
-      else{
         $(".chanceValue").text("Today's Chance has finished!!");
         $(".chanceValue").css("color","red");
+      }
+      else{
+        $(".chanceValue").text("Today's chance left :" + chanceLeft );
+        $('#disableOrEnable').prop('disabled', false);
       }
     },4000);
 }
